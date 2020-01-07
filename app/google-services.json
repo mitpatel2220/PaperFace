@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1084577346240",
+    "firebase_url": "https://paperface-4441e.firebaseio.com",
+    "project_id": "paperface-4441e",
+    "storage_bucket": "paperface-4441e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1084577346240:android:fa1da22fba822dff603325",
+        "android_client_info": {
+          "package_name": "com.meet.paperface"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1084577346240-2dcht27kasufh1p6enp31et4h09iq1ik.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.meet.paperface",
+            "certificate_hash": "bb0c6984879823cee6e869cd2d992ce8387032b9"
+          }
+        },
+        {
+          "client_id": "1084577346240-ikn2e92ggp2mmekmrfoulbc3u62h3p7l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDe3v5N-eBI046wBjKWiT-yNt3lKPh5cqs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1084577346240-ikn2e92ggp2mmekmrfoulbc3u62h3p7l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
