@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <string name="app_name">PaperFace</string>
     <string name="title_activity_main_layout">MainLayout</string>
@@ -27,4 +27,12 @@
     <string name="are">Are you</string>
     <string name="shopkeeper">Shopkeeper?</string>
     <string name="content">contentDescription</string>
+    
+    <string name="it">Its easier to sign up now</string>\
+    <string name="userName">User Name</string>
+    <string name="or">Or</string>
+    <string name="conti">Continue with Gmail</string>
+    
+    <string name="Shopkeeper">Shopkeeper</string>
+
 </resources>

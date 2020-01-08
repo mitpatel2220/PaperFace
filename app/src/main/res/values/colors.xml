@@ -9,7 +9,9 @@
     <color name="darkBlue">#4042E4</color>
     <color name="white">#FFFFFF</color>
     <color name="gray">#AEA9A9</color>
+    <color name="red">#FF6469</color>
+    <color name="darkRed">#F21E36</color>
 </resources>
 
 
-<!--    Big Leaf color 6C63FF-->
+<!--I have to add a little logo design in SignUp screen(Register Screen)-->
