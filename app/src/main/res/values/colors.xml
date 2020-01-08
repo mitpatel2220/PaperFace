@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#6B74FD</color>
+    <color name="colorPrimaryDark">#6B74FD</color>
+    <color name="colorAccent">#6C63FF</color>
+    <color name="black">#585656</color>
+    <color name="darkBlack">#000000</color>
+    <color name="blue">#4850ed</color>
+    <color name="darkBlue">#4042E4</color>
+    <color name="white">#FFFFFF</color>
+    <color name="gray">#AEA9A9</color>
 </resources>
+
+
+<!--    Big Leaf color 6C63FF-->
