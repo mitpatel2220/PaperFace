@@ -3,8 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingEnd="20dp"
-    android:paddingStart="20dp"
     android:scrollbarThumbVertical="@android:color/transparent"
     tools:context=".ShopkeeperActivity">
 
@@ -13,6 +11,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp"
         android:orientation="vertical">
 
         <TextView
