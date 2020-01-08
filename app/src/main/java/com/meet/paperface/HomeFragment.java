@@ -19,7 +19,6 @@ import android.widget.Toast;
  */
 public class HomeFragment extends Fragment {
 
-    Button b1;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -36,18 +35,6 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        b1=view.findViewById(R.id.b1);
-
-        b1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Toast.makeText(getActivity(), "home", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-
+        
     }
 }

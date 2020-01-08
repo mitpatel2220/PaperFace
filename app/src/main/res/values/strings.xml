@@ -9,7 +9,6 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
@@ -39,4 +38,16 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="pages">55 Rs of 100 pages</string>
+    <string name="how_many">Pages you want 100 X</string>
+    <string name="extra">Extra +</string>
+    <string name="total_pages">Total Pages </string>
+    <string name="total_rs">Total Rs.</string>
+    <string name="accepted">Your order is accepted</string>
+    <string name="on_the_way">Your order is on the way</string>
+    <string name="delivered">Your order is delivered</string>
+    <string name="edit">Edit</string>
+    <string name="ok">OK</string>
+    <string name="done">Done</string>
+    
 </resources>

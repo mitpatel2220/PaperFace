@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingStart="20dp"
-    android:paddingEnd="20dp"
     android:scrollbarThumbVertical="@android:color/transparent"
     tools:context=".RegisterActivity">
 
     <RelativeLayout
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
