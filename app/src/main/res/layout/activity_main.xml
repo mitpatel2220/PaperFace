@@ -54,6 +54,11 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="70dp"
                 android:background="@drawable/edi"
+
+
+                android:inputType="textEmailAddress"
+               
+
                 android:hint="@string/email_address"
                 android:paddingStart="30dp"
                 android:paddingEnd="30dp"
@@ -64,6 +69,10 @@
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+
+                
+                android:inputType="textPassword"
+
                 android:layout_below="@+id/email"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
@@ -95,6 +104,8 @@
                 android:layout_below="@+id/log_in"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
+                android:clickable="true"
+
                 android:text="@string/forgot"
                 android:textColor="@color/gray"
                 android:textSize="16sp"/>
@@ -116,6 +127,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:text="@string/signUp"
+            android:clickable="true"
+
             android:textColor="@color/blue"
             android:textSize="18sp"/>
 
@@ -136,6 +149,8 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:text="@string/shopkeeper"
+            android:clickable="true"
+
             android:textColor="@color/blue"
             android:textSize="18sp"/>
     </RelativeLayout>
