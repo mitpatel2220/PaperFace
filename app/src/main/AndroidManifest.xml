@@ -17,6 +17,10 @@
             android:label="@string/title_activity_main_layout"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".ShopkeeperActivity" />
+        <activity android:name=".Recycler_Activity">
+
+        </activity>
+
         <activity android:name=".RegisterActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

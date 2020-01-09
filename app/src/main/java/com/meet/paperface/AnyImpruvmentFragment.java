@@ -1,6 +1,8 @@
 package com.meet.paperface;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -37,16 +39,11 @@ public class AnyImpruvmentFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        b1=view.findViewById(R.id.b1);
+        Uri hii = Uri.parse("smsto:" + "+919904278734");
+        Intent i = new Intent(Intent.ACTION_SENDTO, hii);
+        i.setPackage("com.whatsapp");
+        startActivity(i);
 
-        b1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Toast.makeText(getActivity(), "Any improvement", Toast.LENGTH_SHORT).show();
-
-            }
-        });
 
 
     }

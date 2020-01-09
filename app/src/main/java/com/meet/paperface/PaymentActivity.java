@@ -80,9 +80,9 @@ public class PaymentActivity extends AppCompatActivity {
 
                 String click = clicked_radio.getText().toString();
 
-                if(otherPayment.isEmpty()){
+                if (otherPayment.isEmpty()) {
 
-                    otherPayment="--";
+                    otherPayment = "--";
                 }
 
                 if (name.isEmpty()) {
@@ -100,53 +100,44 @@ public class PaymentActivity extends AppCompatActivity {
 
                     Toast.makeText(PaymentActivity.this, "Please enter Your Hostel Name", Toast.LENGTH_SHORT).show();
 
-                }  else {
+                } else {
 
-                    if(click.equals("Pay Online")){
-
-
+                    if (click.equals("Pay Online")) {
 
 
+                    } else {
 
-                    }else {
-
-                        HashMap<String,String> map=new HashMap<>();
-                        map.put("hostelname",hostelName);
-                        map.put("mobileno",mobilenumber);
-                        map.put("name",name);
-                        map.put("other",otherPayment);
-                        map.put("payment","Payment Left");
-                        map.put("roomno",Room_no);
-                        map.put("totalpage",page);
-                        map.put("totalrs",rs);
-
+                        HashMap<String, String> map = new HashMap<>();
+                        map.put("hostelname", hostelName);
+                        map.put("mobileno", mobilenumber);
+                        map.put("name", name);
+                        map.put("other", otherPayment);
+                        map.put("payment", "Payment Left");
+                        map.put("roomno", Room_no);
+                        map.put("totalpage", page);
+                        map.put("totalrs", rs);
 
 
                         databaseReference.child(myuid).setValue(map).addOnCompleteListener(PaymentActivity.this, new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
 
-                                if(task.isSuccessful()){
+                                if (task.isSuccessful()) {
 
                                     Toast.makeText(PaymentActivity.this, "Your Order is successfully Placed", Toast.LENGTH_SHORT).show();
 
 
-                                }else {
+                                } else {
 
 
                                 }
-
-
 
 
                             }
                         });
 
 
-
-
                     }
-
 
 
                 }
