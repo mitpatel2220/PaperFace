@@ -32,7 +32,7 @@
 
         <Button
             android:id="@+id/edit"
-            android:layout_width="80dp"
+            android:layout_width="100dp"
             android:layout_height="30dp"
             android:layout_below="@+id/journal_Images"
             android:layout_marginTop="10dp"
@@ -57,7 +57,7 @@
 
         <EditText
             android:id="@+id/edit_How"
-            android:layout_width="80dp"
+            android:layout_width="100dp"
             android:layout_height="30dp"
             android:layout_below="@+id/edit"
             android:layout_alignParentEnd="true"
@@ -81,7 +81,7 @@
 
         <EditText
             android:id="@+id/edit_Extra"
-            android:layout_width="80dp"
+            android:layout_width="100dp"
             android:layout_height="30dp"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
@@ -119,7 +119,7 @@
 
         <TextView
             android:id="@+id/edit_Pages"
-            android:layout_width="80dp"
+            android:layout_width="100dp"
             android:layout_height="30dp"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
@@ -143,7 +143,7 @@
 
         <TextView
             android:id="@+id/edit_Rs"
-            android:layout_width="80dp"
+            android:layout_width="100dp"
             android:layout_height="30dp"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
