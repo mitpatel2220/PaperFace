@@ -4,7 +4,7 @@
     <string name="title_activity_main_layout">MainLayout</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="person_name">Jenny</string>
+    <string name="person_name">User</string>
     <string name="all_Orders">7 Orders</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
@@ -49,6 +49,16 @@
     <string name="edit">Edit</string>
     <string name="ok">OK</string>
     <string name="done">Done</string>
+
+    <string name="payment">Payment Details</string>
+    <string name="name">Name</string>
+    <string name="room_num">Room Number</string>
+    <string name="hostel_name">Hostel Name/Hall</string>
+    <string name="other">Others</string>
+    <string name="payOnline">Pay Online</string>
+    <string name="cod">COD</string>
+    <string name="place_Order">Place Order</string>
+    
     <string name="other_one">nothing</string>
     
 </resources>
