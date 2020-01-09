@@ -46,7 +46,7 @@ Button b1;
             @Override
             public void onClick(View view) {
 
-                Toast.makeText(getActivity(), "okk", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Past order", Toast.LENGTH_SHORT).show();
 
             }
         });
