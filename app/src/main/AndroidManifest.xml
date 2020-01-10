@@ -22,6 +22,8 @@
 
 
         </activity>
+        <activity android:name=".Recycler_Activity"/>
+
         <activity android:name=".ShopkeeperActivity"/>
         <activity android:name=".RegisterActivity"/>
         <activity android:name=".MainActivity">

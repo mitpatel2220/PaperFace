@@ -122,6 +122,7 @@ public class PaymentActivity extends AppCompatActivity {
                         map.put("roomno", Room_no);
                         map.put("totalpage", page);
                         map.put("totalrs", rs);
+                        map.put("uid",myuid);
 
                         final String currentDate = DateFormat.getDateTimeInstance().format(new Date());
 
