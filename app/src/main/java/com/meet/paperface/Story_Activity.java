@@ -42,7 +42,6 @@ public class Story_Activity extends AppCompatActivity {
     Uri uri;
     private StorageTask upload_task;
     
-    String imageName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,9 +51,9 @@ public class Story_Activity extends AppCompatActivity {
         send_thesis = findViewById( R.id.send_thesis );
         send_data = findViewById( R.id.send_data );
         progressBar = findViewById( R.id.progressBar );
-        imageName = send_thesis.getText().toString();
-        databaseReference = FirebaseDatabase.getInstance().getReference().child( "Story" ).child( imageName );
         storageReference = FirebaseStorage.getInstance().getReference();
+        
+
         send_pictures.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -68,12 +67,14 @@ public class Story_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String thesis = send_thesis.getText().toString();
-                hashMap.put( "pictures", "https://firebasestorage.googleapis.com/v0/b/paperface-4441e.appspot.com/o/uploads%2Fprinter.png?alt=media&token=9dc6c294-b82c-4c2d-b6b5-8aa6cc14af7a" );
+                databaseReference = FirebaseDatabase.getInstance().getReference().child( "Story" ).child( send_thesis.getText().toString() );
+
+                hashMap.put( "pictures", uri.toString() );
                 hashMap.put( "thesis", thesis );
                 sendData();
                 if (upload_task != null && upload_task.isInProgress()) {
                     Toast.makeText( Story_Activity.this, "File is being uploaded. Please wait a moment!", Toast.LENGTH_SHORT ).show();
-                } else {
+                } else {    
                     uploadFile();
                 }
             }
@@ -104,7 +105,7 @@ public class Story_Activity extends AppCompatActivity {
     
     private void uploadFile() {
         if (uri != null) {
-            StorageReference storageReference1 = storageReference.child("uploads").child( imageName+".png" );
+            StorageReference storageReference1 = storageReference.child("uploads").child( send_thesis.getText().toString()+".png" );
             upload_task = storageReference1.putFile( uri ).addOnSuccessListener( new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
