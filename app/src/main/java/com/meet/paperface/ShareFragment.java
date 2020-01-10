@@ -1,6 +1,7 @@
 package com.meet.paperface;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -47,6 +48,12 @@ Button b1;
             }
         });
 
+
+        Intent intent=new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_SUBJECT,"subject here");
+        intent.putExtra(Intent.EXTRA_TEXT,"body");
+        startActivity(Intent.createChooser(intent,"Share via.."));
 
     }
 }

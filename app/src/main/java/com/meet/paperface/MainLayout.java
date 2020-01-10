@@ -1,5 +1,6 @@
 package com.meet.paperface;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -17,6 +18,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -41,7 +43,7 @@ public class MainLayout extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home,R.id.nav_pastorder,R.id.nav_Aboutus,R.id.nav_AnyImpruvment,
+                R.id.nav_home,R.id.nav_Yourorder,R.id.nav_pastorder,R.id.nav_Aboutus,R.id.nav_AnyImpruvment,
                 R.id.nav_share,R.id.nav_Help,R.id.nav_Story)
                 .setDrawerLayout(drawer)
                 .build();
@@ -65,6 +67,7 @@ public class MainLayout extends AppCompatActivity {
 
 
 
+
         getMenuInflater().inflate(R.menu.main_layout, menu);
         return true;
     }
@@ -77,4 +80,20 @@ public class MainLayout extends AppCompatActivity {
     }
 
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+         super.onOptionsItemSelected(item);
+
+        if(item.getItemId() == R.id.action_Logout){
+
+
+            FirebaseAuth.getInstance().signOut();
+            Intent in=new Intent(MainLayout.this,MainActivity.class);
+            startActivity(in);
+            finish();
+
+
+        }
+        return true;
+    }
 }
