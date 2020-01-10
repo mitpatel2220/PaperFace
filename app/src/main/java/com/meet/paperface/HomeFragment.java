@@ -50,6 +50,15 @@ public class HomeFragment extends Fragment {
 
         edit_page = view.findViewById(R.id.edit_Pages);
         edit_rs = view.findViewById(R.id.edit_Rs);
+        
+        edit.setOnLongClickListener( new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                Intent intent = new Intent( getContext(), Story_Activity.class );
+                startActivity( intent );
+                return false;
+            }
+        } );
 
 
         ok.setOnClickListener(new View.OnClickListener() {

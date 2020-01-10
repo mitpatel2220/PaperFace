@@ -53,7 +53,7 @@ public class StoryFragment extends Fragment {
         recyclerView.setHasFixedSize( true );
         recyclerView.setLayoutManager( new LinearLayoutManager( getContext() ) );
         models = new ArrayList<>(  );
-        databaseReference = FirebaseDatabase.getInstance().getReference();
+        databaseReference = FirebaseDatabase.getInstance().getReference().child( "Story" );
         
         databaseReference.addValueEventListener( new ValueEventListener() {
             @Override
