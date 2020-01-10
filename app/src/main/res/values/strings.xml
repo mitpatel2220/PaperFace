@@ -55,5 +55,7 @@
     <string name="rupees">Rupees</string>
     <string name="date">Date</string>
     <string name="story">As the name suggests, Android RecyclerView is used to reuse cells when scrolling up and down by recycling the items in the list. Another improvement in RecyclerView is that it allows us to set the LayoutManagers dynamically at runtime, unlike the ListView which was only available in a Vertical scrolling List. RecyclerView allows us to set the following types of Layouts at runtime.</string>
+    <string name="send_data">Send Data</string>
+    <string name="type_your_story_here">Type your story here...</string>
 </resources>
 
