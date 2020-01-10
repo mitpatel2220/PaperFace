@@ -11,6 +11,11 @@
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
     <fragment
+        android:id="@+id/nav_Yourorder"
+        android:name="com.meet.paperface.YourOrderFragment"
+        android:label="Your Orders"
+        tools:layout="@layout/fragment_your_order" />
+    <fragment
         android:id="@+id/nav_pastorder"
         android:name="com.meet.paperface.PastOrder"
         android:label="Past Orders"

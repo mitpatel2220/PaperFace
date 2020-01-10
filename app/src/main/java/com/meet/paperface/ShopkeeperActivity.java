@@ -1,6 +1,7 @@
 package com.meet.paperface;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -23,20 +24,16 @@ public class ShopkeeperActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String email_sk = id_Shopkeeper.getText().toString();
                 String password_sk = password.getText().toString();
-                if (email_sk.isEmpty()) {
-                    Toast.makeText( ShopkeeperActivity.this, "Please enter your ID", Toast.LENGTH_SHORT ).show();
 
-                } else if (password_sk.isEmpty()) {
-                    Toast.makeText( ShopkeeperActivity.this, "Please enter your password", Toast.LENGTH_SHORT ).show();
-                } else {
-                    if (email_sk.equals( "12345678" )) {
-                        if (password_sk.equals( "12345678" )) {
-                            Toast.makeText( ShopkeeperActivity.this, "Authentication successful", Toast.LENGTH_SHORT ).show();
-                        } else {
-                            Toast.makeText( ShopkeeperActivity.this, "Authentication failed", Toast.LENGTH_SHORT ).show();
-                        }
-                    }
+
+                if(email_sk.equals("Md@123") && password_sk.equals("Md@123")){
+                    Intent intent=new Intent(ShopkeeperActivity.this,Recycler_Activity.class);
+                    startActivity(intent);
+
                 }
+
+
+
             }
         } );
 

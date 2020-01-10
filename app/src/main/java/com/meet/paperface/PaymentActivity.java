@@ -19,6 +19,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.HashMap;
 
 public class PaymentActivity extends AppCompatActivity {
@@ -33,6 +35,7 @@ public class PaymentActivity extends AppCompatActivity {
 
     FirebaseAuth firebaseAuth;
     DatabaseReference databaseReference;
+    DatabaseReference dr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +64,9 @@ public class PaymentActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Orders");
+        dr = FirebaseDatabase.getInstance().getReference().child("YourOrder");
+
+
         final String myuid = firebaseUser.getUid().toString();
 
 
@@ -80,9 +86,9 @@ public class PaymentActivity extends AppCompatActivity {
 
                 String click = clicked_radio.getText().toString();
 
-                if(otherPayment.isEmpty()){
+                if (otherPayment.isEmpty()) {
 
-                    otherPayment="--";
+                    otherPayment = "--";
                 }
 
                 if (name.isEmpty()) {
@@ -100,53 +106,70 @@ public class PaymentActivity extends AppCompatActivity {
 
                     Toast.makeText(PaymentActivity.this, "Please enter Your Hostel Name", Toast.LENGTH_SHORT).show();
 
-                }  else {
+                } else {
 
-                    if(click.equals("Pay Online")){
-
-
+                    if (click.equals("Pay Online")) {
 
 
+                    } else {
 
-                    }else {
+                        HashMap<String, String> map = new HashMap<>();
+                        map.put("hostelname", hostelName);
+                        map.put("mobileno", mobilenumber);
+                        map.put("name", name);
+                        map.put("other", otherPayment);
+                        map.put("payment", "Payment Left");
+                        map.put("roomno", Room_no);
+                        map.put("totalpage", page);
+                        map.put("totalrs", rs);
 
-                        HashMap<String,String> map=new HashMap<>();
-                        map.put("hostelname",hostelName);
-                        map.put("mobileno",mobilenumber);
-                        map.put("name",name);
-                        map.put("other",otherPayment);
-                        map.put("payment","Payment Left");
-                        map.put("roomno",Room_no);
-                        map.put("totalpage",page);
-                        map.put("totalrs",rs);
+                        final String currentDate = DateFormat.getDateTimeInstance().format(new Date());
+
+                        HashMap<String, String> hashMap = new HashMap<>();
+
+                        hashMap.put("page", page);
+                        hashMap.put("rs", rs);
+                            hashMap.put("date",currentDate);
 
 
+                            dr.child(myuid).push().setValue(hashMap).addOnCompleteListener(PaymentActivity.this, new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
 
-                        databaseReference.child(myuid).setValue(map).addOnCompleteListener(PaymentActivity.this, new OnCompleteListener<Void>() {
+                                    if (task.isSuccessful()) {
+
+                                        Toast.makeText(PaymentActivity.this, "Your Order is successfully Placed", Toast.LENGTH_SHORT).show();
+
+
+                                    } else {
+
+                                        Toast.makeText(PaymentActivity.this, "Something Error", Toast.LENGTH_SHORT).show();
+
+                                    }
+
+                                }
+                            });
+                        databaseReference.push().setValue(map).addOnCompleteListener(PaymentActivity.this, new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
 
-                                if(task.isSuccessful()){
+                                if (task.isSuccessful()) {
 
                                     Toast.makeText(PaymentActivity.this, "Your Order is successfully Placed", Toast.LENGTH_SHORT).show();
 
 
-                                }else {
+                                } else {
 
+                                    Toast.makeText(PaymentActivity.this, "Something Error", Toast.LENGTH_SHORT).show();
 
                                 }
-
-
 
 
                             }
                         });
 
 
-
-
                     }
-
 
 
                 }
