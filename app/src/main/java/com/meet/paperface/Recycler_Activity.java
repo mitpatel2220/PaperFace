@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -19,10 +20,12 @@ public class Recycler_Activity extends AppCompatActivity {
 
     List<Users> listdata = new ArrayList<>();
 
+    List<TaskClass> list=new ArrayList<>();
     RecyclerView rv;
     Adeptorforrecycle adaptor;
     private DatabaseReference mUsersDatabase;
     private LinearLayoutManager mLayoutManager;
+    String keyValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,10 +48,14 @@ public class Recycler_Activity extends AppCompatActivity {
 
                 for (DataSnapshot ss : dataSnapshot.getChildren()) {
                     Users user = ss.getValue(Users.class);
+                    TaskClass task=ss.getValue(TaskClass.class);
+                    keyValue=ss.getKey();
+                    task.setKey(keyValue);
+                    list.add(task);
                     listdata.add(user);
 
                 }
-                adaptor = new Adeptorforrecycle(Recycler_Activity.this, listdata);
+                adaptor = new Adeptorforrecycle(Recycler_Activity.this, listdata,list);
                 rv.setAdapter(adaptor);
 
 
@@ -63,4 +70,6 @@ public class Recycler_Activity extends AppCompatActivity {
 
 
     }
+
+
 }

@@ -8,6 +8,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,15 +18,31 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.meet.paperface.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class PastOrder extends Fragment {
+    List<PastorderModel> listdata = new ArrayList<>();
+
+    RecyclerView rv;
+    AdeptorforPastOrder adaptor;
+    private DatabaseReference mUsersDatabase;
+    private LinearLayoutManager mLayoutManager;
+    FirebaseAuth firebaseAuth;
 
 
-Button b1;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -40,17 +58,39 @@ Button b1;
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        b1=view.findViewById(R.id.b1);
+        mUsersDatabase = FirebaseDatabase.getInstance().getReference().child("Pastorder");
 
-        b1.setOnClickListener(new View.OnClickListener() {
+        mLayoutManager = new LinearLayoutManager(getContext());
+
+        rv =view.findViewById(R.id.recycle_view);
+        rv.setHasFixedSize(true);
+        rv.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        final String myuid = firebaseUser.getUid().toString();
+
+
+        mUsersDatabase.child(myuid).addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View view) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                Toast.makeText(getActivity(), "Past order", Toast.LENGTH_SHORT).show();
+                for (DataSnapshot ss : dataSnapshot.getChildren()) {
+                    PastorderModel user = ss.getValue(PastorderModel.class);
+                    listdata.add(user);
+
+                }
+                adaptor = new AdeptorforPastOrder(getActivity(), listdata);
+                rv.setAdapter(adaptor);
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
-
 
     }
 }
