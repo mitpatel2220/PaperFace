@@ -1,10 +1,15 @@
 package com.meet.paperface.Activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.inputmethod.EditorInfo;
+import android.widget.SearchView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -13,8 +18,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.meet.paperface.Adapter.Adeptorforrecycle;
 import com.meet.paperface.R;
-import com.meet.paperface.TaskClass;
-import com.meet.paperface.Users;
+import com.meet.paperface.Model.TaskClass;
+import com.meet.paperface.Model.Users;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +40,8 @@ public class Recycler_Activity extends AppCompatActivity {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_recycler_ );
 
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         mUsersDatabase = FirebaseDatabase.getInstance().getReference().child("Orders");
 
@@ -74,5 +81,29 @@ public class Recycler_Activity extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
 
+        getMenuInflater().inflate(R.menu.recycle_menu,menu);
+        MenuItem item=menu.findItem(R.id.action_search);
+        SearchView searchView=(SearchView) item.getActionView();
+        searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+
+            //    adaptor.getFilter().filter(s);
+
+                return false;
+            }
+        });
+        return true;
+
+
+    }
 }

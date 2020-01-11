@@ -46,6 +46,12 @@ public class RegisterActivity extends AppCompatActivity {
         Google_sign = findViewById( R.id.gmailButton );
         text = findViewById( R.id.or );
         mAuth = FirebaseAuth.getInstance();
+
+
+
+
+
+
         Sign_Up.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,6 +70,8 @@ public class RegisterActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 Intent in = new Intent( RegisterActivity.this, MainLayout.class );
+                                in.putExtra("token","email--");
+                               // in.putExtra("tokeng","0");
                                 startActivity( in );
                                 finish();
                                 Toast.makeText( RegisterActivity.this, "Registration successful", Toast.LENGTH_SHORT ).show();
@@ -80,6 +88,7 @@ public class RegisterActivity extends AppCompatActivity {
                 .requestIdToken( getString( R.string.default_web_client_id ) )
                 .requestEmail()
                 .build();
+
         mGoogleSignInClient = GoogleSignIn.getClient( this, gso );
         Google_sign.setOnClickListener( new View.OnClickListener() {
             @Override
@@ -87,6 +96,7 @@ public class RegisterActivity extends AppCompatActivity {
                 signIn();
             }
         } );
+
         if (mAuth.getCurrentUser() != null) {
             FirebaseUser user = mAuth.getCurrentUser();
             updateUI( user );
@@ -129,6 +139,12 @@ public class RegisterActivity extends AppCompatActivity {
                             Log.d( TAG, "signInWithCredential:success" );
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI( user );
+                            Intent in=new Intent(RegisterActivity.this,MainLayout.class);
+                            in.putExtra("token","gmail--");
+                           // in.putExtra("tokene","0");
+                            startActivity(in);
+
+
                             Toast.makeText( RegisterActivity.this, "Authentication Successful", Toast.LENGTH_SHORT ).show();
 
                         } else {
@@ -145,17 +161,17 @@ public class RegisterActivity extends AppCompatActivity {
     private void updateUI(FirebaseUser user) {
 //        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount( getApplicationContext() );
         if (user != null) {
-            String name = user.getDisplayName();
-            String email = user.getEmail();
-//            String photo = String.valueOf( user.getPhotoUrl() );
-            text.setText( "Info:\n" );
-            text.setText( name + "\n" );
-//            text.setText( name );
-            text.setText( email );
-
-        } else {
-            text.setText( "Sign_Out_Successfully" );
+//            String name = user.getDisplayName();
+//            String email = user.getEmail();
+////            String photo = String.valueOf( user.getPhotoUrl() );
+//            text.setText( "Info:\n" );
+//            text.setText( name + "\n" );
+////            text.setText( name );
+//            text.setText( email );
         }
+//        } else {
+//            text.setText( "Sign_Out_Successfully" );
+//        }
     }
     
 }
