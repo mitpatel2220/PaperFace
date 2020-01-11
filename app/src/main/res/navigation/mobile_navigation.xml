@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.meet.paperface.HomeFragment"
+        android:name="com.meet.paperface.Fragment.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/nav_Yourorder"
-        android:name="com.meet.paperface.YourOrderFragment"
+        android:name="com.meet.paperface.Fragment.YourOrderFragment"
         android:label="Your Orders"
         tools:layout="@layout/fragment_your_order" />
     <fragment
@@ -23,29 +23,29 @@
 
     <fragment
         android:id="@+id/nav_share"
-        android:name="com.meet.paperface.ShareFragment"
+        android:name="com.meet.paperface.Fragment.ShareFragment"
         android:label="@string/menu_share"
         tools:layout="@layout/fragment_share" />
 
     <fragment
         android:id="@+id/nav_Aboutus"
-        android:name="com.meet.paperface.AboutUsFragment"
+        android:name="com.meet.paperface.Fragment.AboutUsFragment"
         android:label="About Us"
         tools:layout="@layout/fragment_about_us" />
     <fragment
         android:id="@+id/nav_AnyImpruvment"
-        android:name="com.meet.paperface.AnyImpruvmentFragment"
+        android:name="com.meet.paperface.Fragment.AnyImpruvmentFragment"
         android:label="Any Imprivment?"
         tools:layout="@layout/fragment_any_impruvment" />
 
     <fragment
         android:id="@+id/nav_Help"
-        android:name="com.meet.paperface.HelpFragment"
+        android:name="com.meet.paperface.Fragment.HelpFragment"
         android:label="Help"
         tools:layout="@layout/fragment_help" />
     <fragment
         android:id="@+id/nav_Story"
-        android:name="com.meet.paperface.StoryFragment"
+        android:name="com.meet.paperface.Fragment.StoryFragment"
         android:label="Story"
         tools:layout="@layout/fragment_story" />
 

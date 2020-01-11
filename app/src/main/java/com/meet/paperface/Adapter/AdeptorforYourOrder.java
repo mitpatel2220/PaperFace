@@ -1,4 +1,4 @@
-package com.meet.paperface;
+package com.meet.paperface.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,21 +9,24 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.meet.paperface.R;
+import com.meet.paperface.Model.YourOrderModel;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdeptorforPastOrder extends RecyclerView.Adapter<AdeptorforPastOrder.ViewHolder> {
+public class AdeptorforYourOrder extends RecyclerView.Adapter<AdeptorforYourOrder.ViewHolder> {
 
 
     private Context fcontext;
-    private List<PastorderModel> fupload = new ArrayList<>();
+    private List<YourOrderModel> fupload = new ArrayList<>();
 
 
-    public void add(PastorderModel s) {
+    public void add(YourOrderModel s) {
         fupload.add(s);
     }
 
-    public AdeptorforPastOrder(Context context, List<PastorderModel> user) {
+    public AdeptorforYourOrder(Context context, List<YourOrderModel> user) {
 
         fcontext = context;
         fupload = user;
@@ -34,7 +37,7 @@ public class AdeptorforPastOrder extends RecyclerView.Adapter<AdeptorforPastOrde
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(fcontext).inflate(R.layout.data_list_shop, parent, false);
+        View view = LayoutInflater.from(fcontext).inflate( R.layout.data_list_shop, parent, false);
 
         return new ViewHolder(view);
 
@@ -44,9 +47,11 @@ public class AdeptorforPastOrder extends RecyclerView.Adapter<AdeptorforPastOrde
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
 
-        holder.page.setText(fupload.get(position).getPages());
+        holder.page.setText(fupload.get(position).getPage());
         holder.rs.setText(fupload.get(position).getRs());
         holder.date.setText(fupload.get(position).getDate());
+
+
 
 
     }
@@ -57,15 +62,16 @@ public class AdeptorforPastOrder extends RecyclerView.Adapter<AdeptorforPastOrde
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        TextView page, rs, date;
+        TextView page,rs,date;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
 
 
-            page = itemView.findViewById(R.id.card_Pages_shop_blank);
-            rs = itemView.findViewById(R.id.card_Rupees_shop_blank);
-            date = itemView.findViewById(R.id.card_date_blank);
+
+            page=itemView.findViewById(R.id.card_Pages_shop_blank);
+            rs=itemView.findViewById(R.id.card_Rupees_shop_blank);
+            date=itemView.findViewById(R.id.card_date_blank);
 
         }
     }

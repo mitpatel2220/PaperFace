@@ -1,4 +1,4 @@
-package com.meet.paperface;
+package com.meet.paperface.Model;
 
 public class YourOrderModel {
 

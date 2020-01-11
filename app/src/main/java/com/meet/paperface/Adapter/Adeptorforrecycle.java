@@ -1,11 +1,10 @@
-package com.meet.paperface;
+package com.meet.paperface.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,6 +16,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.meet.paperface.R;
+import com.meet.paperface.Activity.Recycler_Activity;
+import com.meet.paperface.TaskClass;
+import com.meet.paperface.Users;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -52,7 +55,7 @@ public class Adeptorforrecycle extends RecyclerView.Adapter<Adeptorforrecycle.Vi
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(fcontext).inflate(R.layout.data_list, parent, false);
+        View view = LayoutInflater.from(fcontext).inflate( R.layout.data_list, parent, false);
 
         return new ViewHolder(view);
 
@@ -122,7 +125,7 @@ public class Adeptorforrecycle extends RecyclerView.Adapter<Adeptorforrecycle.Vi
                 });
 
 
-              fcontext.startActivity(new Intent(fcontext,Recycler_Activity.class));
+              fcontext.startActivity(new Intent( fcontext, Recycler_Activity.class));
 
 
             }
