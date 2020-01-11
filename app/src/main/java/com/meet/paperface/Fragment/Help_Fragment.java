@@ -17,11 +17,11 @@ import com.meet.paperface.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HelpFragment extends Fragment {
+public class Help_Fragment extends Fragment {
     Button b1;
 
 
-    public HelpFragment() {
+    public Help_Fragment() {
         // Required empty public constructor
     }
 

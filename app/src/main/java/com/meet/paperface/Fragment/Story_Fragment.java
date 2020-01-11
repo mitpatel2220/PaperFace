@@ -28,13 +28,13 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class StoryFragment extends Fragment {
+public class Story_Fragment extends Fragment {
     RecyclerView recyclerView;
     DatabaseReference databaseReference;
     Story_Adapter story_adapter;
     List<Story_Model> models;
 
-    public StoryFragment() {
+    public Story_Fragment() {
         // Required empty public constructor
         
     }
@@ -73,7 +73,6 @@ public class StoryFragment extends Fragment {
 
             }
         } );
-        
-
     }
+    
 }

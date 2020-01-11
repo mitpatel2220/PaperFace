@@ -9,24 +9,24 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.meet.paperface.Model.Past_Order_Model;
 import com.meet.paperface.R;
-import com.meet.paperface.Model.YourOrderModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdeptorforYourOrder extends RecyclerView.Adapter<AdeptorforYourOrder.ViewHolder> {
+public class Past_Order_Adapter extends RecyclerView.Adapter<Past_Order_Adapter.ViewHolder> {
 
 
     private Context fcontext;
-    private List<YourOrderModel> fupload = new ArrayList<>();
+    private List<Past_Order_Model> fupload = new ArrayList<>();
 
 
-    public void add(YourOrderModel s) {
+    public void add(Past_Order_Model s) {
         fupload.add(s);
     }
 
-    public AdeptorforYourOrder(Context context, List<YourOrderModel> user) {
+    public Past_Order_Adapter(Context context, List<Past_Order_Model> user) {
 
         fcontext = context;
         fupload = user;
@@ -47,11 +47,9 @@ public class AdeptorforYourOrder extends RecyclerView.Adapter<AdeptorforYourOrde
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
 
-        holder.page.setText(fupload.get(position).getPage());
+        holder.page.setText(fupload.get(position).getPages());
         holder.rs.setText(fupload.get(position).getRs());
         holder.date.setText(fupload.get(position).getDate());
-
-
 
 
     }
@@ -62,16 +60,15 @@ public class AdeptorforYourOrder extends RecyclerView.Adapter<AdeptorforYourOrde
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        TextView page,rs,date;
+        TextView page, rs, date;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
 
 
-
-            page=itemView.findViewById(R.id.card_Pages_shop_blank);
-            rs=itemView.findViewById(R.id.card_Rupees_shop_blank);
-            date=itemView.findViewById(R.id.card_date_blank);
+            page = itemView.findViewById(R.id.card_Pages_shop_blank);
+            rs = itemView.findViewById(R.id.card_Rupees_shop_blank);
+            date = itemView.findViewById(R.id.card_date_blank);
 
         }
     }

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scrollbarThumbVertical="@android:color/transparent"
-    tools:context=".Activity.ShopkeeperActivity">
+    tools:context=".Activity.Shopkeeper_Activity">
 
     <LinearLayout
         android:layout_width="match_parent"

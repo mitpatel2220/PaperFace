@@ -19,11 +19,11 @@ import com.meet.paperface.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AnyImpruvmentFragment extends Fragment {
+public class Any_Imp_Fragment extends Fragment {
 
     Button b1;
 
-    public AnyImpruvmentFragment() {
+    public Any_Imp_Fragment() {
         // Required empty public constructor
     }
 

@@ -24,7 +24,7 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.HashMap;
 
-public class PaymentActivity extends AppCompatActivity {
+public class Payment_Activity extends AppCompatActivity {
 
     EditText name_Payment, Room_number_Payment, hostel_name_Payment, others_Payment, mobileNo_payment;
 
@@ -94,18 +94,18 @@ public class PaymentActivity extends AppCompatActivity {
 
                 if (name.isEmpty()) {
 
-                    Toast.makeText(PaymentActivity.this, "Please enter Your Name", Toast.LENGTH_SHORT).show();
+                    Toast.makeText( Payment_Activity.this, "Please enter Your Name", Toast.LENGTH_SHORT).show();
                 } else if (mobilenumber.isEmpty()) {
-                    Toast.makeText(PaymentActivity.this, "Please enter Your Mobile No.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText( Payment_Activity.this, "Please enter Your Mobile No.", Toast.LENGTH_SHORT).show();
 
 
                 } else if (Room_no.isEmpty()) {
-                    Toast.makeText(PaymentActivity.this, "Please enter Your Room No.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText( Payment_Activity.this, "Please enter Your Room No.", Toast.LENGTH_SHORT).show();
 
 
                 } else if (hostelName.isEmpty()) {
 
-                    Toast.makeText(PaymentActivity.this, "Please enter Your Hostel Name", Toast.LENGTH_SHORT).show();
+                    Toast.makeText( Payment_Activity.this, "Please enter Your Hostel Name", Toast.LENGTH_SHORT).show();
 
                 } else {
 
@@ -134,35 +134,35 @@ public class PaymentActivity extends AppCompatActivity {
                             hashMap.put("date",currentDate);
 
 
-                            dr.child(myuid).push().setValue(hashMap).addOnCompleteListener(PaymentActivity.this, new OnCompleteListener<Void>() {
+                            dr.child(myuid).push().setValue(hashMap).addOnCompleteListener( Payment_Activity.this, new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
 
                                     if (task.isSuccessful()) {
 
-                                        Toast.makeText(PaymentActivity.this, "Your Order is successfully Placed", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText( Payment_Activity.this, "Your Order is successfully Placed", Toast.LENGTH_SHORT).show();
 
 
                                     } else {
 
-                                        Toast.makeText(PaymentActivity.this, "Something Error", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText( Payment_Activity.this, "Something Error", Toast.LENGTH_SHORT).show();
 
                                     }
 
                                 }
                             });
-                        databaseReference.push().setValue(map).addOnCompleteListener(PaymentActivity.this, new OnCompleteListener<Void>() {
+                        databaseReference.push().setValue(map).addOnCompleteListener( Payment_Activity.this, new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
 
                                 if (task.isSuccessful()) {
 
-                                    Toast.makeText(PaymentActivity.this, "Your Order is successfully Placed", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText( Payment_Activity.this, "Your Order is successfully Placed", Toast.LENGTH_SHORT).show();
 
 
                                 } else {
 
-                                    Toast.makeText(PaymentActivity.this, "Something Error", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText( Payment_Activity.this, "Something Error", Toast.LENGTH_SHORT).show();
 
                                 }
 
