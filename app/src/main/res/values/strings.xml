@@ -58,5 +58,9 @@
     <string name="send_data">Send Data</string>
     <string name="type_your_story_here">Type your story here...</string>
     <string name="story_title">Story title</string>
+
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+
 </resources>
 

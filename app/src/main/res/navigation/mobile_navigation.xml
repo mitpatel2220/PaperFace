@@ -17,7 +17,7 @@
         tools:layout="@layout/fragment_your_order" />
     <fragment
         android:id="@+id/nav_pastorder"
-        android:name="com.meet.paperface.PastOrder"
+        android:name="com.meet.paperface.Fragment.PastOrder"
         android:label="Past Orders"
         tools:layout="@layout/fragment_past_order" />
 

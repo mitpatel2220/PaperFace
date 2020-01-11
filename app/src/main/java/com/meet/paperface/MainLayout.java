@@ -6,14 +6,20 @@ import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.meet.paperface.Activity.MainActivity;
 
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -22,10 +28,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.Toast;
+
+import java.util.HashMap;
 
 public class MainLayout extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+
+    FirebaseAuth firebaseAuth;
+    DatabaseReference databaseReference;
+
+    ActionBarDrawerToggle mtoggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +48,41 @@ public class MainLayout extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("LogoutToken");
+
+        FirebaseUser firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
+
+        String myuid=firebaseUser.getUid().toString();
+
+
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
+
+        mtoggle=new ActionBarDrawerToggle(this,drawer,R.string.open,R.string.close);
+        drawer.addDrawerListener(mtoggle);
+        mtoggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+        Intent intent=getIntent();
+        final String token=intent.getStringExtra("token");
+
+        HashMap<String,String> map=new HashMap<>();
+        map.put("token",token);
+        databaseReference.child(myuid).setValue(map).addOnCompleteListener(MainLayout.this,new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+
+                    Toast.makeText(MainLayout.this, token, Toast.LENGTH_SHORT).show();
+
+                }
+
+
+            }
+        });
+
+
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -79,6 +127,11 @@ public class MainLayout extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
          super.onOptionsItemSelected(item);
+
+         if(mtoggle.onOptionsItemSelected(item)){
+             return true;
+
+         }
 
         if(item.getItemId() == R.id.action_Logout){
 

@@ -18,8 +18,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.meet.paperface.R;
 import com.meet.paperface.Activity.Recycler_Activity;
-import com.meet.paperface.TaskClass;
-import com.meet.paperface.Users;
+import com.meet.paperface.Model.TaskClass;
+import com.meet.paperface.Model.Users;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
