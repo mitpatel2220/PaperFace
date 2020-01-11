@@ -1,4 +1,4 @@
-package com.meet.paperface;
+package com.meet.paperface.Activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -6,12 +6,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.meet.paperface.Adapter.Adeptorforrecycle;
+import com.meet.paperface.R;
+import com.meet.paperface.TaskClass;
+import com.meet.paperface.Users;
 
 import java.util.ArrayList;
 import java.util.List;

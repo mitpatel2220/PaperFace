@@ -1,4 +1,4 @@
-package com.meet.paperface;
+package com.meet.paperface.Adapter;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.meet.paperface.R;
+import com.meet.paperface.Model.Story_Model;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

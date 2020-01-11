@@ -1,4 +1,4 @@
-package com.meet.paperface;
+package com.meet.paperface.Activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,6 +15,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.meet.paperface.MainLayout;
+import com.meet.paperface.R;
 public class MainActivity extends AppCompatActivity {
 
     TextView signUp, shopKeeper, forgot_Password;

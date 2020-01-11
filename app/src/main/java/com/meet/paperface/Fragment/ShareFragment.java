@@ -1,4 +1,4 @@
-package com.meet.paperface;
+package com.meet.paperface.Fragment;
 
 
 import android.content.Intent;
@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-
+import com.meet.paperface.R;
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -30,7 +30,7 @@ Button b1;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_share, container, false);
+        return inflater.inflate( R.layout.fragment_share, container, false);
     }
 
     @Override

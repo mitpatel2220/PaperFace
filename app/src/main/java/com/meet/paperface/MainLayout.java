@@ -2,12 +2,7 @@ package com.meet.paperface;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 import android.view.MenuItem;
-import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,6 +14,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.meet.paperface.Activity.MainActivity;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -88,7 +84,7 @@ public class MainLayout extends AppCompatActivity {
 
 
             FirebaseAuth.getInstance().signOut();
-            Intent in=new Intent(MainLayout.this,MainActivity.class);
+            Intent in=new Intent( MainLayout.this, MainActivity.class);
             startActivity(in);
             finish();
 

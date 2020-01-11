@@ -1,4 +1,4 @@
-package com.meet.paperface;
+package com.meet.paperface.Fragment;
 
 
 import android.os.Bundle;
@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-
+import com.meet.paperface.R;
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -30,7 +30,7 @@ public class AboutUsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_about_us, container, false);
+        return inflater.inflate( R.layout.fragment_about_us, container, false);
     }
 
     @Override

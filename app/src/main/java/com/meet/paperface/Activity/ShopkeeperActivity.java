@@ -1,4 +1,4 @@
-package com.meet.paperface;
+package com.meet.paperface.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -6,7 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+
+import com.meet.paperface.R;
 public class ShopkeeperActivity extends AppCompatActivity {
 
     EditText id_Shopkeeper, password;
@@ -27,7 +28,7 @@ public class ShopkeeperActivity extends AppCompatActivity {
 
 
                 if(email_sk.equals("Md@123") && password_sk.equals("Md@123")){
-                    Intent intent=new Intent(ShopkeeperActivity.this,Recycler_Activity.class);
+                    Intent intent=new Intent( ShopkeeperActivity.this, Recycler_Activity.class);
                     startActivity(intent);
 
                 }

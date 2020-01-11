@@ -1,4 +1,4 @@
-package com.meet.paperface;
+package com.meet.paperface.Fragment;
 
 
 import android.os.Bundle;
@@ -20,6 +20,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.meet.paperface.Adapter.AdeptorforYourOrder;
+import com.meet.paperface.Model.YourOrderModel;
+import com.meet.paperface.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +50,7 @@ public class YourOrderFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_your_order, container, false);
+        return inflater.inflate( R.layout.fragment_your_order, container, false);
     }
 
     @Override
