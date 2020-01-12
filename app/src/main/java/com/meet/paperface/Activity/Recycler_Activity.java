@@ -38,10 +38,8 @@ public class Recycler_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_recycler_ );
-        
         Toolbar toolbar = findViewById( R.id.toolbar );
         setSupportActionBar( toolbar );
-        
         mUsersDatabase = FirebaseDatabase.getInstance().getReference().child( "Orders" );
         mLayoutManager = new LinearLayoutManager( this );
         rv = findViewById( R.id.recycler_one );
@@ -69,27 +67,5 @@ public class Recycler_Activity extends AppCompatActivity {
             }
         } );
 
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate( R.menu.recycle_menu, menu );
-        MenuItem item = menu.findItem( R.id.action_search );
-        android.widget.SearchView searchView = (android.widget.SearchView) item.getActionView();
-        searchView.setImeOptions( EditorInfo.IME_ACTION_DONE );
-        searchView.setOnQueryTextListener( new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String s) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String s1) {
-                adaptor.getFilter().filter( s1 );
-                return false;
-            }
-        } );
-        return true;
     }
 }

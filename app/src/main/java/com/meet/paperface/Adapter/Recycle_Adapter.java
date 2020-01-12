@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-public class Recycle_Adapter extends RecyclerView.Adapter<Recycle_Adapter.ViewHolder> implements Filterable {
+public class Recycle_Adapter extends RecyclerView.Adapter<Recycle_Adapter.ViewHolder>{
 
     private Context fcontext;
     private List<Users> fupload = new ArrayList<>();
@@ -35,7 +35,6 @@ public class Recycle_Adapter extends RecyclerView.Adapter<Recycle_Adapter.ViewHo
     DatabaseReference dr;
     DatabaseReference databaseReference;
     DatabaseReference databaseReference1;
-    private List<Users> search_List;
 
     public void add(Users s) {
         fupload.add( s );
@@ -45,7 +44,6 @@ public class Recycle_Adapter extends RecyclerView.Adapter<Recycle_Adapter.ViewHo
         fcontext = context;
         fupload = user;
         fupload1 = user1;
-        search_List = new ArrayList<>( fupload );
 
     }
 
@@ -134,37 +132,5 @@ public class Recycle_Adapter extends RecyclerView.Adapter<Recycle_Adapter.ViewHo
             x = itemView.findViewById( R.id.imageview );
         }
     }
-
-    @Override
-    public Filter getFilter() {
-        return example_Filter;
-    }
-
-    private Filter example_Filter = new Filter() {
-        @Override
-        protected FilterResults performFiltering(CharSequence charSequence) {
-            List<Users> filtered_List = new ArrayList<>();
-            if (charSequence == null || charSequence.length() == 0) {
-                filtered_List.addAll( search_List );
-            } else {
-                String filter_Pattern = charSequence.toString().toLowerCase().trim();
-                for (Users users : search_List) {
-                    if (users.getHostelname().toLowerCase().contains( filter_Pattern )) {
-                        filtered_List.add( users );
-                    }
-                }
-            }
-            FilterResults filterResults = new FilterResults();
-            filterResults.values = filtered_List;
-            return filterResults;
-        }
-
-        @Override
-        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-            fupload.clear();
-            fupload.addAll( (List) filterResults.values );
-            notifyDataSetChanged();
-        }
-    };
 }
 
