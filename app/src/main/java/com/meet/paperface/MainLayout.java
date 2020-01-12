@@ -32,8 +32,6 @@ import java.util.HashMap;
 public class MainLayout extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-    FirebaseAuth firebaseAuth;
-    DatabaseReference databaseReference;
     ActionBarDrawerToggle mtoggle;
 
     @Override
@@ -42,28 +40,13 @@ public class MainLayout extends AppCompatActivity {
         setContentView( R.layout.activity_main_layout );
         Toolbar toolbar = findViewById( R.id.toolbar );
         setSupportActionBar( toolbar );
-        databaseReference = FirebaseDatabase.getInstance().getReference().child( "LogoutToken" );
-        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         DrawerLayout drawer = findViewById( R.id.drawer_layout );
         mtoggle = new ActionBarDrawerToggle( this, drawer, R.string.open, R.string.close );
         drawer.addDrawerListener( mtoggle );
         mtoggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled( true );
-        Intent intent = getIntent();
-        final String token = intent.getStringExtra( "token" );
-        HashMap<String, String> map = new HashMap<>();
-        map.put( "token", token );
 //                String myuid = firebaseUser.getUid().toString();
-        databaseReference.child( "Deepak" ).setValue( map ).addOnCompleteListener( MainLayout.this, new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                    Toast.makeText( MainLayout.this, token, Toast.LENGTH_SHORT ).show();
 
-                }
-
-            }
-        } );
         NavigationView navigationView = findViewById( R.id.nav_view );
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -108,7 +91,6 @@ public class MainLayout extends AppCompatActivity {
             Intent in = new Intent( MainLayout.this, MainActivity.class );
             startActivity( in );
             finish();
-
         }
         return true;
     }

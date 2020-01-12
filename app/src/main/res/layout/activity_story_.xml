@@ -38,7 +38,7 @@
             android:layout_marginTop="10dp"
             android:fontFamily="sans-serif-light"
             android:hint="@string/type_your_story_here"
-            android:text="@string/story"
+            android:text=""
             android:padding="10dp"
             android:textColor="@color/darkBlack"
             android:textSize="18sp"/>
