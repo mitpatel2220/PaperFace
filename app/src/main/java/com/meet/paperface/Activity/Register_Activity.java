@@ -81,8 +81,6 @@ public class Register_Activity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 Intent in = new Intent( Register_Activity.this, MainLayout.class );
-                                in.putExtra( "token", "email--" );
-                                // in.putExtra("tokeng","0");
                                 startActivity( in );
                                 finish();
                                 Toast.makeText( Register_Activity.this, "Registration successful", Toast.LENGTH_SHORT ).show();
@@ -95,11 +93,13 @@ public class Register_Activity extends AppCompatActivity {
             }
         } );
         // Configure Google Sign In
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder()
-                .requestIdToken( getString( R.string.default_web_client_id ) )
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
+        
         mGoogleSignInClient = GoogleSignIn.getClient( this, gso );
+        
         Google_sign.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -126,11 +126,11 @@ public class Register_Activity extends AppCompatActivity {
             try {
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = task.getResult( ApiException.class );
-                firebaseAuthWithGoogle( account );
+                if (account != null) firebaseAuthWithGoogle( account );
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
                 Log.w( TAG, "Google sign in failed", e );
-                Toast.makeText( this, e.getMessage(), Toast.LENGTH_SHORT ).show();
+                Toast.makeText( this, "Google sign in failed", Toast.LENGTH_SHORT ).show();
                 // ...
             }
         }
@@ -138,6 +138,7 @@ public class Register_Activity extends AppCompatActivity {
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
         Log.d( TAG, "firebaseAuthWithGoogle:" + acct.getId() );
+        
         AuthCredential credential = GoogleAuthProvider.getCredential( acct.getIdToken(), null );
         mAuth.signInWithCredential( credential )
                 .addOnCompleteListener( this, new OnCompleteListener<AuthResult>() {
@@ -149,8 +150,6 @@ public class Register_Activity extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI( user );
                             Intent in = new Intent( Register_Activity.this, MainLayout.class );
-                            in.putExtra( "token", "gmail--" );
-                            // in.putExtra("tokene","0");
                             startActivity( in );
                             Toast.makeText( Register_Activity.this, "Authentication Successful", Toast.LENGTH_SHORT ).show();
 

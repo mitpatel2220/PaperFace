@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:elevation="10dp"
-        app:cardCornerRadius="25dp">
+        app:cardCornerRadius="30dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="sans-serif-light"
-                android:text="@string/story"
+                android:text=""
                 android:textColor="@color/darkBlack"
                 android:textSize="18sp"/>
         </LinearLayout>
