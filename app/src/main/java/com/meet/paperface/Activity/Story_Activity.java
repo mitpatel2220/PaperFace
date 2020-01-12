@@ -7,15 +7,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -77,7 +73,6 @@ public class Story_Activity extends AppCompatActivity {
                     Toast.makeText( Story_Activity.this, "Please mention your story", Toast.LENGTH_SHORT ).show();
                 }else if (send_thesis.getText().toString().length()<=49){
                     Toast.makeText( Story_Activity.this, "Story is too short. Story title should have minimum 50 letters", Toast.LENGTH_SHORT ).show();
-                    
                     
                 } else {
                     uploadFile();

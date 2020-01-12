@@ -1,6 +1,7 @@
 package com.meet.paperface.Activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -55,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
             finish();
 
         }
+            
         signUp.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
