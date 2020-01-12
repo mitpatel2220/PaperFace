@@ -1,5 +1,4 @@
 package com.meet.paperface.Adapter;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,20 +13,16 @@ import com.meet.paperface.Model.Your_Order_Model;
 
 import java.util.ArrayList;
 import java.util.List;
-
 public class Your_Order_Adapter extends RecyclerView.Adapter<Your_Order_Adapter.ViewHolder> {
-
 
     private Context fcontext;
     private List<Your_Order_Model> fupload = new ArrayList<>();
 
-
     public void add(Your_Order_Model s) {
-        fupload.add(s);
+        fupload.add( s );
     }
 
     public Your_Order_Adapter(Context context, List<Your_Order_Model> user) {
-
         fcontext = context;
         fupload = user;
 
@@ -36,23 +31,16 @@ public class Your_Order_Adapter extends RecyclerView.Adapter<Your_Order_Adapter.
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
-        View view = LayoutInflater.from(fcontext).inflate( R.layout.data_list_shop, parent, false);
-
-        return new ViewHolder(view);
-
+        View view = LayoutInflater.from( fcontext ).inflate( R.layout.data_list_shop, parent, false );
+        return new ViewHolder( view );
 
     }
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
-
-        holder.page.setText(fupload.get(position).getPage());
-        holder.rs.setText(fupload.get(position).getRs());
-        holder.date.setText(fupload.get(position).getDate());
-
-
-
+        holder.page.setText( fupload.get( position ).getPage() );
+        holder.rs.setText( fupload.get( position ).getRs() );
+        holder.date.setText( fupload.get( position ).getDate() );
 
     }
 
@@ -62,16 +50,14 @@ public class Your_Order_Adapter extends RecyclerView.Adapter<Your_Order_Adapter.
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        TextView page,rs,date;
+
+        TextView page, rs, date;
 
         ViewHolder(@NonNull View itemView) {
-            super(itemView);
-
-
-
-            page=itemView.findViewById(R.id.card_Pages_shop_blank);
-            rs=itemView.findViewById(R.id.card_Rupees_shop_blank);
-            date=itemView.findViewById(R.id.card_date_blank);
+            super( itemView );
+            page = itemView.findViewById( R.id.card_Pages_shop_blank );
+            rs = itemView.findViewById( R.id.card_Rupees_shop_blank );
+            date = itemView.findViewById( R.id.card_date_blank );
 
         }
     }

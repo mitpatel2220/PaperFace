@@ -64,6 +64,7 @@ public class Your_Order_Fragment extends Fragment {
         rv =view.findViewById(R.id.recycle_view);
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
+        mUsersDatabase.keepSynced( true );
 
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();

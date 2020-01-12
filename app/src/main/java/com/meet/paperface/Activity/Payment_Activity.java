@@ -35,7 +35,7 @@ public class Payment_Activity extends AppCompatActivity {
     DatabaseReference dr;
     AutoCompleteTextView hostel_name_Payment;
     
-    private final String[] HOSTEL_NAME = new String[]{"RT hall polytechnic", "MV hall polytechnic", "RJ hall polytechnic", "Diamond Jubilee Boys Hostel", "Meghamani parivar diamond boys hostel", "Others"};
+    private final String[] HOSTEL_NAME = new String[]{"RT hall polytechnic", "MV hall polytechnic", "SJ hall polytechnic", "Diamond Jubilee Boys Hostel", "Meghamani parivar diamond boys hostel", "Others"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +63,7 @@ public class Payment_Activity extends AppCompatActivity {
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String >( this,android.R.layout.simple_dropdown_item_1line, HOSTEL_NAME );
         hostel_name_Payment.setAdapter( arrayAdapter );
         hostel_name_Payment.setThreshold( 1 );
+        hostel_name_Payment.setInputType( 0 );
         hostel_name_Payment.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
