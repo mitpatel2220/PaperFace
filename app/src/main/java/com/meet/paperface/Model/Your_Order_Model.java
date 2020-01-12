@@ -1,12 +1,12 @@
 package com.meet.paperface.Model;
 
-public class YourOrderModel {
+public class Your_Order_Model {
 
     private String date,page,rs;
-    public YourOrderModel() {
+    public Your_Order_Model() {
 
     }
-    public YourOrderModel(String date, String page, String rs) {
+    public Your_Order_Model(String date, String page, String rs) {
         this.date = date;
         this.page = page;
         this.rs = rs;

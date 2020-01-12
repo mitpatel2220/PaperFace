@@ -6,9 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.meet.paperface.R;
-public class ShopkeeperActivity extends AppCompatActivity {
+public class Shopkeeper_Activity extends AppCompatActivity {
 
     EditText id_Shopkeeper, password;
     Button login;
@@ -25,15 +26,16 @@ public class ShopkeeperActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String email_sk = id_Shopkeeper.getText().toString();
                 String password_sk = password.getText().toString();
-
-
-                if(email_sk.equals("Md@123") && password_sk.equals("Md@123")){
-                    Intent intent=new Intent( ShopkeeperActivity.this, Recycler_Activity.class);
-                    startActivity(intent);
-
+                if (email_sk.isEmpty()) {
+                    Toast.makeText( Shopkeeper_Activity.this, "Field can't be empty", Toast.LENGTH_SHORT ).show();
+                } else if (password_sk.isEmpty()) {
+                    Toast.makeText( Shopkeeper_Activity.this, "Field can't be empty", Toast.LENGTH_SHORT ).show();
+                } else if (!email_sk.equals( "Md@123" ) || !password_sk.equals( "Md@123" )) {
+                    Toast.makeText( Shopkeeper_Activity.this, "Credential does not match", Toast.LENGTH_SHORT ).show();
+                } else {
+                    Intent intent = new Intent( Shopkeeper_Activity.this, Recycler_Activity.class );
+                    startActivity( intent );
                 }
-
-
 
             }
         } );

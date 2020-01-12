@@ -20,8 +20,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.meet.paperface.Adapter.AdeptorforPastOrder;
-import com.meet.paperface.Model.PastorderModel;
+import com.meet.paperface.Adapter.Past_Order_Adapter;
+import com.meet.paperface.Model.Past_Order_Model;
 import com.meet.paperface.R;
 
 import java.util.ArrayList;
@@ -30,11 +30,11 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PastOrder extends Fragment {
-    List<PastorderModel> listdata = new ArrayList<>();
+public class Past_Order_Fragment extends Fragment {
+    List<Past_Order_Model> listdata = new ArrayList<>();
 
     RecyclerView rv;
-    AdeptorforPastOrder adaptor;
+    Past_Order_Adapter adaptor;
     private DatabaseReference mUsersDatabase;
     private LinearLayoutManager mLayoutManager;
     FirebaseAuth firebaseAuth;
@@ -73,11 +73,11 @@ public class PastOrder extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 for (DataSnapshot ss : dataSnapshot.getChildren()) {
-                    PastorderModel user = ss.getValue(PastorderModel.class);
+                    Past_Order_Model user = ss.getValue( Past_Order_Model.class);
                     listdata.add(user);
 
                 }
-                adaptor = new AdeptorforPastOrder(getActivity(), listdata);
+                adaptor = new Past_Order_Adapter( getActivity(), listdata);
                 rv.setAdapter(adaptor);
 
 

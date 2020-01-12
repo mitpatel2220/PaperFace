@@ -1,7 +1,6 @@
 package com.meet.paperface.Fragment;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -18,10 +17,11 @@ import com.meet.paperface.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ShareFragment extends Fragment {
+public class About_Fragment extends Fragment {
 
-Button b1;
-    public ShareFragment() {
+    Button b1;
+
+    public About_Fragment() {
         // Required empty public constructor
     }
 
@@ -30,7 +30,7 @@ Button b1;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate( R.layout.fragment_share, container, false);
+        return inflater.inflate( R.layout.fragment_about_us, container, false);
     }
 
     @Override
@@ -43,17 +43,11 @@ Button b1;
             @Override
             public void onClick(View view) {
 
-                Toast.makeText(getActivity(), "share", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "about us", Toast.LENGTH_SHORT).show();
 
             }
         });
 
-
-        Intent intent=new Intent(Intent.ACTION_SEND);
-        intent.setType("text/plain");
-        intent.putExtra(Intent.EXTRA_SUBJECT,"subject here");
-        intent.putExtra(Intent.EXTRA_TEXT,"body");
-        startActivity(Intent.createChooser(intent,"Share via.."));
 
     }
 }

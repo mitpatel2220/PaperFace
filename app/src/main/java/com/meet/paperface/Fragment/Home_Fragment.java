@@ -14,13 +14,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.meet.paperface.Activity.PaymentActivity;
+import com.meet.paperface.Activity.Payment_Activity;
 import com.meet.paperface.Activity.Story_Activity;
 import com.meet.paperface.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment {
+public class Home_Fragment extends Fragment {
 
     Button edit, ok, done;
 
@@ -29,7 +29,7 @@ public class HomeFragment extends Fragment {
     TextView edit_page, edit_rs;
 
 
-    public HomeFragment() {
+    public Home_Fragment() {
         // Required empty public constructor
     }
 
@@ -101,7 +101,7 @@ public class HomeFragment extends Fragment {
                     edit_rs.setText(x);
 
 
-                    Intent intent = new Intent(getContext(), PaymentActivity.class);
+                    Intent intent = new Intent(getContext(), Payment_Activity.class);
                     intent.putExtra("total_page", total_pages + "");
                     intent.putExtra("total_rs", x);
 
@@ -155,7 +155,7 @@ public class HomeFragment extends Fragment {
                     String x = total_rs + "0";
 
 
-                    Intent intent = new Intent(getContext(), PaymentActivity.class);
+                    Intent intent = new Intent(getContext(), Payment_Activity.class);
                     intent.putExtra("total_page", total_pages + "");
                     intent.putExtra("total_rs", x);
                       startActivity(intent);

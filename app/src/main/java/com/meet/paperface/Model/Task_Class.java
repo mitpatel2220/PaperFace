@@ -1,15 +1,15 @@
 package com.meet.paperface.Model;
 
-public class TaskClass {
+public class Task_Class {
 
     String key;
 
-    public TaskClass(){
+    public Task_Class(){
 
 
     }
 
-    public TaskClass(String key) {
+    public Task_Class(String key) {
         this.key = key;
     }
 

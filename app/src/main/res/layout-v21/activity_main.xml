@@ -47,6 +47,8 @@
                 android:textColor="@color/darkBlack"
                 android:textSize="24sp"/>
 
+
+
             <EditText
                 android:id="@+id/email"
                 android:layout_width="match_parent"

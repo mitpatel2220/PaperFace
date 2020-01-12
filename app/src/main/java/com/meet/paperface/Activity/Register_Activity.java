@@ -2,6 +2,7 @@ package com.meet.paperface.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,8 +26,20 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.meet.paperface.MainLayout;
 import com.meet.paperface.R;
-public class RegisterActivity extends AppCompatActivity {
 
+import java.util.regex.Pattern;
+public class Register_Activity extends AppCompatActivity {
+
+    private static final Pattern PASSWORD_PATTERN =
+            Pattern.compile( "^" +
+                             //"(?=.*[0-9])" +         //at least 1 digit
+                             //"(?=.*[a-z])" +         //at least 1 lower case letter
+                             //"(?=.*[A-Z])" +         //at least 1 upper case letter
+                             "(?=.*[a-zA-Z])" +      //any letter
+                             // "(?=.*[@#$%^&+=])" +    //at least 1 special character
+                             "(?=\\S+$)" +           //no white spaces
+                             ".{6,8}" +               //at least 4 characters
+                             "$" );
     EditText Username, Register_email, Register_Password;
     FirebaseAuth mAuth;
     Button Sign_Up, Google_sign;
@@ -46,12 +59,6 @@ public class RegisterActivity extends AppCompatActivity {
         Google_sign = findViewById( R.id.gmailButton );
         text = findViewById( R.id.or );
         mAuth = FirebaseAuth.getInstance();
-
-
-
-
-
-
         Sign_Up.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,24 +66,28 @@ public class RegisterActivity extends AppCompatActivity {
                 String email = Register_email.getText().toString();
                 String password = Register_Password.getText().toString();
                 if (name1.isEmpty()) {
-                    Toast.makeText( RegisterActivity.this, "Please enter your name", Toast.LENGTH_SHORT ).show();
+                    Toast.makeText( Register_Activity.this, "Please enter your name", Toast.LENGTH_SHORT ).show();
                 } else if (email.isEmpty()) {
-                    Toast.makeText( RegisterActivity.this, "Please enter a valid email address", Toast.LENGTH_SHORT ).show();
+                    Toast.makeText( Register_Activity.this, "Field can't be empty", Toast.LENGTH_SHORT ).show();
+                } else if (!Patterns.EMAIL_ADDRESS.matcher( email ).matches()) {
+                    Toast.makeText( Register_Activity.this, "Please enter a valid email address", Toast.LENGTH_SHORT ).show();
                 } else if (password.isEmpty()) {
-                    Toast.makeText( RegisterActivity.this, "Please enter password", Toast.LENGTH_SHORT ).show();
+                    Toast.makeText( Register_Activity.this, "Please enter a password", Toast.LENGTH_SHORT ).show();
+                } else if (!PASSWORD_PATTERN.matcher( password ).matches()) {
+                    Toast.makeText( Register_Activity.this, "Password length should be minimum 6 and not more than 8. It may have characters with digits", Toast.LENGTH_LONG ).show();
                 } else {
-                    mAuth.createUserWithEmailAndPassword( email, password ).addOnCompleteListener( RegisterActivity.this, new OnCompleteListener<AuthResult>() {
+                    mAuth.createUserWithEmailAndPassword( email, password ).addOnCompleteListener( Register_Activity.this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                Intent in = new Intent( RegisterActivity.this, MainLayout.class );
-                                in.putExtra("token","email--");
-                               // in.putExtra("tokeng","0");
+                                Intent in = new Intent( Register_Activity.this, MainLayout.class );
+                                in.putExtra( "token", "email--" );
+                                // in.putExtra("tokeng","0");
                                 startActivity( in );
                                 finish();
-                                Toast.makeText( RegisterActivity.this, "Registration successful", Toast.LENGTH_SHORT ).show();
+                                Toast.makeText( Register_Activity.this, "Registration successful", Toast.LENGTH_SHORT ).show();
                             } else {
-                                Toast.makeText( RegisterActivity.this, "Registration failed", Toast.LENGTH_SHORT ).show();
+                                Toast.makeText( Register_Activity.this, "Registration failed", Toast.LENGTH_SHORT ).show();
                             }
                         }
                     } );
@@ -88,7 +99,6 @@ public class RegisterActivity extends AppCompatActivity {
                 .requestIdToken( getString( R.string.default_web_client_id ) )
                 .requestEmail()
                 .build();
-
         mGoogleSignInClient = GoogleSignIn.getClient( this, gso );
         Google_sign.setOnClickListener( new View.OnClickListener() {
             @Override
@@ -96,7 +106,6 @@ public class RegisterActivity extends AppCompatActivity {
                 signIn();
             }
         } );
-
         if (mAuth.getCurrentUser() != null) {
             FirebaseUser user = mAuth.getCurrentUser();
             updateUI( user );
@@ -139,19 +148,17 @@ public class RegisterActivity extends AppCompatActivity {
                             Log.d( TAG, "signInWithCredential:success" );
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI( user );
-                            Intent in=new Intent(RegisterActivity.this,MainLayout.class);
-                            in.putExtra("token","gmail--");
-                           // in.putExtra("tokene","0");
-                            startActivity(in);
-
-
-                            Toast.makeText( RegisterActivity.this, "Authentication Successful", Toast.LENGTH_SHORT ).show();
+                            Intent in = new Intent( Register_Activity.this, MainLayout.class );
+                            in.putExtra( "token", "gmail--" );
+                            // in.putExtra("tokene","0");
+                            startActivity( in );
+                            Toast.makeText( Register_Activity.this, "Authentication Successful", Toast.LENGTH_SHORT ).show();
 
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w( TAG, "signInWithCredential:failure", task.getException() );
                             updateUI( null );
-                            Toast.makeText( RegisterActivity.this, "Authentication failed", Toast.LENGTH_SHORT ).show();
+                            Toast.makeText( Register_Activity.this, "Authentication failed", Toast.LENGTH_SHORT ).show();
                         }
                         // ...
                     }
@@ -173,5 +180,5 @@ public class RegisterActivity extends AppCompatActivity {
 //            text.setText( "Sign_Out_Successfully" );
 //        }
     }
-    
+
 }

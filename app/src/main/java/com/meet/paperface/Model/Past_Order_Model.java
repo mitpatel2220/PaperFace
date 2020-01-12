@@ -1,12 +1,12 @@
 package com.meet.paperface.Model;
 
-public class PastorderModel {
+public class Past_Order_Model {
     private String date,pages,rs;
 
-    public PastorderModel() {
+    public Past_Order_Model() {
 
     }
-    public PastorderModel(String date, String pages, String rs) {
+    public Past_Order_Model(String date, String pages, String rs) {
         this.date = date;
         this.pages = pages;
         this.rs = rs;

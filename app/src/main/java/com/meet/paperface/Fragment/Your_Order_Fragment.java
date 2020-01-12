@@ -20,8 +20,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.meet.paperface.Adapter.AdeptorforYourOrder;
-import com.meet.paperface.Model.YourOrderModel;
+import com.meet.paperface.Adapter.Your_Order_Adapter;
+import com.meet.paperface.Model.Your_Order_Model;
 import com.meet.paperface.R;
 
 import java.util.ArrayList;
@@ -31,17 +31,17 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class YourOrderFragment extends Fragment {
-    List<YourOrderModel> listdata = new ArrayList<>();
+public class Your_Order_Fragment extends Fragment {
+    List<Your_Order_Model> listdata = new ArrayList<>();
 
     RecyclerView rv;
-    AdeptorforYourOrder adaptor;
+    Your_Order_Adapter adaptor;
     private DatabaseReference mUsersDatabase;
     private LinearLayoutManager mLayoutManager;
     FirebaseAuth firebaseAuth;
 
 
-    public YourOrderFragment() {
+    public Your_Order_Fragment() {
         // Required empty public constructor
     }
 
@@ -76,11 +76,11 @@ public class YourOrderFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 for (DataSnapshot ss : dataSnapshot.getChildren()) {
-                    YourOrderModel user = ss.getValue(YourOrderModel.class);
+                    Your_Order_Model user = ss.getValue( Your_Order_Model.class);
                     listdata.add(user);
 
                 }
-                adaptor = new AdeptorforYourOrder(getActivity(), listdata);
+                adaptor = new Your_Order_Adapter( getActivity(), listdata);
                 rv.setAdapter(adaptor);
 
 
