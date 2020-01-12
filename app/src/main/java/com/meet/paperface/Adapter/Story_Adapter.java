@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.meet.paperface.R;
 import com.meet.paperface.Model.Story_Model;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -33,11 +35,22 @@ public class Story_Adapter extends RecyclerView.Adapter<Story_Adapter.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Story_Model storyModel = list.get( position );
+    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
+        final Story_Model storyModel = list.get( position );
         
         holder.textView.setText( storyModel.getThesis() );
-        Picasso.get().load( storyModel.getPictures() ).fit().centerInside().into( holder.imageView );
+        
+        Picasso.get().load( storyModel.getPictures()).networkPolicy( NetworkPolicy.OFFLINE ).into( holder.imageView, new Callback() {
+            @Override
+            public void onSuccess() {
+            }
+
+            @Override
+            public void onError(Exception e) {
+                Picasso.get().load( storyModel.getPictures() ).fit().centerInside().into( holder.imageView );
+
+            }
+        } );
     }
 
     @Override
