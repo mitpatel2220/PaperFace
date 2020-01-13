@@ -27,9 +27,12 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.meet.paperface.MainLayout;
 import com.meet.paperface.R;
 
+import java.util.HashMap;
 import java.util.regex.Pattern;
 public class Register_Activity extends AppCompatActivity {
 
@@ -51,6 +54,10 @@ public class Register_Activity extends AppCompatActivity {
     private static final int RC_SIGN_IN = 1;
     private static final String TAG = "GoogleActivity";
     private ProgressDialog mRegProgress;
+    SharedPreferences sp;
+    public static final String mypreference = "mypreference";
+    public static final String Name = "nameKey";
+    public static final String hello = "login";
 
 
     @Override
@@ -66,6 +73,9 @@ public class Register_Activity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         mRegProgress = new ProgressDialog(this);
+        sp = getSharedPreferences(mypreference,
+                Context.MODE_PRIVATE);
+
 
         Sign_Up.setOnClickListener( new View.OnClickListener() {
             @Override
@@ -95,6 +105,14 @@ public class Register_Activity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
+
+                                 SharedPreferences.Editor editor=sp.edit();
+                                editor.putString(Name,name1);
+                                editor.putString(hello,"register");
+
+                                editor.commit();
+
+
 
 
                                 mRegProgress.dismiss();
@@ -171,6 +189,10 @@ public class Register_Activity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            SharedPreferences.Editor editor=sp.edit();
+                            editor.putString(hello,"google");
+
+                            editor.commit();
 
 
                             // Sign in success, update UI with the signed-in user's information
@@ -179,6 +201,7 @@ public class Register_Activity extends AppCompatActivity {
                             updateUI( user );
                             Intent in = new Intent( Register_Activity.this, MainLayout.class );
                             startActivity( in );
+                            finish();
                             Toast.makeText( Register_Activity.this, "Authentication Successful", Toast.LENGTH_SHORT ).show();
 
                         } else {

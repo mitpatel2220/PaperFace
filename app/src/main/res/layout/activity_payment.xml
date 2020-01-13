@@ -59,14 +59,14 @@
             android:textAllCaps="false"
             android:textSize="16sp"/>
 
-        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+        <Spinner
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:background="@drawable/edi"
+            android:background="@drawable/edi_spinner"
             android:hint="@string/hostel_name"
             android:id="@+id/hostel_name_payment"
-            android:drawableEnd="@drawable/ic_arrow_drop_down_black_24dp"
             android:paddingStart="30dp"
+            android:tag="Select Hostel"
             android:paddingEnd="30dp"
             android:layout_height="50dp"/>
         

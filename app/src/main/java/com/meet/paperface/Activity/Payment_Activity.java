@@ -2,12 +2,14 @@ package com.meet.paperface.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,7 +26,7 @@ import com.meet.paperface.R;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.HashMap;
-public class Payment_Activity extends AppCompatActivity {
+public class Payment_Activity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     EditText name_Payment, Room_number_Payment, others_Payment, mobileNo_payment;
     RadioButton online_Payment_Radio, cod_Radio, clicked_radio;
@@ -33,7 +35,7 @@ public class Payment_Activity extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     DatabaseReference databaseReference;
     DatabaseReference dr;
-    AutoCompleteTextView hostel_name_Payment;
+    Spinner hostel_name_Payment;
     
     private final String[] HOSTEL_NAME = new String[]{"RT hall polytechnic", "MV hall polytechnic", "SJ hall polytechnic", "Diamond Jubilee Boys Hostel", "Meghamani parivar diamond boys hostel", "Others"};
 
@@ -52,26 +54,60 @@ public class Payment_Activity extends AppCompatActivity {
         cod_Radio = findViewById( R.id.cod_Payment_Radio );
         radioGroup = findViewById( R.id.radio_grp );
         Place_order = findViewById( R.id.place_Order_Payment );
+
         hostel_name_Payment = findViewById( R.id.hostel_name_payment);
+
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference().child( "Orders" );
         dr = FirebaseDatabase.getInstance().getReference().child( "YourOrder" );
-//        final String myuid = firebaseUser.getUid().toString();
-        
-        
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String >( this,android.R.layout.simple_dropdown_item_1line, HOSTEL_NAME );
-        hostel_name_Payment.setAdapter( arrayAdapter );
-        hostel_name_Payment.setThreshold( 1 );
-        hostel_name_Payment.setInputType( 0 );
-        hostel_name_Payment.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                hostel_name_Payment.showDropDown();
-                String data = hostel_name_Payment.getText().toString();
-                Toast.makeText( Payment_Activity.this, data, Toast.LENGTH_SHORT ).show();
-            }
-        } );
+        final String myuid = firebaseUser.getUid().toString();
+
+        hostel_name_Payment.setTag("Please select hostel");
+
+        ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(this,R.array.HostelName,android.R.layout.simple_spinner_item);
+         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+         hostel_name_Payment.setAdapter(adapter);
+        hostel_name_Payment.setOnItemSelectedListener(this);
+//         hostel_name_Payment.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//             @Override
+//             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//                 String text=adapterView.getItemAtPosition(i).toString();
+//                 Toast.makeText(Payment_Activity.this, text, Toast.LENGTH_SHORT).show();
+//                 hostel_name_Payment.setTag(text);
+//
+//             }
+//
+//             @Override
+//             public void onNothingSelected(AdapterView<?> adapterView) {
+//
+//             }
+//         });
+//         hostel_name_Payment.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//
+//
+//             @Override
+//             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//
+//                 String text=adapterView.getItemAtPosition(i).toString();
+//                 Toast.makeText(Payment_Activity.this, text, Toast.LENGTH_SHORT).show();
+//                 hostel_name_Payment.setTag(text);
+//
+//             }
+//         });
+
+//        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String >( this,android.R.layout.simple_dropdown_item_1line, HOSTEL_NAME );
+//        hostel_name_Payment.setAdapter( arrayAdapter );
+//        hostel_name_Payment.setThreshold( 1 );
+//        hostel_name_Payment.setInputType( 0 );
+//        hostel_name_Payment.setOnClickListener( new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                hostel_name_Payment.showDropDown();
+//                String data = hostel_name_Payment.getText().toString();
+//                Toast.makeText( Payment_Activity.this, data, Toast.LENGTH_SHORT ).show();
+//            }
+//        } );
 
         Place_order.setOnClickListener( new View.OnClickListener() {
             @Override
@@ -79,7 +115,7 @@ public class Payment_Activity extends AppCompatActivity {
                 String name = name_Payment.getText().toString();
                 String mobilenumber = mobileNo_payment.getText().toString();
                 String Room_no = Room_number_Payment.getText().toString();
-                String hostelName = hostel_name_Payment.getText().toString();
+                String hostelName = hostel_name_Payment.getTag().toString();
                 String otherPayment = others_Payment.getText().toString();
                 int id = radioGroup.getCheckedRadioButtonId();
                 clicked_radio = findViewById( id );
@@ -120,7 +156,7 @@ public class Payment_Activity extends AppCompatActivity {
                         hashMap.put( "page", page );
                         hashMap.put( "rs", rs );
                         hashMap.put( "date", currentDate );
-                        dr.child( "deepak" ).push().setValue( hashMap ).addOnCompleteListener( Payment_Activity.this, new OnCompleteListener<Void>() {
+                        dr.child( myuid ).push().setValue( hashMap ).addOnCompleteListener( Payment_Activity.this, new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
@@ -156,4 +192,16 @@ public class Payment_Activity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        String text=adapterView.getItemAtPosition(i).toString();
+                Toast.makeText(Payment_Activity.this, text, Toast.LENGTH_SHORT).show();
+                 hostel_name_Payment.setTag(text);
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
+    }
 }
