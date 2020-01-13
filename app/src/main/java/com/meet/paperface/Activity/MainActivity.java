@@ -40,6 +40,10 @@ public class MainActivity extends AppCompatActivity {
     FirebaseAuth fa;
     EditText email, password;
     Button log_in;
+    SharedPreferences sp;
+    public static final String mypreference = "mypreference";
+    public static final String Name = "nameKey";
+    public static final String hello = "login";
 
 
     private ProgressDialog mRegProgress;
@@ -56,6 +60,9 @@ public class MainActivity extends AppCompatActivity {
         fa = FirebaseAuth.getInstance();
 
         mRegProgress = new ProgressDialog(this);
+        sp = getSharedPreferences(mypreference,
+                Context.MODE_PRIVATE);
+
 
         final FirebaseUser fbu = fa.getCurrentUser();
         if (fbu != null) {
@@ -93,6 +100,9 @@ public class MainActivity extends AppCompatActivity {
                 }else if (!PASSWORD_PATTERN.matcher( password_s ).matches()){
                     Toast.makeText( MainActivity.this, "Password length should be minimum 6 and not more than 8. It may have characters with digits", Toast.LENGTH_LONG ).show();
                 }else {
+
+
+
                     mRegProgress.setTitle("Loging In");
                     mRegProgress.setMessage("Please wait while we create your account !");
                     mRegProgress.setCanceledOnTouchOutside(false);
@@ -105,6 +115,10 @@ public class MainActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
 
+                                SharedPreferences.Editor editor=sp.edit();
+                                editor.putString(hello,"log-in");
+
+                                editor.commit();
 
                                 mRegProgress.dismiss();
                                 Intent in = new Intent( MainActivity.this, MainLayout.class );

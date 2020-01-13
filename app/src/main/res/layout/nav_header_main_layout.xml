@@ -19,7 +19,7 @@
         app:srcCompat="@drawable/profile" />
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/person_name"
         android:textColor="@color/blue"
@@ -31,6 +31,22 @@
         android:fontFamily="sans-serif-medium"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
+
+    <TextView
+        android:id="@+id/edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="20dp"
+        android:layout_toEndOf="@+id/person_name"
+        android:background="@drawable/ic_edit_black_24dp"
+        android:textColor="@color/blue"
+        android:textSize="15sp">
+
+    </TextView>
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -40,6 +56,6 @@
         android:layout_below="@+id/person_name"
         android:textSize="13sp"
         android:layout_height="wrap_content"
-        android:text="@string/all_Orders" />
+        android:text="0 order" />
 
 </RelativeLayout>

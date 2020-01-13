@@ -61,5 +61,17 @@
     <string name="open">Open</string>
     <string name="close">Close</string>
 
+
+    <string-array name="HostelName">
+
+        <item>RT hall polytechnic</item>
+        <item>MV hall polytechnic</item>
+        <item>SJ hall polytechnic</item>
+        <item>Diamond Jubilee Boys Hostel</item>
+        <item>Meghamani parivar diamond boys hostel</item>
+        <item>Others</item>
+
+    </string-array>
+
 </resources>
 

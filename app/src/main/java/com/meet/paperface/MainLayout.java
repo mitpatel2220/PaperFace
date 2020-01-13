@@ -14,14 +14,19 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.meet.paperface.Activity.MainActivity;
 
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -29,6 +34,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -40,13 +47,15 @@ public class MainLayout extends AppCompatActivity {
     ActionBarDrawerToggle mtoggle;
 
     private FirebaseAuth mAuth;
-    // [END declare_auth]
 
+    FirebaseAuth firebaseAuth;
+    DatabaseReference databaseReference;
     private GoogleSignInClient mGoogleSignInClient;
 
     SharedPreferences sp;
     public static final String mypreference = "mypreference";
     public static final String Name = "nameKey";
+    public static final String hello = "login";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,14 +68,23 @@ public class MainLayout extends AppCompatActivity {
         drawer.addDrawerListener( mtoggle );
         mtoggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled( true );
-        mAuth = FirebaseAuth.getInstance();
 
+        mAuth = FirebaseAuth.getInstance();
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+        mGoogleSignInClient = GoogleSignIn.getClient( this, gso );
+
+        sp = getSharedPreferences(mypreference,
+                                  Context.MODE_PRIVATE);
 
 
 
 //                String myuid = firebaseUser.getUid().toString();
 
         NavigationView navigationView = findViewById( R.id.nav_view );
+        updatenavHolder();
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
@@ -107,21 +125,21 @@ public class MainLayout extends AppCompatActivity {
         }
         if (item.getItemId() == R.id.action_Logout) {
 
-            sp = getSharedPreferences(mypreference,
-                    Context.MODE_PRIVATE);
 
 //            if (sp.contains(Name)) {
 //
 //                Toast.makeText(this, sp.getString(Name, ""), Toast.LENGTH_SHORT).show();
 //            }
 
-            if(sp.getString(Name, "").equals("email")){
+            if(sp.getString(hello, "").equals("register") || sp.getString(hello, "").equals("log-in")){
+
+
                 FirebaseAuth.getInstance().signOut();
                 Intent in = new Intent( MainLayout.this, MainActivity.class );
                 startActivity( in );
                 finish();
             }
-            if(sp.getString(Name, "").equals("google")){
+            if(sp.getString(hello, "").equals("google")){
 
 
                 mAuth.signOut();
@@ -144,5 +162,75 @@ public class MainLayout extends AppCompatActivity {
 
         }
         return true;
+    }
+    public void updatenavHolder(){
+
+        NavigationView navigationView = findViewById( R.id.nav_view );
+        View headerview=navigationView.getHeaderView(0);
+
+        TextView name=headerview.findViewById(R.id.person_name);
+        final TextView order=headerview.findViewById(R.id.textView);
+        TextView edit=headerview.findViewById(R.id.edit);
+
+        firebaseAuth=FirebaseAuth.getInstance();
+        databaseReference=FirebaseDatabase.getInstance().getReference().child("Users");
+        FirebaseUser firebaseUser=firebaseAuth.getCurrentUser();
+
+        String myuid=firebaseUser.getUid();
+
+        databaseReference.child(myuid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for(DataSnapshot ss:dataSnapshot.getChildren()){
+                    String order1=ss.getValue().toString();
+
+                    order.setText(order1+" Orders");
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+        sp = getSharedPreferences(mypreference,
+                Context.MODE_PRIVATE);
+
+        if (sp.contains(hello)) {
+
+            Toast.makeText(this, sp.getString(hello, ""), Toast.LENGTH_SHORT).show();
+
+        }
+
+
+
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+              Intent in=new Intent(MainLayout.this,Change_Name.class);
+              startActivity(in);
+
+
+            }
+        });
+
+        name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent in=new Intent(MainLayout.this,Change_Name.class);
+                startActivity(in);
+
+
+            }
+        });
+
     }
 }

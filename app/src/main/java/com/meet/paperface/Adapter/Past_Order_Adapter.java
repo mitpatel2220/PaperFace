@@ -1,6 +1,7 @@
 package com.meet.paperface.Adapter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,10 +10,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.meet.paperface.Model.Past_Order_Model;
 import com.meet.paperface.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Past_Order_Adapter extends RecyclerView.Adapter<Past_Order_Adapter.ViewHolder> {
@@ -20,6 +28,12 @@ public class Past_Order_Adapter extends RecyclerView.Adapter<Past_Order_Adapter.
 
     private Context fcontext;
     private List<Past_Order_Model> fupload = new ArrayList<>();
+    SharedPreferences sp;
+    public static final String mypreference = "mypreference";
+    public static final String Name = "nameKey";
+
+    FirebaseAuth firebaseAuth;
+    DatabaseReference databaseReference;
 
 
     public void add(Past_Order_Model s) {
@@ -37,7 +51,8 @@ public class Past_Order_Adapter extends RecyclerView.Adapter<Past_Order_Adapter.
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(fcontext).inflate( R.layout.data_list_shop, parent, false);
+        View view = LayoutInflater.from(fcontext).inflate( R.layout.data_list_shop_pastorder, parent, false);
+
 
         return new ViewHolder(view);
 
@@ -52,10 +67,29 @@ public class Past_Order_Adapter extends RecyclerView.Adapter<Past_Order_Adapter.
         holder.date.setText(fupload.get(position).getDate());
 
 
+
     }
 
     @Override
     public int getItemCount() {
+
+        firebaseAuth=FirebaseAuth.getInstance();
+        databaseReference= FirebaseDatabase.getInstance().getReference().child("Users");
+
+        FirebaseUser firebaseUser=firebaseAuth.getCurrentUser();
+        String myuid=firebaseUser.getUid();
+        HashMap<String,Integer > map=new HashMap<>();
+        map.put(myuid,fupload.size());
+
+        databaseReference.child(myuid).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+
+
+
+            }
+        });
+
         return fupload.size();
     }
 
@@ -72,5 +106,6 @@ public class Past_Order_Adapter extends RecyclerView.Adapter<Past_Order_Adapter.
 
         }
     }
+
 }
 
