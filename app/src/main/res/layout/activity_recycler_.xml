@@ -6,10 +6,56 @@
     android:layout_height="match_parent"
     tools:context=".Activity.Recycler_Activity">
     
-    <androidx.recyclerview.widget.RecyclerView
+
+    <Button
+        android:id="@+id/RT_hall"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/recycler_one"/>
+        android:layout_height="wrap_content"
+        android:text="RT_Hall_Polytechnic">
+
+    </Button>
+
+    <Button
+        android:layout_below="@+id/RT_hall"
+        android:id="@+id/MV_Hall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mv_Hall_Polytechnic">
+
+    </Button> <Button
+    android:id="@+id/SJ_hall"
+    android:layout_below="@+id/MV_Hall"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Sj_Hall_Polytechnic">
+
+</Button> <Button
+    android:layout_below="@+id/SJ_hall"
+    android:id="@+id/Diamond_Jubilee"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Diamond Jubilee boys hostel">
+
+</Button> <Button
+    android:layout_below="@+id/Diamond_Jubilee"
+
+    android:id="@+id/Meghani_Parivar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Meghani parivar">
+
+</Button>
+
+    <Button
+        android:layout_below="@+id/Meghani_Parivar"
+
+        android:id="@+id/others"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="others">
+
+    </Button>
+
     
 </RelativeLayout>
 

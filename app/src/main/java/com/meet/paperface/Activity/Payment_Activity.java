@@ -72,7 +72,7 @@ public class Payment_Activity extends AppCompatActivity {
                 Toast.makeText( Payment_Activity.this, data, Toast.LENGTH_SHORT ).show();
             }
         } );
-        
+
         Place_order.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -100,6 +100,10 @@ public class Payment_Activity extends AppCompatActivity {
 
                 } else {
                     if (click.equals( "Pay Online" )) {
+
+
+
+
                     } else {
                         HashMap<String, String> map = new HashMap<>();
                         map.put( "hostelname", hostelName );

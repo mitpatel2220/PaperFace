@@ -1,5 +1,8 @@
 package com.meet.paperface.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
@@ -47,6 +50,8 @@ public class Register_Activity extends AppCompatActivity {
     private GoogleSignInClient mGoogleSignInClient;
     private static final int RC_SIGN_IN = 1;
     private static final String TAG = "GoogleActivity";
+    private ProgressDialog mRegProgress;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +64,9 @@ public class Register_Activity extends AppCompatActivity {
         Google_sign = findViewById( R.id.gmailButton );
         text = findViewById( R.id.or );
         mAuth = FirebaseAuth.getInstance();
+
+        mRegProgress = new ProgressDialog(this);
+
         Sign_Up.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,15 +84,26 @@ public class Register_Activity extends AppCompatActivity {
                 } else if (!PASSWORD_PATTERN.matcher( password ).matches()) {
                     Toast.makeText( Register_Activity.this, "Password length should be minimum 6 and not more than 8. It may have characters with digits", Toast.LENGTH_LONG ).show();
                 } else {
+
+
+                    mRegProgress.setTitle("Registering User");
+                    mRegProgress.setMessage("Please wait while we create your account !");
+                    mRegProgress.setCanceledOnTouchOutside(false);
+                    mRegProgress.show();
+
                     mAuth.createUserWithEmailAndPassword( email, password ).addOnCompleteListener( Register_Activity.this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
+
+
+                                mRegProgress.dismiss();
                                 Intent in = new Intent( Register_Activity.this, MainLayout.class );
                                 startActivity( in );
                                 finish();
                                 Toast.makeText( Register_Activity.this, "Registration successful", Toast.LENGTH_SHORT ).show();
                             } else {
+                                mRegProgress.hide();
                                 Toast.makeText( Register_Activity.this, "Registration failed", Toast.LENGTH_SHORT ).show();
                             }
                         }
@@ -140,11 +159,20 @@ public class Register_Activity extends AppCompatActivity {
         Log.d( TAG, "firebaseAuthWithGoogle:" + acct.getId() );
         
         AuthCredential credential = GoogleAuthProvider.getCredential( acct.getIdToken(), null );
+
+        mRegProgress.setTitle("Registering User");
+        mRegProgress.setMessage("Please wait while we create your account !");
+        mRegProgress.setCanceledOnTouchOutside(false);
+        mRegProgress.show();
+
+
         mAuth.signInWithCredential( credential )
                 .addOnCompleteListener( this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+
+
                             // Sign in success, update UI with the signed-in user's information
                             Log.d( TAG, "signInWithCredential:success" );
                             FirebaseUser user = mAuth.getCurrentUser();
@@ -154,6 +182,8 @@ public class Register_Activity extends AppCompatActivity {
                             Toast.makeText( Register_Activity.this, "Authentication Successful", Toast.LENGTH_SHORT ).show();
 
                         } else {
+
+                            mRegProgress.hide();
                             // If sign in fails, display a message to the user.
                             Log.w( TAG, "signInWithCredential:failure", task.getException() );
                             updateUI( null );

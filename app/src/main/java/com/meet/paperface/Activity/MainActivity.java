@@ -3,7 +3,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -38,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
     EditText email, password;
     Button log_in;
 
+
+    private ProgressDialog mRegProgress;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
@@ -49,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
         password = findViewById( R.id.password );
         log_in = findViewById( R.id.log_in );
         fa = FirebaseAuth.getInstance();
+
+        mRegProgress = new ProgressDialog(this);
+
         final FirebaseUser fbu = fa.getCurrentUser();
         if (fbu != null) {
             Intent in = new Intent( MainActivity.this, MainLayout.class );
@@ -85,15 +93,27 @@ public class MainActivity extends AppCompatActivity {
                 }else if (!PASSWORD_PATTERN.matcher( password_s ).matches()){
                     Toast.makeText( MainActivity.this, "Password length should be minimum 6 and not more than 8. It may have characters with digits", Toast.LENGTH_LONG ).show();
                 }else {
+                    mRegProgress.setTitle("Loging In");
+                    mRegProgress.setMessage("Please wait while we create your account !");
+                    mRegProgress.setCanceledOnTouchOutside(false);
+                    mRegProgress.show();
+
+
+
                     fa.signInWithEmailAndPassword( email_s, password_s ).addOnCompleteListener( MainActivity.this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
+
+
+                                mRegProgress.dismiss();
                                 Intent in = new Intent( MainActivity.this, MainLayout.class );
                                 startActivity( in );
                                 finish();
                                 Toast.makeText( MainActivity.this, "Login successful", Toast.LENGTH_SHORT ).show();
                             } else {
+                                mRegProgress.hide();
+
                                 Toast.makeText( MainActivity.this, "Login unsuccessful", Toast.LENGTH_SHORT ).show();
                             }
                         }
@@ -104,6 +124,12 @@ public class MainActivity extends AppCompatActivity {
         forgot_Password.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Intent in=new Intent(MainActivity.this,Reset_Password.class);
+                startActivity(in);
+
+
+
             }
         } );
     }
