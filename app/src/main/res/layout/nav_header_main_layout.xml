@@ -13,49 +13,41 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
+        android:layout_width="40dp"
+        android:layout_marginTop="7dp"
+        android:layout_height="40dp"
         android:contentDescription="@string/nav_header_desc"
-        app:srcCompat="@drawable/profile" />
+        app:srcCompat="@drawable/user"/>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/person_name"
-        android:textColor="@color/blue"
-        android:layout_marginTop="4dp"
-        android:layout_marginStart="10dp"
-        android:layout_toEndOf="@+id/imageView"
-        android:text="@string/person_name"
-        android:textSize="23sp"
-        android:fontFamily="sans-serif-medium"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
-
-    <TextView
-        android:id="@+id/edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginRight="20dp"
-        android:layout_toEndOf="@+id/person_name"
-        android:background="@drawable/ic_edit_black_24dp"
+        android:layout_marginStart="12dp"
+        android:layout_toEndOf="@+id/imageView"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/person_name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="@color/blue"
-        android:textSize="15sp">
+        android:textSize="23sp"/>
 
-    </TextView>
+    <ImageView
+        android:id="@+id/edit"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="6dp"
+        android:layout_toEndOf="@+id/person_name"
+        android:src="@drawable/ic_edit_black_24dp"/>
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
-        android:layout_marginStart="10dp"
-        android:textColor="@color/darkBlack"
-        android:layout_toEndOf="@+id/imageView"
-        android:layout_below="@+id/person_name"
-        android:textSize="13sp"
         android:layout_height="wrap_content"
-        android:text="0 order" />
-
+        android:layout_below="@+id/person_name"
+        android:layout_marginStart="12dp"
+        android:layout_toEndOf="@+id/imageView"
+        android:text="0 order"
+        android:textColor="@color/darkBlack"
+        android:textSize="13sp"/>
 </RelativeLayout>

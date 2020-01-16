@@ -60,7 +60,7 @@ public class Recycle_Adapter extends RecyclerView.Adapter<Recycle_Adapter.ViewHo
         dr = FirebaseDatabase.getInstance().getReference().child( "Orders" );
         databaseReference = FirebaseDatabase.getInstance().getReference().child( "Pastorder" );
         databaseReference1 = FirebaseDatabase.getInstance().getReference().child( "YourOrder" );
-        final String ss = dr.getRef().getKey().toString();
+        final String ss = dr.getRef().getKey();
         holder.hostelname.setText( fupload.get( position ).getHostelname() );
         holder.mobileno.setText( fupload.get( position ).getMobileno() );
         holder.name.setText( fupload.get( position ).getName() );
