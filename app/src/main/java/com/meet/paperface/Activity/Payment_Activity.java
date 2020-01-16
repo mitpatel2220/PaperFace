@@ -61,7 +61,7 @@ public class Payment_Activity extends AppCompatActivity implements AdapterView.O
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference().child( "Orders" );
         dr = FirebaseDatabase.getInstance().getReference().child( "YourOrder" );
-        final String myuid = firebaseUser.getUid().toString();
+        final String myuid = firebaseUser.getUid();
 
         hostel_name_Payment.setTag("Please select hostel");
 

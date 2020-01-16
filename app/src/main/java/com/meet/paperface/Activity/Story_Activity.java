@@ -48,7 +48,6 @@ public class Story_Activity extends AppCompatActivity {
         send_data = findViewById( R.id.send_data );
         progressBar = findViewById( R.id.progressBar );
         storageReference = FirebaseStorage.getInstance().getReference();
-        databaseReference.keepSynced( true );
         
         send_pictures.setOnClickListener( new View.OnClickListener() {
             @Override

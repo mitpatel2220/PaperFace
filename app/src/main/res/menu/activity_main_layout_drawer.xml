@@ -1,46 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
-
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_home_black_24dp"
-            android:title="Home" />
+            android:title="Home"/>
         <item
             android:id="@+id/nav_Yourorder"
             android:icon="@drawable/ic_shopping_cart_black_24dp"
-            android:title="Your Order" />
+            android:title="Your Order"/>
         <item
             android:id="@+id/nav_pastorder"
             android:icon="@drawable/ic_shopping_cart_black_24dp"
-            android:title="Past Order" />
-
+            android:title="Past Order"/>
         <item
             android:id="@+id/nav_Aboutus"
             android:icon="@drawable/ic_report_black_24dp"
-            android:title="About Us" />
-
+            android:title="About Us"/>
         <item
             android:id="@+id/nav_AnyImpruvment"
-            app:showAsAction="always"
             android:icon="@drawable/ic_chat_black_24dp"
-            android:title="Any Improvement?" />
+            android:title="Any Improvement?"
+            app:showAsAction="always"/>
         <item
             android:id="@+id/nav_share"
             android:icon="@drawable/ic_menu_share"
-            android:title="Share" />
-
+            android:title="Share"/>
         <item
             android:id="@+id/nav_Help"
             android:icon="@drawable/ic_help_black_24dp"
-            android:title="Help" />
+            android:title="Help"/>
         <item
             android:id="@+id/nav_Story"
             android:icon="@drawable/ic_pages_black_24dp"
-            android:title="Story" />
+            android:title="Story"/>
     </group>
-    
 </menu>

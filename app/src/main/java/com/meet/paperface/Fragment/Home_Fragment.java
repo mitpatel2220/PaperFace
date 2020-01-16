@@ -28,13 +28,11 @@ import java.util.List;
  */
 public class Home_Fragment extends Fragment {
 
-    Button edit, ok, done;
+    Button ok, done;
     EditText edit_how, edit_extra;
     TextView edit_page, edit_rs;
     ViewPager viewPager;
     int sec = 0;
-    Handler handler = new Handler(  );
-
 
     public Home_Fragment() {
         // Required empty public constructor
@@ -50,7 +48,6 @@ public class Home_Fragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated( view, savedInstanceState );
-        edit = view.findViewById( R.id.edit );
         ok = view.findViewById( R.id.ok );
         done = view.findViewById( R.id.done );
         edit_how = view.findViewById( R.id.edit_How );
@@ -58,49 +55,15 @@ public class Home_Fragment extends Fragment {
         edit_page = view.findViewById( R.id.edit_Pages );
         edit_rs = view.findViewById( R.id.edit_Rs );
         viewPager = view.findViewById( R.id.pager );
-
-        List<View_Pager_Model> view_pager_models = new ArrayList<>(  );
+        List<View_Pager_Model> view_pager_models = new ArrayList<>();
         View_Pager_Adapter view_pager_adapter = new View_Pager_Adapter( view_pager_models, getContext() );
         view_pager_models.add( new View_Pager_Model( R.drawable.printer ) );
         view_pager_models.add( new View_Pager_Model( R.drawable.shading ) );
-        view_pager_models.add( new View_Pager_Model( R.drawable.profile  ) );
+        view_pager_models.add( new View_Pager_Model( R.drawable.profile ) );
+        view_pager_models.add( new View_Pager_Model( R.drawable.user ) );
         viewPager.setAdapter( view_pager_adapter );
         runnable.run();
         
-        viewPager.addOnPageChangeListener( new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-//                switch (position){
-//                    case 0:
-//                        viewPager.setCurrentItem( 0 );
-//                        break;
-//                    case 1:
-//                        viewPager.setCurrentItem( 1 ); 
-//                        break;
-//                    case 2:
-//                        viewPager.setCurrentItem( 2 );
-//                        break;
-//                }
-            }
-            
-            @Override
-            public void onPageScrollStateChanged(int state) {
-            }
-        } );
-        
-        
-        edit.setOnLongClickListener( new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                Intent intent = new Intent( getContext(), Story_Activity.class );
-                startActivity( intent );
-                return false;
-            }
-        } );
         ok.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -160,27 +123,29 @@ public class Home_Fragment extends Fragment {
                     intent.putExtra( "total_page", total_pages + "" );
                     intent.putExtra( "total_rs", x );
                     startActivity( intent );
-
                 }
-
             }
         } );
-
     }
-
-    Runnable runnable = new Runnable() {
+    
+    private Handler handler = new Handler();
+    private Runnable runnable = new Runnable() {
         @Override
         public void run() {
-            if (sec <= 3){
-                if (sec==3){
+            if (sec <= 4) {
+                if (sec == 4) {
                     sec = 0;
                 }
                 viewPager.setCurrentItem( sec );
                 sec++;
                 handler.postDelayed( this, 2000 );
-            }else {
-                Toast.makeText( getContext(), "Handler done", Toast.LENGTH_SHORT ).show();
             }
         }
     };
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        handler.removeCallbacks( runnable );
+    }
 }

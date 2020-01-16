@@ -5,8 +5,7 @@
     android:layout_height="wrap_content"
     android:background="@color/blue"
     android:orientation="vertical"
-    android:padding="10dp"
-    >
+    android:padding="10dp">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_one"
@@ -16,27 +15,15 @@
         android:elevation="10dp"
         app:cardCornerRadius="25dp">
 
-<!--        <ImageView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="end"-->
-<!--            android:padding="10dp"-->
-<!--            android:rotation="45"-->
-<!--            android:src="@drawable/ic_add_black_24dp"/>-->
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Your Order is deliverd"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:textSize="18dp"
-            android:textColor="#0F1224"
-android:layout_marginTop="10dp"
-            android:layout_marginBottom="15dp"
-            >
-
-        </TextView>
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/your_order_is_delivered"
+            android:textColor="@color/darkBlack"
+            android:textSize="20sp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -53,21 +40,10 @@ android:layout_marginTop="10dp"
                 android:paddingStart="25dp">
 
                 <TextView
-                    android:id="@+id/card_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="14dp"
-                    android:fontFamily="sans-serif-light"
-                    android:text="@string/date"
-                    android:textColor="@color/darkBlack"
-                    android:textSize="18sp"/>
-
-                 <TextView
                     android:id="@+id/card_Pages_shop"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/card_date"
-                    android:layout_marginTop="14dp"
+                    android:layout_marginTop="24dp"
                     android:fontFamily="sans-serif-light"
                     android:text="@string/page"
                     android:textColor="@color/darkBlack"
@@ -83,6 +59,17 @@ android:layout_marginTop="10dp"
                     android:text="@string/rupees"
                     android:textColor="@color/darkBlack"
                     android:textSize="18sp"/>
+
+                <TextView
+                    android:id="@+id/card_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/card_Rupees_shop"
+                    android:layout_marginTop="14dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@string/date"
+                    android:textColor="@color/darkBlack"
+                    android:textSize="18sp"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -91,21 +78,10 @@ android:layout_marginTop="10dp"
                 android:layout_weight="1">
 
                 <TextView
-                    android:id="@+id/card_date_blank"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="14dp"
-                    android:fontFamily="sans-serif-light"
-                    android:text="@string/date"
-                    android:textColor="@color/darkBlack"
-                    android:textSize="18sp"/>
-
-                <TextView
                     android:id="@+id/card_Pages_shop_blank"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/card_date_blank"
-                    android:layout_marginTop="14dp"
+                    android:layout_marginTop="24dp"
                     android:fontFamily="sans-serif-light"
                     android:text="@string/page"
                     android:textColor="@color/darkBlack"
@@ -119,6 +95,17 @@ android:layout_marginTop="10dp"
                     android:layout_marginTop="14dp"
                     android:fontFamily="sans-serif-light"
                     android:text="@string/rupees"
+                    android:textColor="@color/darkBlack"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:id="@+id/card_date_blank"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/card_Rupees_shop_blank"
+                    android:layout_marginTop="14dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@string/date"
                     android:textColor="@color/darkBlack"
                     android:textSize="18sp"/>
             </RelativeLayout>

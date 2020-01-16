@@ -1,6 +1,4 @@
 package com.meet.paperface.Fragment;
-
-
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -29,6 +27,7 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  */
 public class Story_Fragment extends Fragment {
+
     RecyclerView recyclerView;
     DatabaseReference databaseReference;
     Story_Adapter story_adapter;
@@ -36,31 +35,29 @@ public class Story_Fragment extends Fragment {
 
     public Story_Fragment() {
         // Required empty public constructor
-        
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate( R.layout.fragment_story, container, false);
+        return inflater.inflate( R.layout.fragment_story, container, false );
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+        super.onViewCreated( view, savedInstanceState );
         recyclerView = view.findViewById( R.id.recycler_frag );
         recyclerView.setHasFixedSize( true );
         recyclerView.setLayoutManager( new LinearLayoutManager( getContext() ) );
-        models = new ArrayList<>(  );
+        models = new ArrayList<>();
         databaseReference = FirebaseDatabase.getInstance().getReference().child( "Story" );
-        
+        databaseReference.keepSynced( true );
         databaseReference.addValueEventListener( new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot dataSnapshot1: dataSnapshot.getChildren()){
-                    Story_Model story_model = dataSnapshot1.getValue(Story_Model.class);
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                    Story_Model story_model = dataSnapshot1.getValue( Story_Model.class );
                     models.add( story_model );
                 }
                 story_adapter = new Story_Adapter( getContext(), models );
@@ -74,5 +71,5 @@ public class Story_Fragment extends Fragment {
             }
         } );
     }
-    
+
 }
