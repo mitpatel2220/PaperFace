@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#4850ed"
+
     tools:context=".HostelName.MV_hall">
 
     <androidx.recyclerview.widget.RecyclerView

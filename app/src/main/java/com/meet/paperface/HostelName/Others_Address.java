@@ -1,4 +1,4 @@
-package com.meet.paperface.Activity;
+package com.meet.paperface.HostelName;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,5 +12,6 @@ public class Others_Address extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_others__address);
+
     }
 }

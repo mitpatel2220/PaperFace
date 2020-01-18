@@ -13,6 +13,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.meet.paperface.Adapter.Meghani_parivar_adptor;
 import com.meet.paperface.Adapter.Recycle_Adapter;
 import com.meet.paperface.Model.Task_Class;
 import com.meet.paperface.Model.Users;
@@ -25,7 +26,7 @@ public class Meghamani_Parivar extends AppCompatActivity {
     List<Users> list_data = new ArrayList<>();
     List<Task_Class> list = new ArrayList<>();
     RecyclerView rv;
-    Recycle_Adapter adaptor;
+    Meghani_parivar_adptor adaptor;
     private DatabaseReference mUsersDatabase;
     private LinearLayoutManager mLayoutManager;
     String keyValue;
@@ -56,7 +57,7 @@ public class Meghamani_Parivar extends AppCompatActivity {
                     }
 
                 }
-                adaptor = new Recycle_Adapter( Meghamani_Parivar.this, list_data, list );
+                adaptor = new Meghani_parivar_adptor( Meghamani_Parivar.this, list_data, list );
                 rv.setAdapter( adaptor );
 
             }

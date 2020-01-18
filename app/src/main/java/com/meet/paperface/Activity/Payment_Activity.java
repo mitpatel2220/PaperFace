@@ -1,5 +1,7 @@
-package com.meet.paperface.Activity;
+ package com.meet.paperface.Activity;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -21,11 +24,14 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.meet.paperface.MainLayout;
 import com.meet.paperface.R;
 
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Objects;
+
 public class Payment_Activity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     EditText name_Payment, Room_number_Payment, others_Payment, mobileNo_payment;
@@ -59,55 +65,19 @@ public class Payment_Activity extends AppCompatActivity implements AdapterView.O
 
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-        databaseReference = FirebaseDatabase.getInstance().getReference().child( "Orders" );
-        dr = FirebaseDatabase.getInstance().getReference().child( "YourOrder" );
         final String myuid = firebaseUser.getUid();
 
+        databaseReference = FirebaseDatabase.getInstance().getReference().child( "Orders" );
+        dr = FirebaseDatabase.getInstance().getReference().child( "YourOrder" );
+
         hostel_name_Payment.setTag("Please select hostel");
+        hostel_name_Payment.setPrompt("Please select hostel");
 
         ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(this,R.array.HostelName,android.R.layout.simple_spinner_item);
          adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
          hostel_name_Payment.setAdapter(adapter);
         hostel_name_Payment.setOnItemSelectedListener(this);
-//         hostel_name_Payment.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//             @Override
-//             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//                 String text=adapterView.getItemAtPosition(i).toString();
-//                 Toast.makeText(Payment_Activity.this, text, Toast.LENGTH_SHORT).show();
-//                 hostel_name_Payment.setTag(text);
-//
-//             }
-//
-//             @Override
-//             public void onNothingSelected(AdapterView<?> adapterView) {
-//
-//             }
-//         });
-//         hostel_name_Payment.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//
-//
-//             @Override
-//             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//
-//                 String text=adapterView.getItemAtPosition(i).toString();
-//                 Toast.makeText(Payment_Activity.this, text, Toast.LENGTH_SHORT).show();
-//                 hostel_name_Payment.setTag(text);
-//
-//             }
-//         });
 
-//        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String >( this,android.R.layout.simple_dropdown_item_1line, HOSTEL_NAME );
-//        hostel_name_Payment.setAdapter( arrayAdapter );
-//        hostel_name_Payment.setThreshold( 1 );
-//        hostel_name_Payment.setInputType( 0 );
-//        hostel_name_Payment.setOnClickListener( new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                hostel_name_Payment.showDropDown();
-//                String data = hostel_name_Payment.getText().toString();
-//                Toast.makeText( Payment_Activity.this, data, Toast.LENGTH_SHORT ).show();
-//            }
-//        } );
 
         Place_order.setOnClickListener( new View.OnClickListener() {
             @Override
@@ -138,6 +108,16 @@ public class Payment_Activity extends AppCompatActivity implements AdapterView.O
                     if (click.equals( "Pay Online" )) {
 
 
+                        String s1 =rs;
+                        String transactionNote = name+" pay "+rs +" Done ";
+                        String currencyUnit = "INR";
+                        Uri uri = Uri.parse("upi://pay?pa=" + "jbbram681@okicici" + "&pn=" + "Meet " + "&tn=" + transactionNote +
+                                "&am=" + s1 + "&cu=" + currencyUnit);
+                        Intent intent = new Intent();
+                        intent.setData(uri);
+                        intent.setPackage("com.google.android.apps.nbu.paisa.user");
+                        Intent chooser = Intent.createChooser(intent, "Pay with...");
+                        startActivityForResult(chooser, 1, null);
 
 
                     } else {
@@ -150,7 +130,7 @@ public class Payment_Activity extends AppCompatActivity implements AdapterView.O
                         map.put( "roomno", Room_no );
                         map.put( "totalpage", page );
                         map.put( "totalrs", rs );
-//                        map.put( "uid", myuid );
+                        map.put( "uid", myuid );
                         final String currentDate = DateFormat.getDateTimeInstance().format( new Date() );
                         HashMap<String, String> hashMap = new HashMap<>();
                         hashMap.put( "page", page );
@@ -160,6 +140,8 @@ public class Payment_Activity extends AppCompatActivity implements AdapterView.O
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
+
+
                                     Toast.makeText( Payment_Activity.this, "Your Order is successfully Placed", Toast.LENGTH_SHORT ).show();
 
                                 } else {
@@ -173,6 +155,10 @@ public class Payment_Activity extends AppCompatActivity implements AdapterView.O
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
+
+                                  Intent in=new Intent(Payment_Activity.this, MainLayout.class);
+                                  startActivity(in);
+                                  finish();
                                     Toast.makeText( Payment_Activity.this, "Your Order is successfully Placed", Toast.LENGTH_SHORT ).show();
 
                                 } else {
@@ -204,4 +190,98 @@ public class Payment_Activity extends AppCompatActivity implements AdapterView.O
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
+
+        @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//&& data != null
+            super.onActivityResult(requestCode, resultCode, data);
+            if (requestCode == 1 && resultCode == RESULT_OK) {
+                String res = data.getStringExtra("response");
+                String search = "SUCCESS";
+                if (Objects.requireNonNull(res).toLowerCase().contains(search.toLowerCase())) {
+
+                    String name = name_Payment.getText().toString();
+                    String mobilenumber = mobileNo_payment.getText().toString();
+                    String Room_no = Room_number_Payment.getText().toString();
+                    String hostelName = hostel_name_Payment.getTag().toString();
+                    String otherPayment = others_Payment.getText().toString();
+
+                    Intent intent = getIntent();
+                    final String page = intent.getStringExtra( "total_page" );
+                    final String rs = intent.getStringExtra( "total_rs" );
+
+                    firebaseAuth = FirebaseAuth.getInstance();
+                    FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+                    final String myuid = firebaseUser.getUid();
+
+                    databaseReference = FirebaseDatabase.getInstance().getReference().child( "Orders" );
+                    dr = FirebaseDatabase.getInstance().getReference().child( "YourOrder" );
+
+
+                    HashMap<String, String> map = new HashMap<>();
+                    map.put( "hostelname", hostelName );
+                    map.put( "mobileno", mobilenumber );
+                    map.put( "name", name );
+                    map.put( "other", otherPayment );
+                    map.put( "payment", "Payment Done" );
+                    map.put( "roomno", Room_no );
+                    map.put( "totalpage", page );
+                    map.put( "totalrs", rs );
+                    map.put( "uid", myuid );
+
+                    final String currentDate = DateFormat.getDateTimeInstance().format( new Date() );
+                    HashMap<String, String> hashMap = new HashMap<>();
+                    hashMap.put( "page", page );
+                    hashMap.put( "rs", rs );
+                    hashMap.put( "date", currentDate );
+
+                    dr.child( myuid ).push().setValue( hashMap ).addOnCompleteListener( Payment_Activity.this, new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+
+
+                                Toast.makeText( Payment_Activity.this, "Your Order is successfully Placed", Toast.LENGTH_SHORT ).show();
+
+                            } else {
+                                Toast.makeText( Payment_Activity.this, "Something Error", Toast.LENGTH_SHORT ).show();
+
+                            }
+
+                        }
+                    } );
+                    databaseReference.push().setValue( map ).addOnCompleteListener( Payment_Activity.this, new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+
+                                Intent in=new Intent(Payment_Activity.this, MainLayout.class);
+                                startActivity(in);
+                                finish();
+                                Toast.makeText( Payment_Activity.this, "Your Order is successfully Placed", Toast.LENGTH_SHORT ).show();
+
+                            } else {
+                                Toast.makeText( Payment_Activity.this, "Something Error", Toast.LENGTH_SHORT ).show();
+
+                            }
+
+                        }
+                    } );
+
+
+
+
+                    Intent in=new Intent(Payment_Activity.this,MainLayout.class);
+                    startActivity(in);
+                    finish();
+
+
+                    Toast.makeText(this, "Payment Successful", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "Payment Failed", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+        }
 }
+

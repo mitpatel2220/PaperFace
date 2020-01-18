@@ -11,11 +11,11 @@
         <item
             android:id="@+id/nav_Yourorder"
             android:icon="@drawable/ic_shopping_cart_black_24dp"
-            android:title="Your Order"/>
+            android:title="Your Orders"/>
         <item
             android:id="@+id/nav_pastorder"
             android:icon="@drawable/ic_shopping_cart_black_24dp"
-            android:title="Past Order"/>
+            android:title="Past Orders"/>
         <item
             android:id="@+id/nav_Aboutus"
             android:icon="@drawable/ic_report_black_24dp"

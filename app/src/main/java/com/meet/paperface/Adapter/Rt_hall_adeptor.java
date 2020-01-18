@@ -1,11 +1,10 @@
 package com.meet.paperface.Adapter;
+
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,21 +16,22 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.meet.paperface.R;
-import com.meet.paperface.Activity.Recycler_Activity;
+import com.meet.paperface.HostelName.RT_Hall;
 import com.meet.paperface.Model.Task_Class;
 import com.meet.paperface.Model.Users;
+import com.meet.paperface.R;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-public class Recycle_Adapter extends RecyclerView.Adapter<Recycle_Adapter.ViewHolder>{
+
+public class Rt_hall_adeptor extends RecyclerView.Adapter<Rt_hall_adeptor.ViewHolder>{
 
     private Context fcontext;
-    private List<Users> fupload = new ArrayList<>();
-    private List<Task_Class> fupload1 = new ArrayList<>();
+     List<Users> fupload = new ArrayList<>();
+     List<Task_Class> fupload1 = new ArrayList<>();
     DatabaseReference dr;
     DatabaseReference databaseReference;
     DatabaseReference databaseReference1;
@@ -40,7 +40,7 @@ public class Recycle_Adapter extends RecyclerView.Adapter<Recycle_Adapter.ViewHo
         fupload.add( s );
     }
 
-    public Recycle_Adapter(Context context, List<Users> user, List<Task_Class> user1) {
+    public Rt_hall_adeptor(Context context, List<Users> user, List<Task_Class> user1) {
         fcontext = context;
         fupload = user;
         fupload1 = user1;
@@ -69,15 +69,18 @@ public class Recycle_Adapter extends RecyclerView.Adapter<Recycle_Adapter.ViewHo
         holder.roomno.setText( fupload.get( position ).getRoomno() );
         holder.totalpage.setText( fupload.get( position ).getTotalpage() );
         holder.totalrs.setText( fupload.get( position ).getTotalrs() );
+
         holder.x.setOnClickListener( new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 final String currentDate = DateFormat.getDateTimeInstance().format( new Date() );
+
                 HashMap<String, String> map = new HashMap<>();
                 map.put( "date", currentDate );
                 map.put( "pages", fupload.get( position ).getTotalpage() );
                 map.put( "rs", fupload.get( position ).getTotalrs() );
-                databaseReference.child( fupload.get( position ).getUid() ).push().setValue( map ).addOnCompleteListener( new OnCompleteListener<Void>() {
+                databaseReference.child( fupload.get( position ).getUid()).push().setValue( map ).addOnCompleteListener( new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
@@ -100,7 +103,7 @@ public class Recycle_Adapter extends RecyclerView.Adapter<Recycle_Adapter.ViewHo
                     public void onComplete(@NonNull Task<Void> task) {
                         Toast.makeText( fcontext, "Removed", Toast.LENGTH_SHORT ).show();
                         dr.keepSynced( true );
-                        fcontext.startActivity( new Intent( fcontext, Recycler_Activity.class ) );
+                        fcontext.startActivity( new Intent( fcontext, RT_Hall.class ));
 
                     }
                 } );

@@ -17,7 +17,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".Activity.Splash_Screen">
+        <activity android:name=".Activity.Splash_Screen"
+            android:screenOrientation="portrait"
+            >
+
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -36,9 +40,12 @@
         <activity android:name=".HostelName.SJ_hall"/>
         <activity android:name=".HostelName.Meghamani_Parivar"/>
         <activity android:name=".HostelName.Diamond_jubile"/>
-        <activity android:name=".Activity.Others_Address"/>
+        <activity android:name=".HostelName.Others_Address"/>
         <activity android:name=".Activity.Register_Activity"/>
-        <activity android:name=".Activity.Login_Activity">
+        <activity android:name=".Activity.Login_Activity"
+            android:screenOrientation="portrait"
+
+            >
             
         </activity>
     </application>
