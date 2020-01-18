@@ -99,9 +99,7 @@ public class MainLayout extends AppCompatActivity implements BottomSheetName.Bot
 
                     if(x.equals("yes")){
 
-                        Toast.makeText(MainLayout.this, "Yes", Toast.LENGTH_SHORT).show();
-
-                        Toast.makeText(MainLayout.this, pages, Toast.LENGTH_SHORT).show();
+                        showDialogeforpaper();
 
 
                 }
@@ -115,7 +113,7 @@ public class MainLayout extends AppCompatActivity implements BottomSheetName.Bot
         });
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_Yourorder, R.id.nav_pastorder, R.id.nav_Aboutus, R.id.nav_AnyImpruvment, R.id.nav_share, R.id.nav_Help, R.id.nav_Story)
+                R.id.nav_home, R.id.nav_Yourorder, R.id.nav_pastorder, R.id.nav_Aboutus, R.id.nav_AnyImpruvment, R.id.nav_share,R.id.nav_Story)
                 .setDrawerLayout(drawer)
                 .build();
 //        NavController navController = Navigation.findNavController( this, R.id.nav_host_fragment );
@@ -152,8 +150,6 @@ public class MainLayout extends AppCompatActivity implements BottomSheetName.Bot
                     intent.putExtra(Intent.EXTRA_SUBJECT, "subject here");
                     intent.putExtra(Intent.EXTRA_TEXT, "body");
                     startActivity(Intent.createChooser(intent, "Share via.."));
-                } else if (id == R.id.nav_Help) {
-                    Toast.makeText(MainLayout.this, "Helped clicked", Toast.LENGTH_SHORT).show();
                 } else if (id == R.id.nav_Story) {
                     fragmentTransaction = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.frame, new Story_Fragment());
@@ -315,4 +311,18 @@ public class MainLayout extends AppCompatActivity implements BottomSheetName.Bot
         });
         builderDia.show();
     }
+
+    public void showDialogeforpaper() {
+        AlertDialog.Builder builderDia = new AlertDialog.Builder(this);
+       // builderDia.setTitle("No Internet Connection");
+        builderDia.setMessage("Pages are not available right now\n\nPress OK to Exit");
+        builderDia.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                finish();
+            }
+        });
+        builderDia.show();
+    }
+
 }

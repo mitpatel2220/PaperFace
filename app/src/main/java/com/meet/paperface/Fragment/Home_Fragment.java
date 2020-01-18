@@ -79,6 +79,8 @@ public class Home_Fragment extends Fragment {
                 if (pages1.isEmpty()) {
                     Toast.makeText( getActivity(), "Please enter Bunch of pages", Toast.LENGTH_SHORT ).show();
 
+                    edit_how.setError("Please enter Bunch of pages");
+
                 } else {
                     int pages_int = Integer.parseInt( pages );
                     int extra_int = Integer.parseInt( extrapages );

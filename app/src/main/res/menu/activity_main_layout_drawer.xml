@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
     <group android:checkableBehavior="single">
+
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_home_black_24dp"
@@ -29,10 +30,7 @@
             android:id="@+id/nav_share"
             android:icon="@drawable/ic_menu_share"
             android:title="Share"/>
-        <item
-            android:id="@+id/nav_Help"
-            android:icon="@drawable/ic_help_black_24dp"
-            android:title="Help"/>
+
         <item
             android:id="@+id/nav_Story"
             android:icon="@drawable/ic_pages_black_24dp"

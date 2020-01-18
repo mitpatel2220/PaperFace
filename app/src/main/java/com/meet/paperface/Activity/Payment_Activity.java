@@ -1,5 +1,7 @@
 package com.meet.paperface.Activity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -99,10 +101,8 @@ public class Payment_Activity extends AppCompatActivity implements AdapterView.O
 
                             // dialoge
 
+                            showDialogeforpaper();
 
-                            Toast.makeText(Payment_Activity.this, "Yes", Toast.LENGTH_SHORT).show();
-
-                            Toast.makeText(Payment_Activity.this, pages, Toast.LENGTH_SHORT).show();
 
 
                         } else {
@@ -120,14 +120,18 @@ public class Payment_Activity extends AppCompatActivity implements AdapterView.O
                             }
 
                             if (name.isEmpty()) {
+                                name_Payment.setError("Please enter Your Name");
                                 Toast.makeText(Payment_Activity.this, "Please enter Your Name", Toast.LENGTH_SHORT).show();
                             } else if (mobilenumber.isEmpty()) {
+                                mobileNo_payment.setError("Please enter Your Mobile No.");
                                 Toast.makeText(Payment_Activity.this, "Please enter Your Mobile No.", Toast.LENGTH_SHORT).show();
 
                             } else if (Room_no.isEmpty()) {
+                                Room_number_Payment.setError("Please enter Your Room No.");
                                 Toast.makeText(Payment_Activity.this, "Please enter Your Room No.", Toast.LENGTH_SHORT).show();
 
                             } else if (hostelName.isEmpty()) {
+
                                 Toast.makeText(Payment_Activity.this, "Please enter Your Hostel Name", Toast.LENGTH_SHORT).show();
 
                             } else {
@@ -318,6 +322,19 @@ public class Payment_Activity extends AppCompatActivity implements AdapterView.O
             }
         }
 
+    }
+
+    public void showDialogeforpaper() {
+        AlertDialog.Builder builderDia = new AlertDialog.Builder(this);
+        // builderDia.setTitle("No Internet Connection");
+        builderDia.setMessage("Pages are not available right now\n\nPress OK to Exit");
+        builderDia.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                finish();
+            }
+        });
+        builderDia.show();
     }
 }
 
