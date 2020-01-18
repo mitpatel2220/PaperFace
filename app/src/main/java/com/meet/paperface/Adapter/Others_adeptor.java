@@ -1,11 +1,10 @@
 package com.meet.paperface.Adapter;
+
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,17 +16,19 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.meet.paperface.R;
-import com.meet.paperface.Activity.Recycler_Activity;
+import com.meet.paperface.HostelName.Others_Address;
+import com.meet.paperface.HostelName.SJ_hall;
 import com.meet.paperface.Model.Task_Class;
 import com.meet.paperface.Model.Users;
+import com.meet.paperface.R;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-public class Recycle_Adapter extends RecyclerView.Adapter<Recycle_Adapter.ViewHolder>{
+
+public class Others_adeptor extends RecyclerView.Adapter<Others_adeptor.ViewHolder>{
 
     private Context fcontext;
     private List<Users> fupload = new ArrayList<>();
@@ -40,7 +41,7 @@ public class Recycle_Adapter extends RecyclerView.Adapter<Recycle_Adapter.ViewHo
         fupload.add( s );
     }
 
-    public Recycle_Adapter(Context context, List<Users> user, List<Task_Class> user1) {
+    public Others_adeptor(Context context, List<Users> user, List<Task_Class> user1) {
         fcontext = context;
         fupload = user;
         fupload1 = user1;
@@ -100,7 +101,7 @@ public class Recycle_Adapter extends RecyclerView.Adapter<Recycle_Adapter.ViewHo
                     public void onComplete(@NonNull Task<Void> task) {
                         Toast.makeText( fcontext, "Removed", Toast.LENGTH_SHORT ).show();
                         dr.keepSynced( true );
-                        fcontext.startActivity( new Intent( fcontext, Recycler_Activity.class ) );
+                        fcontext.startActivity( new Intent( fcontext, Others_Address.class ) );
 
                     }
                 } );

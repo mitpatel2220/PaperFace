@@ -14,6 +14,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.meet.paperface.Activity.Recycler_Activity;
+import com.meet.paperface.Adapter.Diamond_jubily_adptor;
 import com.meet.paperface.Adapter.Recycle_Adapter;
 import com.meet.paperface.Model.Task_Class;
 import com.meet.paperface.Model.Users;
@@ -26,7 +27,7 @@ public class Diamond_jubile extends AppCompatActivity {
     List<Users> list_data = new ArrayList<>();
     List<Task_Class> list = new ArrayList<>();
     RecyclerView rv;
-    Recycle_Adapter adaptor;
+    Diamond_jubily_adptor adaptor;
     private DatabaseReference mUsersDatabase;
     private LinearLayoutManager mLayoutManager;
     String keyValue;
@@ -58,7 +59,7 @@ public class Diamond_jubile extends AppCompatActivity {
                     }
 
                 }
-                adaptor = new Recycle_Adapter( Diamond_jubile.this, list_data, list );
+                adaptor = new Diamond_jubily_adptor( Diamond_jubile.this, list_data, list );
                 rv.setAdapter( adaptor );
 
             }

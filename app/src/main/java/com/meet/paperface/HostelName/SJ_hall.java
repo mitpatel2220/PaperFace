@@ -14,6 +14,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.meet.paperface.Adapter.Recycle_Adapter;
+import com.meet.paperface.Adapter.Sj_adeptor;
 import com.meet.paperface.Model.Task_Class;
 import com.meet.paperface.Model.Users;
 import com.meet.paperface.R;
@@ -26,7 +27,7 @@ public class SJ_hall extends AppCompatActivity {
     List<Users> list_data = new ArrayList<>();
     List<Task_Class> list = new ArrayList<>();
     RecyclerView rv;
-    Recycle_Adapter adaptor;
+    Sj_adeptor adaptor;
     private DatabaseReference mUsersDatabase;
     private LinearLayoutManager mLayoutManager;
     String keyValue;
@@ -58,7 +59,7 @@ public class SJ_hall extends AppCompatActivity {
                     }
 
                 }
-                adaptor = new Recycle_Adapter( SJ_hall.this, list_data, list );
+                adaptor = new Sj_adeptor( SJ_hall.this, list_data, list );
                 rv.setAdapter( adaptor );
 
             }

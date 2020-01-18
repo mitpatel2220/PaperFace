@@ -1,39 +1,20 @@
 package com.meet.paperface.Activity;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
-import android.widget.Button;
-import android.widget.SearchView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.meet.paperface.Adapter.Recycle_Adapter;
 import com.meet.paperface.HostelName.Diamond_jubile;
 import com.meet.paperface.HostelName.MV_hall;
 import com.meet.paperface.HostelName.Meghamani_Parivar;
+import com.meet.paperface.HostelName.Others_Address;
 import com.meet.paperface.HostelName.RT_Hall;
 import com.meet.paperface.HostelName.SJ_hall;
 import com.meet.paperface.R;
-import com.meet.paperface.Model.Task_Class;
-import com.meet.paperface.Model.Users;
 
-import java.util.ArrayList;
-import java.util.List;
 public class Recycler_Activity extends AppCompatActivity {
 
     //    List<Users> list_data = new ArrayList<>();
