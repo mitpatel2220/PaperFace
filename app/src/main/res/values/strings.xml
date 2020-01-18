@@ -74,6 +74,9 @@
     <string name="your">“Your attitude, not your aptitude,\nwill determine your altitude.”</string>
     <string name="reset_Password">You will get the mail after completing this step to reset password</string>
     <string name="your_order_is_delivered">Your Order is delivered</string>
+
+    <string name="phone_number">Phone Number</string>
+
     <string-array name="HostelName">
         <item>RT hall polytechnic</item>
         <item>MV hall polytechnic</item>

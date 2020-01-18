@@ -50,7 +50,7 @@ public class MainLayout extends AppCompatActivity implements BottomSheetName.Bot
     ActionBarDrawerToggle mtoggle;
     private FirebaseAuth mAuth;
     FirebaseAuth firebaseAuth;
-    DatabaseReference databaseReference;
+    DatabaseReference databaseReference,dr;
     private GoogleSignInClient mGoogleSignInClient;
     SharedPreferences sharedPreferences;
     public static final String mypreference = "mypreference";
@@ -86,6 +86,34 @@ public class MainLayout extends AppCompatActivity implements BottomSheetName.Bot
         updatenavHolder();
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
+
+        dr=FirebaseDatabase.getInstance().getReference().child("Available");
+
+        dr.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+
+                    String x=dataSnapshot.child("yes").getValue().toString();
+                    String pages=dataSnapshot.child("pages").getValue().toString();
+
+                    if(x.equals("yes")){
+
+                        Toast.makeText(MainLayout.this, "Yes", Toast.LENGTH_SHORT).show();
+
+                        Toast.makeText(MainLayout.this, pages, Toast.LENGTH_SHORT).show();
+
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_Yourorder, R.id.nav_pastorder, R.id.nav_Aboutus, R.id.nav_AnyImpruvment, R.id.nav_share, R.id.nav_Help, R.id.nav_Story)
                 .setDrawerLayout(drawer)
