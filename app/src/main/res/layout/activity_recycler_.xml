@@ -242,7 +242,7 @@
                     android:layout_marginStart="25dp"
                     android:layout_marginTop="15dp"
                     android:fontFamily="sans-serif-medium"
-                    android:text="@string/meghani_parivar"
+                    android:text="@string/Meghamani_parivar"
                     android:textColor="@color/white"
                     android:textSize="20sp"/>
 

@@ -22,7 +22,7 @@
             android:layout_gravity="end"
             android:padding="10dp"
             android:rotation="45"
-            android:src="@drawable/ic_add_black_24dp" />
+            android:src="@drawable/ic_add_black_24dp"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
