@@ -29,7 +29,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -38,12 +37,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.meet.paperface.Activity.Login_Activity;
-import com.meet.paperface.Fragment.Home_Fragment;
-import com.meet.paperface.Fragment.Past_Order_Fragment;
-import com.meet.paperface.Fragment.Story_Fragment;
-import com.meet.paperface.Fragment.Your_Order_Fragment;
-public class MainLayout extends AppCompatActivity implements BottomSheetName.BottomSheetListener, BottomSheetAbout.BottomSheetListenerAbout {
+import com.meet.paperface.activity.Login_Activity;
+import com.meet.paperface.fragment.AboutUs_Fragment;
+import com.meet.paperface.fragment.Home_Fragment;
+import com.meet.paperface.fragment.Past_Order_Fragment;
+import com.meet.paperface.fragment.Story_Fragment;
+import com.meet.paperface.fragment.Your_Order_Fragment;
+public class MainLayout extends AppCompatActivity implements BottomSheetName.BottomSheetListener{
 
     private AppBarConfiguration mAppBarConfiguration;
     ActionBarDrawerToggle mtoggle;
@@ -140,8 +140,10 @@ public class MainLayout extends AppCompatActivity implements BottomSheetName.Bot
                     fragmentTransaction.commit();
                     i = 0;
                 } else if (id == R.id.nav_Aboutus) {
-                    BottomSheetAbout bottomSheetAbout= new BottomSheetAbout();
-                    bottomSheetAbout.show( getSupportFragmentManager(), "bottomSheetAbout" );
+                    fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction.replace( R.id.frame, new AboutUs_Fragment() );
+                    fragmentTransaction.commit();
+                    i = 0;
                 } else if (id == R.id.nav_AnyImpruvment) {
                     Uri hii = Uri.parse( "smsto:" + "+917698209853" );
                     Intent intent = new Intent( Intent.ACTION_SENDTO, hii );
