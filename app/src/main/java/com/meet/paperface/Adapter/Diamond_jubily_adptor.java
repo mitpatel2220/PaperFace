@@ -1,5 +1,6 @@
 package com.meet.paperface.Adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -102,6 +103,8 @@ public class Diamond_jubily_adptor extends RecyclerView.Adapter<Diamond_jubily_a
                         Toast.makeText( fcontext, "Removed", Toast.LENGTH_SHORT ).show();
                         dr.keepSynced( true );
                         fcontext.startActivity( new Intent( fcontext, Diamond_jubile.class ) );
+                        ((Activity)fcontext).finish();
+
 
                     }
                 } );

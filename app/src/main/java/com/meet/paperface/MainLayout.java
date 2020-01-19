@@ -50,7 +50,7 @@ public class MainLayout extends AppCompatActivity implements BottomSheetName.Bot
     ActionBarDrawerToggle mtoggle;
     private FirebaseAuth mAuth;
     FirebaseAuth firebaseAuth;
-    DatabaseReference databaseReference;
+    DatabaseReference databaseReference,dr;
     private GoogleSignInClient mGoogleSignInClient;
     SharedPreferences sharedPreferences;
     public static final String mypreference = "mypreference";
@@ -86,8 +86,34 @@ public class MainLayout extends AppCompatActivity implements BottomSheetName.Bot
         updatenavHolder();
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
+
+        dr=FirebaseDatabase.getInstance().getReference().child("Available");
+
+        dr.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+
+                    String x=dataSnapshot.child("yes").getValue().toString();
+                    String pages=dataSnapshot.child("pages").getValue().toString();
+
+                    if(x.equals("yes")){
+
+                        showDialogeforpaper();
+
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_Yourorder, R.id.nav_pastorder, R.id.nav_Aboutus, R.id.nav_AnyImpruvment, R.id.nav_share, R.id.nav_Help, R.id.nav_Story)
+                R.id.nav_home, R.id.nav_Yourorder, R.id.nav_pastorder, R.id.nav_Aboutus, R.id.nav_AnyImpruvment, R.id.nav_share,R.id.nav_Story)
                 .setDrawerLayout(drawer)
                 .build();
 //        NavController navController = Navigation.findNavController( this, R.id.nav_host_fragment );
@@ -124,8 +150,6 @@ public class MainLayout extends AppCompatActivity implements BottomSheetName.Bot
                     intent.putExtra(Intent.EXTRA_SUBJECT, "subject here");
                     intent.putExtra(Intent.EXTRA_TEXT, "body");
                     startActivity(Intent.createChooser(intent, "Share via.."));
-                } else if (id == R.id.nav_Help) {
-                    Toast.makeText(MainLayout.this, "Helped clicked", Toast.LENGTH_SHORT).show();
                 } else if (id == R.id.nav_Story) {
                     fragmentTransaction = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.frame, new Story_Fragment());
@@ -287,4 +311,18 @@ public class MainLayout extends AppCompatActivity implements BottomSheetName.Bot
         });
         builderDia.show();
     }
+
+    public void showDialogeforpaper() {
+        AlertDialog.Builder builderDia = new AlertDialog.Builder(this);
+       // builderDia.setTitle("No Internet Connection");
+        builderDia.setMessage("Pages are not available right now\n\nPress OK to Exit");
+        builderDia.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                finish();
+            }
+        });
+        builderDia.show();
+    }
+
 }

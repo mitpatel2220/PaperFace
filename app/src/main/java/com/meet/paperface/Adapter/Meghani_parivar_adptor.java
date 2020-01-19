@@ -1,5 +1,6 @@
 package com.meet.paperface.Adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -102,6 +103,7 @@ public class Meghani_parivar_adptor extends RecyclerView.Adapter<Meghani_parivar
                         Toast.makeText( fcontext, "Removed", Toast.LENGTH_SHORT ).show();
                         dr.keepSynced( true );
                         fcontext.startActivity( new Intent( fcontext, Meghamani_Parivar.class ) );
+                        ((Activity)fcontext).finish();
 
                     }
                 } );
