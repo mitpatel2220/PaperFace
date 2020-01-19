@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
@@ -57,10 +58,10 @@ public class Home_Fragment extends Fragment {
         viewPager = view.findViewById( R.id.pager );
         List<View_Pager_Model> view_pager_models = new ArrayList<>();
         View_Pager_Adapter view_pager_adapter = new View_Pager_Adapter( view_pager_models, getContext() );
-        view_pager_models.add( new View_Pager_Model( R.drawable.printer ) );
-        view_pager_models.add( new View_Pager_Model( R.drawable.shading ) );
-        view_pager_models.add( new View_Pager_Model( R.drawable.profile ) );
-        view_pager_models.add( new View_Pager_Model( R.drawable.user ) );
+        view_pager_models.add( new View_Pager_Model( R.drawable.sheet_third ) );
+        view_pager_models.add( new View_Pager_Model( R.drawable.sheet_first ) );
+        view_pager_models.add( new View_Pager_Model( R.drawable.sheet_sec ) );
+        view_pager_models.add( new View_Pager_Model( R.drawable.sheet_tlt ) );
         viewPager.setAdapter( view_pager_adapter );
         runnable.run();
         

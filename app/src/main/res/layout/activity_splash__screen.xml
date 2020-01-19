@@ -6,11 +6,12 @@
     android:orientation="vertical"
     android:gravity="center"
     android:padding="20dp"
+    android:background="@color/white"
     tools:context=".Activity.Splash_Screen">
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="250dp"
         android:src="@drawable/printer"/>
 
     <ImageView

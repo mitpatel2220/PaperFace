@@ -45,7 +45,7 @@
     <string name="payment">Payment Details</string>
     <string name="name">Name</string>
     <string name="room_num">Room Number</string>
-    <string name="hostel_name">Hostel Name/Hall</string>
+    <string name="hostel_name">Hostel/Hall Name</string>
     <string name="other">Others</string>
     <string name="payOnline">Pay Online</string>
     <string name="cod">COD</string>
@@ -61,7 +61,7 @@
     <string name="close">Close</string>
     <string name="rt_hall_polytechnic">RT Hall Polytechnic</string>
     <string name="mv_hall_polytechnic">MV Hall Polytechnic</string>
-    <string name="meghani_parivar">Meghani parivar</string>
+    <string name="Meghamani_parivar">Meghamani Parivar</string>
     <string name="diamond_jubilee_boys_hostel">Diamond Jubilee Boys Hostel</string>
     <string name="sj_hall_polytechnic">SJ Hall Polytechnic</string>
     <string name="know_more">Know More</string>
@@ -74,9 +74,14 @@
     <string name="your">“Your attitude, not your aptitude,\nwill determine your altitude.”</string>
     <string name="reset_Password">You will get the mail after completing this step to reset password</string>
     <string name="your_order_is_delivered">Your Order is delivered</string>
-
+    <string name="about">Team Diamond has started this, with an understanding of the problems around the hostelers and thinks about how to resolve it or make it easy. So initially the team has started with small initiative and future planning.\n\nThis app provides you online services of the hostelers needs. Now you can buy good journal papers instantly and online using this app with the same price and exciting surprises. Right now, we have just initiated with journal papers for MSU hall residential students afterward we are adding some new things according to your feedback and ideas.\n\nIf you have any idea but you do not know how to take initiative or other else and also need an app developer then we will give our best to support you. So for any help from our side or to know about our experience you are free to contact us.</string>
     <string name="phone_number">Phone Number</string>
-
+    <string name="kartik_team">Kartik patel\nMech. Engg\nMSUTecho\nkartik_patel_0</string>
+    <string name="Chirag_team">Chirag Gohil\nMech. Engg\nMSUTecho\nInsta id:cmgohil.10</string>
+    <string name="Adil_team">Adil Parmar\nMech. Engg\nMSUTecho\nadil.parmar.13</string>
+    <string name="our_team">Our Team</string>
+    <string name="x">100 X__</string>
+    <string name="billing_details">Billing Details</string>
     <string-array name="HostelName">
         <item>RT hall polytechnic</item>
         <item>MV hall polytechnic</item>

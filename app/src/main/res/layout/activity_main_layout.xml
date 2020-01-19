@@ -21,7 +21,6 @@
         android:fitsSystemWindows="true"
         app:itemBackground="@color/transparent"
         android:background="@drawable/shading"
-        app:itemTextAppearance="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Small"
         app:headerLayout="@layout/nav_header_main_layout"
         app:menu="@menu/activity_main_layout_drawer" >
 
