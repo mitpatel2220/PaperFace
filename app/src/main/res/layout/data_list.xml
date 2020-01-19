@@ -8,7 +8,6 @@
     android:padding="10dp">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/card_one"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
@@ -31,7 +30,6 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/card_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
@@ -52,7 +50,6 @@
                 android:textSize="18sp"/>
 
             <TextView
-                android:id="@+id/card_mobile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/card_name_blank"
@@ -76,7 +73,6 @@
 
 
             <TextView
-                android:id="@+id/card_room"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/card_mobileno_blank"
@@ -99,7 +95,6 @@
                 android:textSize="18sp"/>
 
             <TextView
-                android:id="@+id/card_hostelNum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/card_room_blank"
@@ -122,7 +117,6 @@
                 android:textSize="18sp"/>
 
             <TextView
-                android:id="@+id/card_Pages"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/card_hostelNum_blank"
@@ -145,7 +139,6 @@
                 android:textSize="18sp"/>
 
             <TextView
-                android:id="@+id/card_Rupees"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/card_Pages_Blank"
@@ -168,7 +161,6 @@
                 android:textSize="18sp"/>
 
             <TextView
-                android:id="@+id/card_payment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/card_Rupees_Blank"
@@ -192,7 +184,6 @@
 
 
             <TextView
-                android:id="@+id/card_other"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/card_payment_blank"
