@@ -1,5 +1,4 @@
 package com.meet.paperface;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -12,7 +11,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,8 +43,7 @@ import com.meet.paperface.fragment.Home_Fragment;
 import com.meet.paperface.fragment.Past_Order_Fragment;
 import com.meet.paperface.fragment.Story_Fragment;
 import com.meet.paperface.fragment.Your_Order_Fragment;
-
-public class MainLayout extends AppCompatActivity implements BottomSheetName.BottomSheetListener {
+public class MainLayout extends AppCompatActivity implements BottomSheetName.BottomSheetListener{
 
     private AppBarConfiguration mAppBarConfiguration;
     ActionBarDrawerToggle mtoggle;
@@ -65,55 +62,41 @@ public class MainLayout extends AppCompatActivity implements BottomSheetName.Bot
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_layout);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        view = findViewById(R.id.nsb);
-        setSupportActionBar(toolbar);
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        mtoggle = new ActionBarDrawerToggle(this, drawer, R.string.open, R.string.close);
-        drawer.addDrawerListener(mtoggle);
+        super.onCreate( savedInstanceState );
+        setContentView( R.layout.activity_main_layout );
+        Toolbar toolbar = findViewById( R.id.toolbar );
+        view = findViewById( R.id.nsb );
+        setSupportActionBar( toolbar );
+        DrawerLayout drawer = findViewById( R.id.drawer_layout );
+        mtoggle = new ActionBarDrawerToggle( this, drawer, R.string.open, R.string.close );
+        drawer.addDrawerListener( mtoggle );
         mtoggle.syncState();
-
-
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled( true );
         mAuth = FirebaseAuth.getInstance();
         checkConnection();
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder( GoogleSignInOptions.DEFAULT_SIGN_IN )
+                .requestIdToken( getString( R.string.default_web_client_id ) )
                 .requestEmail()
                 .build();
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        mGoogleSignInClient = GoogleSignIn.getClient( this, gso );
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.frame, new Home_Fragment());
+        fragmentTransaction.replace( R.id.frame, new Home_Fragment() );
         fragmentTransaction.commit();
-
-        View view1 = this.getCurrentFocus();
-
-        if (view1 != null) {
-            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(view1.getWindowToken(), 0);
-        }
-
-
 //                String myuid = firebaseUser.getUid().toString();
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById( R.id.nav_view );
         updatenavHolder();
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
 
-        dr = FirebaseDatabase.getInstance().getReference().child("Available");
+        dr=FirebaseDatabase.getInstance().getReference().child("Available");
 
         dr.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
 
-                String x = dataSnapshot.child("yes").getValue().toString();
-                String pages = dataSnapshot.child("pages").getValue().toString();
-
-                if (x.equals("yes")) {
+                String x=dataSnapshot.child("yes").getValue().toString();
+                String pages=dataSnapshot.child("pages").getValue().toString();
 
                 if(x.equals("yes")){
                     showDialogeforpaper();

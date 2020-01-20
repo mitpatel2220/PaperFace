@@ -41,7 +41,7 @@ public class Login_Activity extends AppCompatActivity implements BottomSheetPass
                              //"(?=.*[a-zA-Z])" +      //any letter
                              // "(?=.*[@#$%^&+=])" +    //at least 1 special character
                              "(?=\\S+$)" +           //no white spaces
-                             ".{6,8}" +               //at least 4 characters
+                             ".{4,10}" +               //at least 4 characters
                              "$" );
     TextView signUp, shopKeeper, forgot_Password;
     FirebaseAuth fa;

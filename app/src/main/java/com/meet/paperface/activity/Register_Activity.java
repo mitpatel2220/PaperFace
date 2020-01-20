@@ -42,7 +42,7 @@ public class Register_Activity extends AppCompatActivity {
                              //"(?=.*[a-zA-Z])" +      //any letter
                              // "(?=.*[@#$%^&+=])" +    //at least 1 special character
                              "(?=\\S+$)" +           //no white spaces
-                             ".{6,8}" +               //at least 4 characters
+                             ".{4,10}" +               //at least 4 characters
                              "$" );
     EditText Username, Register_email, password;
     FirebaseAuth mAuth;
