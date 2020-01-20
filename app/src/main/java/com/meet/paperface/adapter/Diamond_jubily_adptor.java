@@ -36,6 +36,7 @@ public class Diamond_jubily_adptor extends RecyclerView.Adapter<Diamond_jubily_a
     DatabaseReference dr;
     DatabaseReference databaseReference;
     DatabaseReference databaseReference1;
+    DatabaseReference databaseReferenceall;
 
     public void add(Users s) {
         fupload.add( s );
@@ -61,6 +62,9 @@ public class Diamond_jubily_adptor extends RecyclerView.Adapter<Diamond_jubily_a
         dr = FirebaseDatabase.getInstance().getReference().child( "Orders" );
         databaseReference = FirebaseDatabase.getInstance().getReference().child( "Pastorder" );
         databaseReference1 = FirebaseDatabase.getInstance().getReference().child( "YourOrder" );
+        databaseReferenceall = FirebaseDatabase.getInstance().getReference().child( "Allorders" );
+
+
         final String ss = dr.getRef().getKey();
         holder.hostelname.setText( fupload.get( position ).getHostelname() );
         holder.mobileno.setText( fupload.get( position ).getMobileno() );
@@ -78,6 +82,26 @@ public class Diamond_jubily_adptor extends RecyclerView.Adapter<Diamond_jubily_a
                 map.put( "date", currentDate );
                 map.put( "pages", fupload.get( position ).getTotalpage() );
                 map.put( "rs", fupload.get( position ).getTotalrs() );
+
+                HashMap<String, String> hashMap = new HashMap<>();
+
+                hashMap.put("hostelname", fupload.get( position ).getHostelname());
+                hashMap.put("mobileno", fupload.get( position ).getMobileno());
+                hashMap.put("name", fupload.get( position ).getName());
+                hashMap.put("other", fupload.get( position ).getOther());
+                hashMap.put("payment", fupload.get( position ).getPayment());
+                hashMap.put("roomno",  fupload.get( position ).getRoomno());
+                hashMap.put("totalpage", fupload.get( position ).getTotalpage());
+                hashMap.put("totalrs", fupload.get( position ).getTotalrs());
+                hashMap.put("uid", fupload.get( position ).getUid());
+                databaseReferenceall.push().setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+
+
+
+                    }
+                });
                 databaseReference.child( fupload.get( position ).getUid() ).push().setValue( map ).addOnCompleteListener( new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
