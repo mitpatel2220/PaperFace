@@ -99,20 +99,13 @@ public class MainLayout extends AppCompatActivity implements BottomSheetName.Bot
                 String pages=dataSnapshot.child("pages").getValue().toString();
 
                 if(x.equals("yes")){
-
                     showDialogeforpaper();
-
-
                 }
-
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
-        
         
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_Yourorder, R.id.nav_pastorder, R.id.nav_Aboutus, R.id.nav_AnyImpruvment, R.id.nav_share, R.id.nav_Story )
