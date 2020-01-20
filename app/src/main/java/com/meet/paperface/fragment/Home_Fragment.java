@@ -80,6 +80,13 @@ public class Home_Fragment extends Fragment {
         ok.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                View view1 = getActivity().getCurrentFocus();
+
+                if (view1 != null) {
+                    InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(view1.getWindowToken(), 0);
+                }
                 float total_rs;
                 String pages = edit_how.getText().toString();
                 String extrapages = edit_extra.getText().toString();

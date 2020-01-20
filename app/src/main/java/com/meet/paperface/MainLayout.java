@@ -75,12 +75,6 @@ public class MainLayout extends AppCompatActivity implements BottomSheetName.Bot
         drawer.addDrawerListener(mtoggle);
         mtoggle.syncState();
 
-        View view1 = this.getCurrentFocus();
-
-        if (view1 != null) {
-            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(view1.getWindowToken(), 0);
-        }
 
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -94,6 +88,15 @@ public class MainLayout extends AppCompatActivity implements BottomSheetName.Bot
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.frame, new Home_Fragment());
         fragmentTransaction.commit();
+
+        View view1 = this.getCurrentFocus();
+
+        if (view1 != null) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view1.getWindowToken(), 0);
+        }
+
+
 //                String myuid = firebaseUser.getUid().toString();
         NavigationView navigationView = findViewById(R.id.nav_view);
         updatenavHolder();
