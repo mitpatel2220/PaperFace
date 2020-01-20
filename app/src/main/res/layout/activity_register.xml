@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView 
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:scrollbarThumbVertical="@android:color/transparent"
     tools:context=".activity.Register_Activity">
 
@@ -64,25 +64,33 @@
             android:textAllCaps="false"
             android:textSize="16sp"/>
 
-        <EditText
-            android:id="@+id/passwordRegister"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passwordLayout"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_below="@+id/emailRegister"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:background="@drawable/edi"
-            android:hint="@string/password"
-            android:paddingStart="30dp"
-            android:paddingEnd="30dp"
-            android:textAllCaps="false"
-            android:textSize="16sp"/>
+            app:hintEnabled="false"
+            app:passwordToggleEnabled="true">
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/passwordRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:textSize="16sp"/>
+        </com.google.android.material.textfield.TextInputLayout>
         <Button
             android:id="@+id/signUpButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/passwordRegister"
+            android:layout_below="@+id/passwordLayout"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="12dp"
             android:background="@drawable/btnblue"

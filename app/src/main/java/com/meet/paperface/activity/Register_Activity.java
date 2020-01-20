@@ -56,7 +56,6 @@ public class Register_Activity extends AppCompatActivity {
     public static final String mypreference = "mypreference";
     public static final String Name = "nameKey";
     public static final String hello = "login";
-    int click = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,23 +69,6 @@ public class Register_Activity extends AppCompatActivity {
         text = findViewById( R.id.or );
         mAuth = FirebaseAuth.getInstance();
         mRegProgress = new ProgressDialog( this );
-
-        if (click == 1 ){
-            password.setTransformationMethod( new PasswordTransformationMethod() );
-            click++;
-        }
-        password.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (click==2){
-                    password.setTransformationMethod( null );
-                    click--;
-                }else if (click==1){
-                    password.setTransformationMethod( new PasswordTransformationMethod() );
-                    click++;
-                }
-            }
-        } );
        
         sp = getSharedPreferences( mypreference, Context.MODE_PRIVATE );
        
