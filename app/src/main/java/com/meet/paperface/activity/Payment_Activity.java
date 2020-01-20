@@ -160,7 +160,7 @@ public class Payment_Activity extends AppCompatActivity implements AdapterView.O
                                      String s1 = rs;
                                      String transactionNote = name + " pay " + rs + " Done ";
                                      String currencyUnit = "INR";
-                                     Uri uri = Uri.parse("upi://pay?pa=" + "cmgohil10@oksbi" + "&pn=" + "Meet " + "&tn=" + transactionNote +
+                                     Uri uri = Uri.parse("upi://pay?pa=" + "8128387737@upi" + "&pn=" + "Kartik " + "&tn=" + transactionNote +
                                              "&am=" + s1 + "&cu=" + currencyUnit);
                                      Intent intent = new Intent();
                                      intent.setData(uri);
