@@ -326,6 +326,59 @@
                     android:textColor="@color/darkBlack"
                     android:textSize="12sp"/>
             </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/all_orders"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="10dp">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/card_seven"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/proceed"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/all_orders"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="44dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/all_order_quote"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"/>
+
+                <View
+                    android:layout_width="97dp"
+                    android:layout_height="33dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="87dp"
+                    android:layout_marginBottom="50dp"
+                    android:background="@drawable/know"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="45dp"
+                    android:layout_marginTop="95dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/know_more"
+                    android:textColor="@color/darkBlack"
+                    android:textSize="12sp"/>
+            </androidx.cardview.widget.CardView>
+
         </LinearLayout>
     </ScrollView>
 

@@ -5,6 +5,7 @@ import androidx.cardview.widget.CardView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.meet.paperface.hostelName.Diamond_jubile;
@@ -24,7 +25,7 @@ public class Recycler_Activity extends AppCompatActivity {
 //    private DatabaseReference mUsersDatabase;
 //    private LinearLayoutManager mLayoutManager;
 //    String keyValue;
-    CardView Mv_hall, RT_hall, SJ_hall, Diamond_jubily, Meghani_parivar, others;
+    CardView Mv_hall, RT_hall, SJ_hall, Diamond_jubily, Meghani_parivar, others, all_orders;
     FloatingActionButton floatingActionButton;
 
     @Override
@@ -70,6 +71,7 @@ public class Recycler_Activity extends AppCompatActivity {
         Meghani_parivar = findViewById( R.id.Meghani_Parivar );
         others = findViewById( R.id.others );
         floatingActionButton = findViewById( R.id.fab );
+        all_orders = findViewById( R.id.all_orders );
         
         floatingActionButton.setOnClickListener( new View.OnClickListener() {
             @Override
@@ -124,6 +126,13 @@ public class Recycler_Activity extends AppCompatActivity {
                 Intent in = new Intent( Recycler_Activity.this, Others_Address.class );
                 startActivity( in );
 
+            }
+        } );
+
+        all_orders.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText( Recycler_Activity.this, "Clicked on All Orders", Toast.LENGTH_SHORT ).show();
             }
         } );
 
