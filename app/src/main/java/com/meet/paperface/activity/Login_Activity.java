@@ -13,9 +13,11 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.InputType;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Patterns;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -48,7 +50,6 @@ public class Login_Activity extends AppCompatActivity implements BottomSheetPass
     EditText email, password;
     Button log_in;
     SharedPreferences sp;
-    int click = 1;
     public static final String mypreference = "mypreference";
     public static final String hello = "login";
     private ProgressDialog mRegProgress;
@@ -58,6 +59,8 @@ public class Login_Activity extends AppCompatActivity implements BottomSheetPass
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_main );
+        
+
         signUp = findViewById( R.id.signUp );
         shopKeeper = findViewById( R.id.shopkeeper );
         forgot_Password = findViewById( R.id.forgot );
@@ -76,22 +79,7 @@ public class Login_Activity extends AppCompatActivity implements BottomSheetPass
             finish();
 
         }
-        if (click == 1) {
-            password.setTransformationMethod( new PasswordTransformationMethod() );
-            click++;
-        }
-        password.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (click == 2) {
-                    password.setTransformationMethod( null );
-                    click--;
-                } else if (click == 1) {
-                    password.setTransformationMethod( new PasswordTransformationMethod() );
-                    click++;
-                }
-            }
-        } );
+
         signUp.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
