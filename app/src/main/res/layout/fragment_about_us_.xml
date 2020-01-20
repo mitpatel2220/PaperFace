@@ -44,12 +44,23 @@
                     android:text="@string/about"
                     android:textColor="@color/darkBlack"
                     android:textSize="18sp"/>
+
+                <TextView
+                    android:layout_marginTop="100dp"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@string/gmail"
+                    android:textColor="@color/darkBlack"
+                    android:textSize="20sp"/>
+
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="120dp"
+                android:layout_marginTop="20dp"
                 android:background="#BABDF8"
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
