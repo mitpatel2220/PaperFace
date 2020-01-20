@@ -97,6 +97,7 @@ public class Login_Activity extends AppCompatActivity implements BottomSheetPass
             public void onClick(View view) {
                 Intent intent = new Intent( Login_Activity.this, Register_Activity.class );
                 startActivity( intent );
+                finish();
             }
         } );
         shopKeeper.setOnClickListener( new View.OnClickListener() {

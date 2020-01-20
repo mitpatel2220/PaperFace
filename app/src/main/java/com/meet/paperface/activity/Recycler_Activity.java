@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.meet.paperface.AllOrder;
 import com.meet.paperface.hostelName.Diamond_jubile;
 import com.meet.paperface.hostelName.MV_hall;
 import com.meet.paperface.hostelName.Meghamani_Parivar;
@@ -132,6 +133,10 @@ public class Recycler_Activity extends AppCompatActivity {
         all_orders.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Intent in = new Intent( Recycler_Activity.this, AllOrder.class );
+                startActivity( in );
+
                 Toast.makeText( Recycler_Activity.this, "Clicked on All Orders", Toast.LENGTH_SHORT ).show();
             }
         } );

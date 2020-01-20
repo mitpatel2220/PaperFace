@@ -135,71 +135,107 @@ public class Payment_Activity extends AppCompatActivity implements AdapterView.O
                                 Toast.makeText(Payment_Activity.this, "Please enter Your Hostel Name", Toast.LENGTH_SHORT).show();
 
                             } else {
-                                if (click.equals("Pay Online")) {
 
 
-                                    String s1 = rs;
-                                    String transactionNote = name + " pay " + rs + " Done ";
-                                    String currencyUnit = "INR";
-                                    Uri uri = Uri.parse("upi://pay?pa=" + "cmgohil10@oksbi" + "&pn=" + "Meet " + "&tn=" + transactionNote +
-                                            "&am=" + s1 + "&cu=" + currencyUnit);
-                                    Intent intent = new Intent();
-                                    intent.setData(uri);
-                                    intent.setPackage("com.google.android.apps.nbu.paisa.user");
-                                    Intent chooser = Intent.createChooser(intent, "Pay with...");
-                                    startActivityForResult(chooser, 1, null);
+                                AlertDialog.Builder builder=new AlertDialog.Builder(Payment_Activity.this);
+                         builder.setCancelable(true);
+                         builder.setMessage("confirm your order");
+                         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                             @Override
+                             public void onClick(DialogInterface dialogInterface, int i) {
+
+                                 String name = name_Payment.getText().toString();
+                                 String mobilenumber = mobileNo_payment.getText().toString();
+                                 String Room_no = Room_number_Payment.getText().toString();
+                                 String hostelName = hostel_name_Payment.getTag().toString();
+                                 String otherPayment = others_Payment.getText().toString();
+                                 int id = radioGroup.getCheckedRadioButtonId();
+                                 clicked_radio = findViewById(id);
+                                 String click = clicked_radio.getText().toString();
 
 
-                                } else {
-                                    HashMap<String, String> map = new HashMap<>();
-                                    map.put("hostelname", hostelName);
-                                    map.put("mobileno", mobilenumber);
-                                    map.put("name", name);
-                                    map.put("other", otherPayment);
-                                    map.put("payment", "Payment Left");
-                                    map.put("roomno", Room_no);
-                                    map.put("totalpage", page);
-                                    map.put("totalrs", rs);
-                                    map.put("uid", myuid);
-                                    final String currentDate = DateFormat.getDateTimeInstance().format(new Date());
-                                    HashMap<String, String> hashMap = new HashMap<>();
-                                    hashMap.put("page", page);
-                                    hashMap.put("rs", rs);
-                                    hashMap.put("date", currentDate);
-                                    dr.child(myuid).push().setValue(hashMap).addOnCompleteListener(Payment_Activity.this, new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if (task.isSuccessful()) {
+                                 if (click.equals("Pay Online")) {
 
 
-                                                Toast.makeText(Payment_Activity.this, "Your Order is successfully Placed", Toast.LENGTH_SHORT).show();
+                                     String s1 = rs;
+                                     String transactionNote = name + " pay " + rs + " Done ";
+                                     String currencyUnit = "INR";
+                                     Uri uri = Uri.parse("upi://pay?pa=" + "cmgohil10@oksbi" + "&pn=" + "Meet " + "&tn=" + transactionNote +
+                                             "&am=" + s1 + "&cu=" + currencyUnit);
+                                     Intent intent = new Intent();
+                                     intent.setData(uri);
+                                     intent.setPackage("com.google.android.apps.nbu.paisa.user");
+                                     Intent chooser = Intent.createChooser(intent, "Pay with...");
+                                     startActivityForResult(chooser, 1, null);
 
-                                            } else {
-                                                Toast.makeText(Payment_Activity.this, "Something Error", Toast.LENGTH_SHORT).show();
 
-                                            }
+                                 } else {
+                                     HashMap<String, String> map = new HashMap<>();
+                                     map.put("hostelname", hostelName);
+                                     map.put("mobileno", mobilenumber);
+                                     map.put("name", name);
+                                     map.put("other", otherPayment);
+                                     map.put("payment", "Payment Left");
+                                     map.put("roomno", Room_no);
+                                     map.put("totalpage", page);
+                                     map.put("totalrs", rs);
+                                     map.put("uid", myuid);
+                                     final String currentDate = DateFormat.getDateTimeInstance().format(new Date());
+                                     HashMap<String, String> hashMap = new HashMap<>();
+                                     hashMap.put("page", page);
+                                     hashMap.put("rs", rs);
+                                     hashMap.put("date", currentDate);
+                                     dr.child(myuid).push().setValue(hashMap).addOnCompleteListener(Payment_Activity.this, new OnCompleteListener<Void>() {
+                                         @Override
+                                         public void onComplete(@NonNull Task<Void> task) {
+                                             if (task.isSuccessful()) {
 
-                                        }
-                                    });
-                                    databaseReference.push().setValue(map).addOnCompleteListener(Payment_Activity.this, new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if (task.isSuccessful()) {
 
-                                                Intent in = new Intent(Payment_Activity.this, MainLayout.class);
-                                                startActivity(in);
-                                                finish();
-                                                Toast.makeText(Payment_Activity.this, "Your Order is successfully Placed", Toast.LENGTH_SHORT).show();
+                                                 Toast.makeText(Payment_Activity.this, "Your Order is successfully Placed", Toast.LENGTH_SHORT).show();
 
-                                            } else {
-                                                Toast.makeText(Payment_Activity.this, "Something Error", Toast.LENGTH_SHORT).show();
+                                             } else {
+                                                 Toast.makeText(Payment_Activity.this, "Something Error", Toast.LENGTH_SHORT).show();
 
-                                            }
+                                             }
 
-                                        }
-                                    });
+                                         }
+                                     });
+                                     databaseReference.push().setValue(map).addOnCompleteListener(Payment_Activity.this, new OnCompleteListener<Void>() {
+                                         @Override
+                                         public void onComplete(@NonNull Task<Void> task) {
+                                             if (task.isSuccessful()) {
+
+                                                 Intent in = new Intent(Payment_Activity.this, MainLayout.class);
+                                                 startActivity(in);
+                                                 finish();
+                                                 Toast.makeText(Payment_Activity.this, "Your Order is successfully Placed", Toast.LENGTH_SHORT).show();
+
+                                             } else {
+                                                 Toast.makeText(Payment_Activity.this, "Something Error", Toast.LENGTH_SHORT).show();
+
+                                             }
+
+                                         }
+                                     });
+
+                                 }
+
+                             }
+                         });
+                            builder.setNegativeButton("no", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+
 
                                 }
+                            });
+
+                            AlertDialog dialog=builder.create();
+                            dialog.show();
+
+
+
+
 
                             }
 

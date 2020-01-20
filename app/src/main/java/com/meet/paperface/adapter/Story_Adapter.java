@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -66,14 +67,14 @@ public class Story_Adapter extends RecyclerView.Adapter<Story_Adapter.ViewHolder
                   final String action=dataSnapshot.child(myuid).getValue().toString();
                    if(action.equals("like")){
 
-                       holder.like.setBackgroundColor(Color.BLUE);
-                       holder.dislike.setBackgroundColor(Color.WHITE);
 
+                       holder.like.setBackground(ContextCompat.getDrawable(context,R.drawable.card_two_home));
+                       holder.dislike.setBackground(ContextCompat.getDrawable(context,R.drawable.likebutton));
 
                    }
                    else {
-                       holder.dislike.setBackgroundColor(Color.BLUE);
-                       holder.like.setBackgroundColor(Color.WHITE);
+                       holder.dislike.setBackground(ContextCompat.getDrawable(context,R.drawable.card_two_home));
+                       holder.like.setBackground(ContextCompat.getDrawable(context,R.drawable.likebutton));
 
 
                    }

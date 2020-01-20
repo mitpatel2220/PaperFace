@@ -48,7 +48,7 @@
                     android:layout_width="150dp"
                     android:paddingTop="20dp"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/card_two_home"
+                    android:background="@drawable/likebutton"
                     android:drawableTop="@drawable/ic_thumb_up_black_24dp"/>
 
                 <Button
@@ -56,7 +56,7 @@
                     android:layout_width="150dp"
                     android:layout_marginStart="10dp"
                     android:paddingTop="20dp"
-                    android:background="@drawable/card_five_home"
+                    android:background="@drawable/likebutton"
                     android:layout_height="wrap_content"
                     android:drawableTop="@drawable/ic_thumb_down_black_24dp"/>
             </LinearLayout>
