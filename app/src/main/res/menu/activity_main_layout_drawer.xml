@@ -35,5 +35,10 @@
             android:id="@+id/nav_Story"
             android:icon="@drawable/ic_pages_black_24dp"
             android:title="Story"/>
+
+        <item
+            android:id="@+id/nav_privacy"
+            android:icon="@drawable/ic_assignment_black_24dp"
+            android:title="Privacy Policy"/>
     </group>
 </menu>

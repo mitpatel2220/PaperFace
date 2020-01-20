@@ -105,6 +105,7 @@ public class Story_Activity extends AppCompatActivity {
                             String imageRef = uri.toString();
                             databaseReference.child( send_title.getText().toString() )
                                     .child( "pictures" ).setValue( imageRef );
+                            databaseReference.child(send_title.getText().toString()).child("name").setValue(send_title.getText().toString() );
                         }
                     } );
                     Handler handler = new Handler();
@@ -116,7 +117,7 @@ public class Story_Activity extends AppCompatActivity {
                     }, 500 );
                     
                     Toast.makeText( Story_Activity.this, "Your story has been successfully updated", Toast.LENGTH_LONG ).show();
-                    Story_Model story_model = new Story_Model( "", send_thesis.getText().toString().trim() );
+                    Story_Model story_model = new Story_Model( "", send_thesis.getText().toString().trim(),"" );
                     databaseReference.child( send_title.getText().toString() ).setValue( story_model );
                 }
             } ).addOnFailureListener( new OnFailureListener() {

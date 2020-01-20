@@ -47,9 +47,9 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".hostelName.Diamond_jubile"
             android:screenOrientation="portrait"/>
-        <activity android:name=".activity.Others_Address"
-            android:screenOrientation="portrait"/>
         <activity android:name=".activity.Register_Activity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".hostelName.Others_Address"
             android:screenOrientation="portrait"/>
         <activity android:name=".activity.Login_Activity"
             android:screenOrientation="portrait">

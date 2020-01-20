@@ -1,7 +1,18 @@
-<resources>
-    <string name="app_name">Diamond Zone</string>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">DiamondZone</string>
+    <string name="title_activity_main_layout">MainLayout</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="person_name">User</string>
+    <string name="all_Orders">7 Orders</string>
     <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
     <string name="proceed">Proceed with your</string>
     <string name="login">Login</string>
     <string name="email_address">Email Address</string>
@@ -19,12 +30,16 @@
     <string name="Shopkeeper">Shopkeeper</string>
     <string name="goToShop">Go to Shop</string>
     <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="pages">55 Rs of 100 pages</string>
     <string name="how_many">Pages you want</string>
     <string name="extra">Extra +</string>
     <string name="total_pages">Total Pages </string>
     <string name="total_rs">Total Rs.</string>
-    <string name="delivery_time">Delivery Timing = 12:00 PM - 05:00 PM</string>
+    <string name="delivery_time">Delivery Timing = 06:30 PM - 07:30 PM</string>
+    <string name="on_the_way">Your order is on the way</string>
+    <string name="delivered">Your order is delivered</string>
+    <string name="edit">Edit Order</string>
     <string name="ok">OK</string>
     <string name="done">Done</string>
     <string name="payment">Payment Details</string>
@@ -35,6 +50,7 @@
     <string name="payOnline">Pay Online</string>
     <string name="cod">COD</string>
     <string name="place_Order">Place Order</string>
+    <string name="other_one">nothing</string>
     <string name="page">Pages</string>
     <string name="rupees">Rupees</string>
     <string name="date">Date</string>
@@ -60,8 +76,11 @@
     <string name="your_order_is_delivered">Your Order is delivered</string>
     <string name="about">Team Diamond has started this, with an understanding of the problems around the hostelers and thinks about how to resolve it or make it easy. So initially the team has started with small initiative and future planning.\n\nThis app provides you online services of the hostelers needs. Now you can buy good journal papers instantly and online using this app with the same price and exciting surprises. Right now, we have just initiated with journal papers for MSU hall residential students afterward we are adding some new things according to your feedback and ideas.\n\nIf you have any idea but you do not know how to take initiative or other else and also need an app developer then we will give our best to support you. So for any help from our side or to know about our experience you are free to contact us.</string>
     <string name="phone_number">Phone Number</string>
+    <string name="kartik_team">Kartik patel\nMech. Engg\nMSUTecho\nkartik_patel_0</string>
+    <string name="Chirag_team">Chirag Gohil\nMech. Engg\nMSUTecho\nInsta id:cmgohil.10</string>
+    <string name="Adil_team">Adil Parmar\nMech. Engg\nMSUTecho\nadil.parmar.13</string>
     <string name="our_team">Our Team</string>
-    <string name="x">100 X__</string>
+    <string name="x">100 X </string>
     <string name="billing_details">Billing Details</string>
     <string name="gmail">diamond209853@gmail.com</string>
     <string-array name="HostelName">
@@ -72,6 +91,5 @@
         <item>Meghamani parivar diamond boys hostel</item>
         <item>Others</item>
     </string-array>
-    <!-- TODO: Remove or change this placeholder text -->
 </resources>
 

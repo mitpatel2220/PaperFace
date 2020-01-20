@@ -1,10 +1,13 @@
 package com.meet.paperface.fragment;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethod;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -62,10 +65,28 @@ public class Home_Fragment extends Fragment {
         view_pager_models.add( new View_Pager_Model( R.drawable.sheet_tlt ) );
         viewPager.setAdapter( view_pager_adapter );
         runnable.run();
-        
+
+        getActivity().setTitle("Home");
+
+
+        View view1=getActivity().getCurrentFocus();
+
+        if(view1 !=null){
+            InputMethodManager imm=(InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view1.getWindowToken(),0);
+        }
+
+
         ok.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                View view1 = getActivity().getCurrentFocus();
+
+                if (view1 != null) {
+                    InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(view1.getWindowToken(), 0);
+                }
                 float total_rs;
                 String pages = edit_how.getText().toString();
                 String extrapages = edit_extra.getText().toString();
@@ -75,7 +96,7 @@ public class Home_Fragment extends Fragment {
                 }
                 String pages1 = edit_how.getText().toString();
                 int total_pages;
-                if (pages1.isEmpty()) {
+                if (pages1.isEmpty() || pages1.equals("0")) {
                     Toast.makeText( getActivity(), "Please enter Bunch of pages", Toast.LENGTH_SHORT ).show();
 
                     edit_how.setError("Please enter Bunch of pages");

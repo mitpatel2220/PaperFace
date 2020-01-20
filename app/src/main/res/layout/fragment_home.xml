@@ -35,7 +35,7 @@
                 <View
                     android:id="@+id/billing_details"
                     android:layout_width="320dp"
-                    android:layout_height="100dp"
+                    android:layout_height="120dp"
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="40dp"
                     android:background="@drawable/card_home"/>
@@ -62,6 +62,13 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
                         android:text="@string/pages"
+                        android:textColor="@color/darkBlack"
+                        android:textSize="16sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:text="Single side Pages"
                         android:textColor="@color/darkBlack"
                         android:textSize="16sp"/>
 
@@ -92,7 +99,7 @@
                     android:layout_marginTop="24dp"
                     android:layout_toStartOf="@+id/edit_How"
                     android:fontFamily="sans-serif-light"
-                    android:text="@string/x"
+                    android:text="100 X  "
                     android:textColor="@color/darkBlack"
                     android:textSize="18sp"/>
 
