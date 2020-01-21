@@ -32,12 +32,12 @@ public class BottomSheetName extends BottomSheetDialogFragment {
         } );
         return view1;
     }
-    
+
 
     public interface BottomSheetListener {
 
         void onButtonclicked(String text);
-        
+
     }
 
     @Override

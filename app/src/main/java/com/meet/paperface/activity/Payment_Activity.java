@@ -1,8 +1,11 @@
 package com.meet.paperface.activity;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -37,14 +40,20 @@ import java.util.Objects;
 
 public class Payment_Activity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    EditText name_Payment, Room_number_Payment, others_Payment, mobileNo_payment;
-    RadioButton online_Payment_Radio, cod_Radio, clicked_radio;
-    Button Place_order;
-    RadioGroup radioGroup;
-    FirebaseAuth firebaseAuth;
-    DatabaseReference databaseReference, drAvail;
-    DatabaseReference dr;
-    Spinner hostel_name_Payment;
+    private EditText name_Payment;
+    private EditText Room_number_Payment;
+    private EditText others_Payment;
+    private EditText mobileNo_payment;
+    private RadioButton online_Payment_Radio;
+    private RadioButton cod_Radio;
+    private RadioButton clicked_radio;
+    private Button Place_order;
+    private RadioGroup radioGroup;
+    private FirebaseAuth firebaseAuth;
+    private DatabaseReference databaseReference;
+    private DatabaseReference drAvail;
+    private DatabaseReference dr;
+    private Spinner hostel_name_Payment;
 
     private final String[] HOSTEL_NAME = new String[]{"RT hall polytechnic", "MV hall polytechnic", "SJ hall polytechnic", "Diamond Jubilee Boys Hostel", "Meghamani parivar diamond boys hostel", "Others"};
 
@@ -71,7 +80,7 @@ public class Payment_Activity extends AppCompatActivity implements AdapterView.O
 
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-        final String myuid = firebaseUser.getUid();
+        final String myuid = Objects.requireNonNull(firebaseUser).getUid();
 
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Orders");
         dr = FirebaseDatabase.getInstance().getReference().child("YourOrder");
@@ -89,166 +98,191 @@ public class Payment_Activity extends AppCompatActivity implements AdapterView.O
             public void onClick(View view) {
 
 
-                drAvail.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+int k=0;
+                ConnectivityManager connectivityManager = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+                NetworkInfo network = Objects.requireNonNull(connectivityManager).getActiveNetworkInfo();
+                if (network != null) {
+                    if (network.getType() == ConnectivityManager.TYPE_WIFI) {
+                        k=1;
+//                Toast.makeText( getApplicationContext(), "WIFI ENABLED", Toast.LENGTH_SHORT ).show();
+                    } else if (network.getType() == ConnectivityManager.TYPE_MOBILE) {
+                        k=1;
+//                Toast.makeText( getApplicationContext(), "Mob ENABLED", Toast.LENGTH_SHORT ).show();
+                    }
+                } else {
+                    showDialoge();
+                }
 
 
-                        String x = dataSnapshot.child("yes").getValue().toString();
-                        String pages = dataSnapshot.child("pages").getValue().toString();
 
-                        if (x.equals("yes")) {
+                if(k==1){
 
-                            // dialoge
-
-                            showDialogeforpaper();
+                    drAvail.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
 
+                            String x = Objects.requireNonNull(dataSnapshot.child("yes").getValue()).toString();
+                            String pages = Objects.requireNonNull(dataSnapshot.child("pages").getValue()).toString();
 
-                        } else {
+                            if (x.equals("yes")) {
 
-                            String name = name_Payment.getText().toString();
-                            String mobilenumber = mobileNo_payment.getText().toString();
-                            String Room_no = Room_number_Payment.getText().toString();
-                            String hostelName = hostel_name_Payment.getTag().toString();
-                            String otherPayment = others_Payment.getText().toString();
-                            int id = radioGroup.getCheckedRadioButtonId();
-                            clicked_radio = findViewById(id);
-                            String click = clicked_radio.getText().toString();
-                            if (otherPayment.isEmpty()) {
-                                otherPayment = "--";
-                            }
+                                // dialoge
 
-                            if (name.isEmpty()) {
-                                name_Payment.setError("Please enter Your Name");
-                                Toast.makeText(Payment_Activity.this, "Please enter Your Name", Toast.LENGTH_SHORT).show();
-                            } else if (mobilenumber.isEmpty()) {
-                                mobileNo_payment.setError("Please enter Your Mobile No.");
-                                Toast.makeText(Payment_Activity.this, "Please enter Your Mobile No.", Toast.LENGTH_SHORT).show();
+                                showDialogeforpaper();
 
-                            } else if (Room_no.isEmpty()) {
-                                Room_number_Payment.setError("Please enter Your Room No.");
-                                Toast.makeText(Payment_Activity.this, "Please enter Your Room No.", Toast.LENGTH_SHORT).show();
 
-                            } else if (hostelName.isEmpty()) {
-
-                                Toast.makeText(Payment_Activity.this, "Please enter Your Hostel Name", Toast.LENGTH_SHORT).show();
 
                             } else {
 
+                                String name = name_Payment.getText().toString();
+                                String mobilenumber = mobileNo_payment.getText().toString();
+                                String Room_no = Room_number_Payment.getText().toString();
+                                String hostelName = hostel_name_Payment.getTag().toString();
+                                String otherPayment = others_Payment.getText().toString();
+                                int id = radioGroup.getCheckedRadioButtonId();
+                                clicked_radio = findViewById(id);
+                                String click = clicked_radio.getText().toString();
+                                if (otherPayment.isEmpty()) {
+                                }
 
-                                AlertDialog.Builder builder=new AlertDialog.Builder(Payment_Activity.this);
-                         builder.setCancelable(true);
-                         builder.setMessage("confirm your order");
-                         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                             @Override
-                             public void onClick(DialogInterface dialogInterface, int i) {
+                                if (name.isEmpty()) {
+                                    name_Payment.setError("Please enter Your Name");
+                                    Toast.makeText(Payment_Activity.this, "Please enter Your Name", Toast.LENGTH_SHORT).show();
+                                } else if (mobilenumber.isEmpty()) {
+                                    mobileNo_payment.setError("Please enter Your Mobile No.");
+                                    Toast.makeText(Payment_Activity.this, "Please enter Your Mobile No.", Toast.LENGTH_SHORT).show();
 
-                                 String name = name_Payment.getText().toString();
-                                 String mobilenumber = mobileNo_payment.getText().toString();
-                                 String Room_no = Room_number_Payment.getText().toString();
-                                 String hostelName = hostel_name_Payment.getTag().toString();
-                                 String otherPayment = others_Payment.getText().toString();
-                                 int id = radioGroup.getCheckedRadioButtonId();
-                                 clicked_radio = findViewById(id);
-                                 String click = clicked_radio.getText().toString();
+                                } else if (Room_no.isEmpty()) {
+                                    Room_number_Payment.setError("Please enter Your Room No.");
+                                    Toast.makeText(Payment_Activity.this, "Please enter Your Room No.", Toast.LENGTH_SHORT).show();
 
+                                } else if (hostelName.isEmpty()) {
 
-                                 if (click.equals("Pay Online")) {
+                                    Toast.makeText(Payment_Activity.this, "Please enter Your Hostel Name", Toast.LENGTH_SHORT).show();
 
+                                } else {
 
-                                     String s1 = rs;
-                                     String transactionNote = name + " pay " + rs + " Done ";
-                                     String currencyUnit = "INR";
-                                     Uri uri = Uri.parse("upi://pay?pa=" + "8128387737@upi" + "&pn=" + "Kartik " + "&tn=" + transactionNote +
-                                             "&am=" + s1 + "&cu=" + currencyUnit);
-                                     Intent intent = new Intent();
-                                     intent.setData(uri);
-                                     intent.setPackage("com.google.android.apps.nbu.paisa.user");
-                                     Intent chooser = Intent.createChooser(intent, "Pay with...");
-                                     startActivityForResult(chooser, 1, null);
-
-
-                                 } else {
-                                     HashMap<String, String> map = new HashMap<>();
-                                     map.put("hostelname", hostelName);
-                                     map.put("mobileno", mobilenumber);
-                                     map.put("name", name);
-                                     map.put("other", otherPayment);
-                                     map.put("payment", "Payment Left");
-                                     map.put("roomno", Room_no);
-                                     map.put("totalpage", page);
-                                     map.put("totalrs", rs);
-                                     map.put("uid", myuid);
-                                     final String currentDate = DateFormat.getDateTimeInstance().format(new Date());
-                                     HashMap<String, String> hashMap = new HashMap<>();
-                                     hashMap.put("page", page);
-                                     hashMap.put("rs", rs);
-                                     hashMap.put("date", currentDate);
-                                     dr.child(myuid).push().setValue(hashMap).addOnCompleteListener(Payment_Activity.this, new OnCompleteListener<Void>() {
-                                         @Override
-                                         public void onComplete(@NonNull Task<Void> task) {
-                                             if (task.isSuccessful()) {
+                                    checkConnection();
+                                    AlertDialog.Builder builder=new AlertDialog.Builder(Payment_Activity.this);
+                                    builder.setCancelable(true);
+                                    builder.setMessage("confirm your order");
+                                    builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
 
 
-                                                 Toast.makeText(Payment_Activity.this, "Your Order is successfully Placed", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(Payment_Activity.this, "Your order is being processed Please wait a moment", Toast.LENGTH_SHORT).show();
+                                            Place_order.setEnabled(false);
 
-                                             } else {
-                                                 Toast.makeText(Payment_Activity.this, "Something Error", Toast.LENGTH_SHORT).show();
+                                            checkConnection();
+                                            String name = name_Payment.getText().toString();
+                                            String mobilenumber = mobileNo_payment.getText().toString();
+                                            String Room_no = Room_number_Payment.getText().toString();
+                                            String hostelName = hostel_name_Payment.getTag().toString();
+                                            String otherPayment = others_Payment.getText().toString();
+                                            int id = radioGroup.getCheckedRadioButtonId();
+                                            clicked_radio = findViewById(id);
+                                            String click = clicked_radio.getText().toString();
 
-                                             }
 
-                                         }
-                                     });
-                                     databaseReference.push().setValue(map).addOnCompleteListener(Payment_Activity.this, new OnCompleteListener<Void>() {
-                                         @Override
-                                         public void onComplete(@NonNull Task<Void> task) {
-                                             if (task.isSuccessful()) {
+                                            if (click.equals("Pay Online")) {
 
-                                                 Intent in = new Intent(Payment_Activity.this, MainLayout.class);
-                                                 startActivity(in);
-                                                 finish();
-                                                 Toast.makeText(Payment_Activity.this, "Your Order is successfully Placed", Toast.LENGTH_SHORT).show();
 
-                                             } else {
-                                                 Toast.makeText(Payment_Activity.this, "Something Error", Toast.LENGTH_SHORT).show();
+                                                String transactionNote = name + " pay " + rs + " Done ";
+                                                String currencyUnit = "INR";
+                                                Uri uri = Uri.parse("upi://pay?pa=" + "8128387737@upi" + "&pn=" + "Kartik " + "&tn=" + transactionNote +
+                                                        "&am=" + rs + "&cu=" + currencyUnit);
+                                                Intent intent = new Intent();
+                                                intent.setData(uri);
+                                                intent.setPackage("com.google.android.apps.nbu.paisa.user");
+                                                Intent chooser = Intent.createChooser(intent, "Pay with...");
+                                                startActivityForResult(chooser, 1, null);
 
-                                             }
 
-                                         }
-                                     });
+                                            } else {
+                                                HashMap<String, String> map = new HashMap<>();
+                                                map.put("hostelname", hostelName);
+                                                map.put("mobileno", mobilenumber);
+                                                map.put("name", name);
+                                                map.put("other", otherPayment);
+                                                map.put("payment", "Payment Left");
+                                                map.put("roomno", Room_no);
+                                                map.put("totalpage", page);
+                                                map.put("totalrs", rs);
+                                                map.put("uid", myuid);
+                                                final String currentDate = DateFormat.getDateTimeInstance().format(new Date());
+                                                HashMap<String, String> hashMap = new HashMap<>();
+                                                hashMap.put("page", page);
+                                                hashMap.put("rs", rs);
+                                                hashMap.put("date", currentDate);
+                                                dr.child(myuid).push().setValue(hashMap).addOnCompleteListener(Payment_Activity.this, new OnCompleteListener<Void>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<Void> task) {
+                                                        if (task.isSuccessful()) {
 
-                                 }
 
-                             }
-                         });
-                            builder.setNegativeButton("no", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
+                                                            Toast.makeText(Payment_Activity.this, "Your Order is successfully Placed", Toast.LENGTH_SHORT).show();
+
+                                                        } else {
+                                                            Toast.makeText(Payment_Activity.this, "Something Error", Toast.LENGTH_SHORT).show();
+
+                                                        }
+
+                                                    }
+                                                });
+                                                databaseReference.push().setValue(map).addOnCompleteListener(Payment_Activity.this, new OnCompleteListener<Void>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<Void> task) {
+                                                        if (task.isSuccessful()) {
+
+                                                            Intent in = new Intent(Payment_Activity.this, MainLayout.class);
+                                                            startActivity(in);
+                                                            finish();
+                                                            Toast.makeText(Payment_Activity.this, "Your Order is successfully Placed", Toast.LENGTH_SHORT).show();
+
+                                                        } else {
+                                                            Toast.makeText(Payment_Activity.this, "Something Error", Toast.LENGTH_SHORT).show();
+
+                                                        }
+
+                                                    }
+                                                });
+
+                                            }
+
+                                        }
+                                    });
+                                    builder.setNegativeButton("no", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+
+
+                                        }
+                                    });
+
+                                    AlertDialog dialog=builder.create();
+                                    dialog.show();
+
+
+
 
 
                                 }
-                            });
-
-                            AlertDialog dialog=builder.create();
-                            dialog.show();
-
-
-
 
 
                             }
 
-
                         }
 
-                    }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        }
+                    });
 
-                    }
-                });
+                }
+
 
 
             }
@@ -290,7 +324,7 @@ public class Payment_Activity extends AppCompatActivity implements AdapterView.O
 
                 firebaseAuth = FirebaseAuth.getInstance();
                 FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-                final String myuid = firebaseUser.getUid();
+                final String myuid = Objects.requireNonNull(firebaseUser).getUid();
 
                 databaseReference = FirebaseDatabase.getInstance().getReference().child("Orders");
                 dr = FirebaseDatabase.getInstance().getReference().child("YourOrder");
@@ -360,7 +394,7 @@ public class Payment_Activity extends AppCompatActivity implements AdapterView.O
 
     }
 
-    public void showDialogeforpaper() {
+    private void showDialogeforpaper() {
         AlertDialog.Builder builderDia = new AlertDialog.Builder(this);
         // builderDia.setTitle("No Internet Connection");
         builderDia.setMessage("Pages are not available right now\n\nPress OK to Exit");
@@ -371,6 +405,35 @@ public class Payment_Activity extends AppCompatActivity implements AdapterView.O
             }
         });
         builderDia.show();
+    }
+    private void showDialoge() {
+        AlertDialog.Builder builderDia = new AlertDialog.Builder(this);
+        builderDia.setTitle("No Internet Connection");
+        builderDia.setCancelable(false);
+
+        builderDia.setMessage("You need to have Mobile Internet Connection or Wifi to access this.\n\nPress OK to Exit");
+        builderDia.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                finish();
+            }
+        });
+        builderDia.show();
+    }
+
+
+    private void checkConnection() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo network = Objects.requireNonNull(connectivityManager).getActiveNetworkInfo();
+        if (network != null) {
+            if (network.getType() == ConnectivityManager.TYPE_WIFI) {
+//                Toast.makeText( getApplicationContext(), "WIFI ENABLED", Toast.LENGTH_SHORT ).show();
+            } else if (network.getType() == ConnectivityManager.TYPE_MOBILE) {
+//                Toast.makeText( getApplicationContext(), "Mob ENABLED", Toast.LENGTH_SHORT ).show();
+            }
+        } else {
+            showDialoge();
+        }
     }
 }
 

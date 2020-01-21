@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="app_name">DiamondZone</string>
     <string name="title_activity_main_layout">MainLayout</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -82,7 +82,7 @@
     <string name="our_team">Our Team</string>
     <string name="x">100 X </string>
     <string name="billing_details">Billing Details</string>
-    <string name="gmail">diamond209853@gmail.com</string>
+    <string name="gmail">diamondzone.contact@gmail.com</string>
     <string name="all_orders">All Orders</string>
     <string name="all_order_quote">“Business opportunities are like buses, there\'s always another one coming.”</string>
     <string-array name="HostelName">

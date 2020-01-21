@@ -390,5 +390,6 @@
         android:layout_margin="16dp"
         android:clickable="true"
         android:tint="@color/white"
-        app:srcCompat="@android:drawable/ic_input_add"/>
+        app:srcCompat="@android:drawable/ic_input_add"
+        android:focusable="true" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

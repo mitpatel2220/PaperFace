@@ -44,22 +44,25 @@ import com.meet.paperface.fragment.Home_Fragment;
 import com.meet.paperface.fragment.Past_Order_Fragment;
 import com.meet.paperface.fragment.Story_Fragment;
 import com.meet.paperface.fragment.Your_Order_Fragment;
+
+import java.util.Objects;
+
 public class MainLayout extends AppCompatActivity implements BottomSheetName.BottomSheetListener{
 
-    private AppBarConfiguration mAppBarConfiguration;
-    ActionBarDrawerToggle mtoggle;
+    private ActionBarDrawerToggle mtoggle;
     private FirebaseAuth mAuth;
-    FirebaseAuth firebaseAuth;
-    DatabaseReference databaseReference, dr;
+    private FirebaseAuth firebaseAuth;
+    private DatabaseReference databaseReference;
+    private DatabaseReference dr;
     private GoogleSignInClient mGoogleSignInClient;
-    SharedPreferences sharedPreferences;
-    public static final String mypreference = "mypreference";
+    private SharedPreferences sharedPreferences;
+    private static final String mypreference = "mypreference";
     public static final String Name = "nameKey";
-    public static final String hello = "login";
-    TextView name;
-    FragmentTransaction fragmentTransaction;
-    int i = 1;
-    View view;
+    private static final String hello = "login";
+    private TextView name;
+    private FragmentTransaction fragmentTransaction;
+    private int i = 1;
+    private View view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +75,7 @@ public class MainLayout extends AppCompatActivity implements BottomSheetName.Bot
         mtoggle = new ActionBarDrawerToggle( this, drawer, R.string.open, R.string.close );
         drawer.addDrawerListener( mtoggle );
         mtoggle.syncState();
-        getSupportActionBar().setDisplayHomeAsUpEnabled( true );
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled( true );
         mAuth = FirebaseAuth.getInstance();
         checkConnection();
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder( GoogleSignInOptions.DEFAULT_SIGN_IN )
@@ -88,7 +91,7 @@ public class MainLayout extends AppCompatActivity implements BottomSheetName.Bot
 
         if(view1 !=null){
             InputMethodManager imm=(InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(view1.getWindowToken(),0);
+            Objects.requireNonNull(imm).hideSoftInputFromWindow(view1.getWindowToken(),0);
         }
 
 
@@ -105,8 +108,8 @@ public class MainLayout extends AppCompatActivity implements BottomSheetName.Bot
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
 
-                String x=dataSnapshot.child("yes").getValue().toString();
-                String pages=dataSnapshot.child("pages").getValue().toString();
+                String x= Objects.requireNonNull(dataSnapshot.child("yes").getValue()).toString();
+                String pages= Objects.requireNonNull(dataSnapshot.child("pages").getValue()).toString();
 
                 if(x.equals("yes")){
                     showDialogeforpaper();
@@ -118,8 +121,7 @@ public class MainLayout extends AppCompatActivity implements BottomSheetName.Bot
         });
 
 
-        
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
+        AppBarConfiguration mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_Yourorder, R.id.nav_pastorder, R.id.nav_Aboutus, R.id.nav_AnyImpruvment, R.id.nav_share, R.id.nav_Story, R.id.nav_privacy)
                 .setDrawerLayout(drawer)
                 .build();
@@ -240,7 +242,7 @@ public class MainLayout extends AppCompatActivity implements BottomSheetName.Bot
 
     }
 
-    public void updatenavHolder() {
+    private void updatenavHolder() {
         NavigationView navigationView = findViewById(R.id.nav_view);
         View headerview = navigationView.getHeaderView(0);
         name = headerview.findViewById(R.id.person_name);
@@ -249,12 +251,12 @@ public class MainLayout extends AppCompatActivity implements BottomSheetName.Bot
         firebaseAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-        String myuid = firebaseUser.getUid();
+        String myuid = Objects.requireNonNull(firebaseUser).getUid();
         databaseReference.child(myuid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot ss : dataSnapshot.getChildren()) {
-                    String order1 = ss.getValue().toString();
+                    String order1 = Objects.requireNonNull(ss.getValue()).toString();
                     order.setText(order1 + " Orders");
                 }
             }
@@ -296,9 +298,9 @@ public class MainLayout extends AppCompatActivity implements BottomSheetName.Bot
         Toast.makeText(MainLayout.this, "Name changed", Toast.LENGTH_SHORT).show();
     }
 
-    public void checkConnection() {
+    private void checkConnection() {
         ConnectivityManager connectivityManager = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo network = connectivityManager.getActiveNetworkInfo();
+        NetworkInfo network = Objects.requireNonNull(connectivityManager).getActiveNetworkInfo();
         if (network != null) {
             if (network.getType() == ConnectivityManager.TYPE_WIFI) {
 //                Toast.makeText( getApplicationContext(), "WIFI ENABLED", Toast.LENGTH_SHORT ).show();
@@ -310,9 +312,11 @@ public class MainLayout extends AppCompatActivity implements BottomSheetName.Bot
         }
     }
 
-    public void showDialoge() {
+    private void showDialoge() {
         AlertDialog.Builder builderDia = new AlertDialog.Builder(this);
         builderDia.setTitle("No Internet Connection");
+        builderDia.setCancelable(false);
+
         builderDia.setMessage("You need to have Mobile Internet Connection or Wifi to access this.\n\nPress OK to Exit");
         builderDia.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
@@ -323,7 +327,7 @@ public class MainLayout extends AppCompatActivity implements BottomSheetName.Bot
         builderDia.show();
     }
 
-    public void showDialogeforpaper() {
+    private void showDialogeforpaper() {
         AlertDialog.Builder builderDia = new AlertDialog.Builder(this);
         // builderDia.setTitle("No Internet Connection");
         builderDia.setMessage("Pages are not available right now\n\nPress OK to Exit");
@@ -334,5 +338,12 @@ public class MainLayout extends AppCompatActivity implements BottomSheetName.Bot
             }
         });
         builderDia.show();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+   checkConnection();
     }
 }

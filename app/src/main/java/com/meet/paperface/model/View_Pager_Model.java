@@ -1,7 +1,7 @@
 package com.meet.paperface.model;
 public class View_Pager_Model {
     
-    int image;
+    private int image;
 
     public View_Pager_Model(int image) {
         this.image = image;

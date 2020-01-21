@@ -99,7 +99,8 @@
                 android:text="@string/log_in"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:textSize="19sp"/>
+                android:textSize="19sp"
+                tools:targetApi="lollipop" />
 
             <TextView
                 android:id="@+id/forgot"
@@ -111,7 +112,8 @@
                 android:clickable="true"
                 android:text="@string/forgot"
                 android:textColor="@color/gray"
-                android:textSize="16sp"/>
+                android:textSize="16sp"
+                android:focusable="true" />
         </RelativeLayout>
     </ScrollView>
 
@@ -131,7 +133,8 @@
             android:clickable="true"
             android:text="@string/signUp"
             android:textColor="@color/blue"
-            android:textSize="18sp"/>
+            android:textSize="18sp"
+            android:focusable="true" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -151,6 +154,7 @@
             android:clickable="true"
             android:text="@string/shopkeeper"
             android:textColor="@color/blue"
-            android:textSize="18sp"/>
+            android:textSize="18sp"
+            android:focusable="true" />
     </RelativeLayout>
 </RelativeLayout>

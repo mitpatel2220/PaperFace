@@ -26,17 +26,17 @@ import com.meet.paperface.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
 /**
  * A simple {@link Fragment} subclass.
  */
 public class Past_Order_Fragment extends Fragment {
 
-    List<Past_Order_Model> listdata = new ArrayList<>();
-    RecyclerView rv;
-    Past_Order_Adapter adaptor;
-    private DatabaseReference mUsersDatabase;
-    private LinearLayoutManager mLayoutManager;
-    FirebaseAuth firebaseAuth;
+    private final List<Past_Order_Model> listdata = new ArrayList<>();
+    private RecyclerView rv;
+    private Past_Order_Adapter adaptor;
+    private FirebaseAuth firebaseAuth;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,26 +49,26 @@ public class Past_Order_Fragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated( view, savedInstanceState );
-        mUsersDatabase = FirebaseDatabase.getInstance().getReference().child( "Pastorder" );
-        mLayoutManager = new LinearLayoutManager( getContext() );
+        DatabaseReference mUsersDatabase = FirebaseDatabase.getInstance().getReference().child("Pastorder");
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         rv = view.findViewById( R.id.recycle_view );
         rv.setHasFixedSize( true );
         rv.setLayoutManager( new LinearLayoutManager( getContext() ) );
         mUsersDatabase.keepSynced( true );
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-        final String myuid = firebaseUser.getUid();
+        final String myuid = Objects.requireNonNull(firebaseUser).getUid();
 
-        getActivity().setTitle("Past Orders");
+        Objects.requireNonNull(getActivity()).setTitle("Past Orders");
         View view1=getActivity().getCurrentFocus();
 
         if(view1 !=null){
             InputMethodManager imm=(InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(view1.getWindowToken(),0);
+            Objects.requireNonNull(imm).hideSoftInputFromWindow(view1.getWindowToken(),0);
         }
 
 
-        mUsersDatabase.child( myuid ).addValueEventListener( new ValueEventListener() {
+        mUsersDatabase.child( myuid ).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot ss : dataSnapshot.getChildren()) {

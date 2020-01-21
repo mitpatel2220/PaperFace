@@ -15,8 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 public class Your_Order_Adapter extends RecyclerView.Adapter<Your_Order_Adapter.ViewHolder> {
 
-    private Context fcontext;
-    private List<Your_Order_Model> fupload = new ArrayList<>();
+    private final Context fcontext;
+    private List<Your_Order_Model> fupload;
 
     public void add(Your_Order_Model s) {
         fupload.add( s );
@@ -51,7 +51,9 @@ public class Your_Order_Adapter extends RecyclerView.Adapter<Your_Order_Adapter.
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView page, rs, date;
+        final TextView page;
+        final TextView rs;
+        final TextView date;
 
         ViewHolder(@NonNull View itemView) {
             super( itemView );

@@ -13,8 +13,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.meet.paperface.adapter.Diamond_jubily_adptor;
-import com.meet.paperface.hostelName.Diamond_jubile;
 import com.meet.paperface.model.Task_Class;
 import com.meet.paperface.model.Users;
 
@@ -23,12 +21,10 @@ import java.util.List;
 
 public class AllOrder extends AppCompatActivity {
 
-    List<Users> list_data = new ArrayList<>();
+    private final List<Users> list_data = new ArrayList<>();
     List<Task_Class> list = new ArrayList<>();
-    RecyclerView rv;
-    Allorder_adapter adaptor;
-    private DatabaseReference mUsersDatabase;
-    private LinearLayoutManager mLayoutManager;
+    private RecyclerView rv;
+    private Allorder_adapter adaptor;
     String keyValue;
 
     @Override
@@ -37,12 +33,12 @@ public class AllOrder extends AppCompatActivity {
         setContentView(R.layout.activity_all_order);
         Toolbar toolbar = findViewById( R.id.toolbar );
         setSupportActionBar( toolbar );
-        mUsersDatabase = FirebaseDatabase.getInstance().getReference().child( "Allorders" );
-        mLayoutManager = new LinearLayoutManager( this );
+        DatabaseReference mUsersDatabase = FirebaseDatabase.getInstance().getReference().child("Allorders");
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
         rv = findViewById( R.id.recycler_one );
         rv.setHasFixedSize( true );
         rv.setLayoutManager( new LinearLayoutManager( this ) );
-        mUsersDatabase.addValueEventListener( new ValueEventListener() {
+        mUsersDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot ss : dataSnapshot.getChildren()) {

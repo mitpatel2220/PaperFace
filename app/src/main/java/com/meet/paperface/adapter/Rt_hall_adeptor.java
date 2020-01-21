@@ -30,13 +30,13 @@ import java.util.List;
 
 public class Rt_hall_adeptor extends RecyclerView.Adapter<Rt_hall_adeptor.ViewHolder>{
 
-    private Context fcontext;
-     List<Users> fupload = new ArrayList<>();
-     List<Task_Class> fupload1 = new ArrayList<>();
-    DatabaseReference dr;
-    DatabaseReference databaseReference;
-    DatabaseReference databaseReference1;
-    DatabaseReference databaseReferenceall;
+    private final Context fcontext;
+     private List<Users> fupload;
+     private List<Task_Class> fupload1;
+    private DatabaseReference dr;
+    private DatabaseReference databaseReference;
+    private DatabaseReference databaseReference1;
+    private DatabaseReference databaseReferenceall;
 
     public void add(Users s) {
         fupload.add( s );
@@ -110,7 +110,6 @@ public class Rt_hall_adeptor extends RecyclerView.Adapter<Rt_hall_adeptor.ViewHo
                         if (task.isSuccessful()) {
                             Toast.makeText( fcontext, "Done", Toast.LENGTH_SHORT ).show();
 
-                        } else {
                         }
 
                     }
@@ -146,8 +145,15 @@ public class Rt_hall_adeptor extends RecyclerView.Adapter<Rt_hall_adeptor.ViewHo
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView hostelname, mobileno, name, other, payment, roomno, totalpage, totalrs;
-        ImageView x;
+        final TextView hostelname;
+        final TextView mobileno;
+        final TextView name;
+        final TextView other;
+        final TextView payment;
+        final TextView roomno;
+        final TextView totalpage;
+        final TextView totalrs;
+        final ImageView x;
 
         ViewHolder(@NonNull View itemView) {
             super( itemView );

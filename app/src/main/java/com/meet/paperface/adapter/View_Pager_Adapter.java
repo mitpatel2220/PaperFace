@@ -14,8 +14,8 @@ import com.meet.paperface.R;
 import java.util.List;
 public class View_Pager_Adapter extends PagerAdapter {
     
-    List<View_Pager_Model> list;
-    Context context;
+    private final List<View_Pager_Model> list;
+    private final Context context;
 
     public View_Pager_Adapter(List<View_Pager_Model> list, Context context) {
         this.list = list;
