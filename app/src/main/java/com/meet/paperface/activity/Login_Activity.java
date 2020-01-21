@@ -188,6 +188,7 @@ public class Login_Activity extends AppCompatActivity implements BottomSheetPass
         AlertDialog.Builder builderDia = new AlertDialog.Builder( this );
         builderDia.setTitle( "No Internet Connection" );
         builderDia.setMessage( "You need to have Mobile Internet Connection or Wifi to access this.\n\nPress OK to Exit" );
+        builderDia.setCancelable( false );
         builderDia.setPositiveButton( "OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {

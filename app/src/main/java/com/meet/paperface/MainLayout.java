@@ -337,6 +337,7 @@ public class MainLayout extends AppCompatActivity implements BottomSheetName.Bot
                 finish();
             }
         });
+        builderDia.setCancelable( false );
         builderDia.show();
     }
 

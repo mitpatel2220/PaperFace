@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.meet.paperface.model.Users;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Allorder_adapter extends RecyclerView.Adapter<Allorder_adapter.ViewHolder>{
