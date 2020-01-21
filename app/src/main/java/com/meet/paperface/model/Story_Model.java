@@ -1,9 +1,9 @@
 package com.meet.paperface.model;
 public class Story_Model {
     
-    String pictures;
-    String thesis;
-    String name;
+    private String pictures;
+    private String thesis;
+    private String name;
 
     public Story_Model(String pictures, String thesis,String name) {
         this.pictures = pictures;

@@ -30,13 +30,13 @@ import java.util.List;
 
 public class Meghani_parivar_adptor extends RecyclerView.Adapter<Meghani_parivar_adptor.ViewHolder>{
 
-    private Context fcontext;
-    private List<Users> fupload = new ArrayList<>();
-    private List<Task_Class> fupload1 = new ArrayList<>();
-    DatabaseReference dr;
-    DatabaseReference databaseReference;
-    DatabaseReference databaseReference1;
-    DatabaseReference databaseReferenceall;
+    private final Context fcontext;
+    private List<Users> fupload;
+    private List<Task_Class> fupload1;
+    private DatabaseReference dr;
+    private DatabaseReference databaseReference;
+    private DatabaseReference databaseReference1;
+    private DatabaseReference databaseReferenceall;
 
     public void add(Users s) {
         fupload.add( s );
@@ -106,7 +106,6 @@ public class Meghani_parivar_adptor extends RecyclerView.Adapter<Meghani_parivar
                         if (task.isSuccessful()) {
                             Toast.makeText( fcontext, "Done", Toast.LENGTH_SHORT ).show();
 
-                        } else {
                         }
 
                     }
@@ -142,8 +141,15 @@ public class Meghani_parivar_adptor extends RecyclerView.Adapter<Meghani_parivar
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView hostelname, mobileno, name, other, payment, roomno, totalpage, totalrs;
-        ImageView x;
+        final TextView hostelname;
+        final TextView mobileno;
+        final TextView name;
+        final TextView other;
+        final TextView payment;
+        final TextView roomno;
+        final TextView totalpage;
+        final TextView totalrs;
+        final ImageView x;
 
         ViewHolder(@NonNull View itemView) {
             super( itemView );

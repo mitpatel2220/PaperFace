@@ -98,7 +98,8 @@
             android:text="@string/signUp"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="18sp"/>
+            android:textSize="18sp"
+            tools:targetApi="lollipop" />
 
         <TextView
             android:id="@+id/or"
@@ -124,6 +125,7 @@
             android:text="@string/conti"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="18sp"/>
+            android:textSize="18sp"
+            tools:targetApi="lollipop" />
     </RelativeLayout>
 </ScrollView>

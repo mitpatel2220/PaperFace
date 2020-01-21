@@ -1,7 +1,6 @@
 package com.meet.paperface.adapter;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,13 +26,14 @@ import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Story_Adapter extends RecyclerView.Adapter<Story_Adapter.ViewHolder> {
 
-    private Context context;
-    private List<Story_Model> list;
-    DatabaseReference dr;
-    FirebaseAuth fa;
+    private final Context context;
+    private final List<Story_Model> list;
+    private DatabaseReference dr;
+    private FirebaseAuth fa;
 
     public Story_Adapter(Context context, List<Story_Model> list) {
         this.context = context;
@@ -53,7 +53,7 @@ public class Story_Adapter extends RecyclerView.Adapter<Story_Adapter.ViewHolder
 
         fa = FirebaseAuth.getInstance();
         FirebaseUser fu = fa.getCurrentUser();
-        final String myuid = fu.getUid().toString();
+        final String myuid = Objects.requireNonNull(fu).getUid();
         dr = FirebaseDatabase.getInstance().getReference().child("Reaction");
 
 
@@ -64,7 +64,7 @@ public class Story_Adapter extends RecyclerView.Adapter<Story_Adapter.ViewHolder
            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                try {
-                  final String action=dataSnapshot.child(myuid).getValue().toString();
+                  final String action= Objects.requireNonNull(dataSnapshot.child(myuid).getValue()).toString();
                    if(action.equals("like")){
 
 
@@ -130,12 +130,13 @@ public class Story_Adapter extends RecyclerView.Adapter<Story_Adapter.ViewHolder
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView imageView;
-        TextView textView;
-        Button like, dislike;
+        final ImageView imageView;
+        final TextView textView;
+        final Button like;
+        final Button dislike;
 
 
-        public ViewHolder(@NonNull View itemView) {
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.story);
             textView = itemView.findViewById(R.id.poem);

@@ -1,36 +1,23 @@
 package com.meet.paperface;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.meet.paperface.hostelName.Diamond_jubile;
-import com.meet.paperface.model.Task_Class;
 import com.meet.paperface.model.Users;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 
 public class Allorder_adapter extends RecyclerView.Adapter<Allorder_adapter.ViewHolder>{
 
-    private Context fcontext;
-    private List<Users> fupload = new ArrayList<>();
+    private final Context fcontext;
+    private List<Users> fupload;
 
     public void add(Users s) {
         fupload.add( s );
@@ -70,7 +57,14 @@ public class Allorder_adapter extends RecyclerView.Adapter<Allorder_adapter.View
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView hostelname, mobileno, name, other, payment, roomno, totalpage, totalrs;
+        final TextView hostelname;
+        final TextView mobileno;
+        final TextView name;
+        final TextView other;
+        final TextView payment;
+        final TextView roomno;
+        final TextView totalpage;
+        final TextView totalrs;
 
         ViewHolder(@NonNull View itemView) {
             super( itemView );

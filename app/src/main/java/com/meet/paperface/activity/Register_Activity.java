@@ -4,10 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -44,18 +44,22 @@ public class Register_Activity extends AppCompatActivity {
                              "(?=\\S+$)" +           //no white spaces
                              ".{4,10}" +               //at least 4 characters
                              "$" );
-    EditText Username, Register_email, password;
-    FirebaseAuth mAuth;
-    Button Sign_Up, Google_sign;
-    TextView text;
+    private EditText Username;
+    private EditText Register_email;
+    private EditText password;
+
+    private FirebaseAuth mAuth;
+    private Button Sign_Up;
+    private Button Google_sign;
+    private TextView text;
     private GoogleSignInClient mGoogleSignInClient;
     private static final int RC_SIGN_IN = 1;
     private static final String TAG = "GoogleActivity";
     private ProgressDialog mRegProgress;
-    SharedPreferences sp;
-    public static final String mypreference = "mypreference";
-    public static final String Name = "nameKey";
-    public static final String hello = "login";
+    private SharedPreferences sp;
+    private static final String mypreference = "mypreference";
+    private static final String Name = "nameKey";
+    private static final String hello = "login";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +73,9 @@ public class Register_Activity extends AppCompatActivity {
         text = findViewById( R.id.or );
         mAuth = FirebaseAuth.getInstance();
         mRegProgress = new ProgressDialog( this );
-       
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
         sp = getSharedPreferences( mypreference, Context.MODE_PRIVATE );
        
         Sign_Up.setOnClickListener( new View.OnClickListener() {
@@ -195,17 +201,16 @@ public class Register_Activity extends AppCompatActivity {
 
     private void updateUI(FirebaseUser user) {
 //        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount( getApplicationContext() );
-        if (user != null) {
-//            String email = user.getEmail();
-////            String photo = String.valueOf( user.getPhotoUrl() );
-//            text.setText( "Info:\n" );
-//            text.setText( name + "\n" );
-////            text.setText( name );
-//            text.setText( email );
-        }
-//        } else {
+        //            String email = user.getEmail();
+        ////            String photo = String.valueOf( user.getPhotoUrl() );
+        //            text.setText( "Info:\n" );
+        //            text.setText( name + "\n" );
+        ////            text.setText( name );
+        //            text.setText( email );
+        //        } else {
 //            text.setText( "Sign_Out_Successfully" );
 //        }
     }
+
 
 }

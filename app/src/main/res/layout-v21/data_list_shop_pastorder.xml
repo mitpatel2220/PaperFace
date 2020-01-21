@@ -12,7 +12,8 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:elevation="10dp"
-        app:cardCornerRadius="25dp">
+        app:cardCornerRadius="25dp"
+        android:focusable="true">
 
         <TextView
             android:layout_width="match_parent"

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -12,9 +13,10 @@ import android.widget.Toast;
 import com.meet.paperface.R;
 public class Shopkeeper_Activity extends AppCompatActivity {
 
-    EditText id_Shopkeeper, password;
-    Button login;
-    int click = 1;
+    private EditText id_Shopkeeper;
+    private EditText password;
+    private Button login;
+    private int click = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +24,7 @@ public class Shopkeeper_Activity extends AppCompatActivity {
         setContentView( R.layout.activity_shopkeeper );
         id_Shopkeeper = findViewById( R.id.email_ShopKeeper );
         password = findViewById( R.id.password_ShopKeeper );
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         if (click == 1 ){
             password.setTransformationMethod( new PasswordTransformationMethod() );

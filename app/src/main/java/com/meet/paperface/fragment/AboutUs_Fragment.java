@@ -14,14 +14,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.meet.paperface.R;
+
+import java.util.Objects;
+
 /**
  * A simple {@link Fragment} subclass.
  */
 public class AboutUs_Fragment extends Fragment {
-    ImageView imageView1, imageView2, imageView3, imageView4;
+    private ImageView imageView1;
+    private ImageView imageView2;
+    private ImageView imageView3;
+    private ImageView imageView4;
 
     public AboutUs_Fragment() {
         // Required empty public constructor
@@ -41,13 +46,13 @@ public class AboutUs_Fragment extends Fragment {
         imageView2 = view.findViewById( R.id.team_two );
         imageView3 = view.findViewById( R.id.team_three );
         imageView4 = view.findViewById( R.id.team_four );
-        getActivity().setTitle("About us");
+        Objects.requireNonNull(getActivity()).setTitle("About us");
 
         View view1=getActivity().getCurrentFocus();
 
         if(view1 !=null){
             InputMethodManager imm=(InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(view1.getWindowToken(),0);
+            Objects.requireNonNull(imm).hideSoftInputFromWindow(view1.getWindowToken(),0);
         }
 
         imageView1.setOnClickListener( new View.OnClickListener() {

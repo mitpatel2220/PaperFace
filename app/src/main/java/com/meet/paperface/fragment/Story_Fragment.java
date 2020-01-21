@@ -25,15 +25,17 @@ import com.meet.paperface.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
 /**
  * A simple {@link Fragment} subclass.
  */
 public class Story_Fragment extends Fragment {
 
-    RecyclerView recyclerView;
-    DatabaseReference databaseReference;
-    Story_Adapter story_adapter;
-    List<Story_Model> models;
+    private RecyclerView recyclerView;
+    private DatabaseReference databaseReference;
+    private Story_Adapter story_adapter;
+    private List<Story_Model> models;
 
     public Story_Fragment() {
         // Required empty public constructor
@@ -56,12 +58,12 @@ public class Story_Fragment extends Fragment {
         databaseReference = FirebaseDatabase.getInstance().getReference().child( "Story" );
         databaseReference.keepSynced( true );
 
-        getActivity().setTitle("Story");
+        Objects.requireNonNull(getActivity()).setTitle("Story");
         View view1=getActivity().getCurrentFocus();
 
         if(view1 !=null){
             InputMethodManager imm=(InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(view1.getWindowToken(),0);
+            Objects.requireNonNull(imm).hideSoftInputFromWindow(view1.getWindowToken(),0);
         }
 
         databaseReference.addValueEventListener( new ValueEventListener() {

@@ -26,8 +26,14 @@ public class Recycler_Activity extends AppCompatActivity {
 //    private DatabaseReference mUsersDatabase;
 //    private LinearLayoutManager mLayoutManager;
 //    String keyValue;
-    CardView Mv_hall, RT_hall, SJ_hall, Diamond_jubily, Meghani_parivar, others, all_orders;
-    FloatingActionButton floatingActionButton;
+    private CardView Mv_hall;
+    private CardView RT_hall;
+    private CardView SJ_hall;
+    private CardView Diamond_jubily;
+    private CardView Meghani_parivar;
+    private CardView others;
+    private CardView all_orders;
+    private FloatingActionButton floatingActionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -12,8 +12,8 @@ import com.meet.paperface.MainLayout;
 import com.meet.paperface.R;
 public class Splash_Screen extends AppCompatActivity {
 
-    FirebaseAuth firebaseAuth;
-    FirebaseUser firebaseUser;
+    private FirebaseAuth firebaseAuth;
+    private FirebaseUser firebaseUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -22,18 +22,19 @@ import com.meet.paperface.R;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 public class Past_Order_Adapter extends RecyclerView.Adapter<Past_Order_Adapter.ViewHolder> {
 
 
-    private Context fcontext;
-    private List<Past_Order_Model> fupload = new ArrayList<>();
+    private final Context fcontext;
+    private List<Past_Order_Model> fupload;
     SharedPreferences sp;
     public static final String mypreference = "mypreference";
     public static final String Name = "nameKey";
 
-    FirebaseAuth firebaseAuth;
-    DatabaseReference databaseReference;
+    private FirebaseAuth firebaseAuth;
+    private DatabaseReference databaseReference;
 
 
     public void add(Past_Order_Model s) {
@@ -77,7 +78,7 @@ public class Past_Order_Adapter extends RecyclerView.Adapter<Past_Order_Adapter.
         databaseReference= FirebaseDatabase.getInstance().getReference().child("Users");
 
         FirebaseUser firebaseUser=firebaseAuth.getCurrentUser();
-        String myuid=firebaseUser.getUid();
+        String myuid= Objects.requireNonNull(firebaseUser).getUid();
         HashMap<String,Integer > map=new HashMap<>();
         map.put(myuid,fupload.size());
 
@@ -94,7 +95,9 @@ public class Past_Order_Adapter extends RecyclerView.Adapter<Past_Order_Adapter.
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        TextView page, rs, date;
+        final TextView page;
+        final TextView rs;
+        final TextView date;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);

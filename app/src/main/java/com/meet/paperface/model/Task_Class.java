@@ -2,7 +2,7 @@ package com.meet.paperface.model;
 
 public class Task_Class {
 
-    String key;
+    private String key;
 
     public Task_Class(){
 

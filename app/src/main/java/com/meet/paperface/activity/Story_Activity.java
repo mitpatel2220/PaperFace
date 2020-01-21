@@ -29,13 +29,14 @@ import com.meet.paperface.model.Story_Model;
 import com.meet.paperface.R;
 public class Story_Activity extends AppCompatActivity {
 
-    ImageView send_pictures;
-    EditText send_thesis, send_title;
-    Button send_data;
-    DatabaseReference databaseReference;
-    StorageReference storageReference;
-    ProgressBar progressBar;
-    Uri uri;
+    private ImageView send_pictures;
+    private EditText send_thesis;
+    private EditText send_title;
+    private Button send_data;
+    private DatabaseReference databaseReference;
+    private StorageReference storageReference;
+    private ProgressBar progressBar;
+    private Uri uri;
     private StorageTask upload_task;
 
     @Override

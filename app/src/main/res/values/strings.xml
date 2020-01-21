@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="app_name">DiamondZone</string>
     <string name="title_activity_main_layout">MainLayout</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -74,7 +74,7 @@
     <string name="your">“Your attitude, not your aptitude,\nwill determine your altitude.”</string>
     <string name="reset_Password">You will get the mail after completing this step to reset password</string>
     <string name="your_order_is_delivered">Your Order is delivered</string>
-    <string name="about">Team Diamond has started this, with an understanding of the problems around the hostelers and thinks about how to resolve it or make it easy. So initially the team has started with small initiative and future planning.\n\nThis app provides you online services of the hostelers needs. Now you can buy good journal papers instantly and online using this app with the same price and exciting surprises. Right now, we have just initiated with journal papers for MSU hall residential students afterward we are adding some new things according to your feedback and ideas.\n\nIf you have any idea but you do not know how to take initiative or other else and also need an app developer then we will give our best to support you. So for any help from our side or to know about our experience you are free to contact us.</string>
+    <string name="about">Team Diamond has started this, with an understanding of the problems around the hostelers and thinks about how to resolve it or make it easy. So initially the team has started with small initiative and future planning.\n\nThis app provides you online services of the hostelers needs. Now you can buy good journal papers instantly and online using this app with the best price and exciting surprises. Right now, we have just initiated with journal papers for MSU hall residential students afterward we are adding some new things according to your feedback and ideas.\n\nIf you have any idea but you do not know how to take initiative or other else and also need an app developer then we will give our best to support you. So for any help from our side or to know about our experience you are free to contact us.</string>
     <string name="phone_number">Phone Number</string>
     <string name="kartik_team">Kartik patel\nMech. Engg\nMSUTecho\nkartik_patel_0</string>
     <string name="Chirag_team">Chirag Gohil\nMech. Engg\nMSUTecho\nInsta id:cmgohil.10</string>
@@ -82,7 +82,7 @@
     <string name="our_team">Our Team</string>
     <string name="x">100 X </string>
     <string name="billing_details">Billing Details</string>
-    <string name="gmail">diamond209853@gmail.com</string>
+    <string name="gmail">diamondzone.contact@gmail.com</string>
     <string name="all_orders">All Orders</string>
     <string name="all_order_quote">“Business opportunities are like buses, there\'s always another one coming.”</string>
     <string-array name="HostelName">
