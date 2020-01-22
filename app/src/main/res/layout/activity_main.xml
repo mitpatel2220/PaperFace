@@ -131,6 +131,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:clickable="true"
+            android:layout_centerHorizontal="true"
             android:text="@string/signUp"
             android:textColor="@color/blue"
             android:textSize="18sp"
@@ -143,6 +144,7 @@
             android:layout_marginEnd="5dp"
             android:layout_toStartOf="@+id/shopkeeper"
             android:text="@string/are"
+            android:visibility="invisible"
             android:textSize="18sp"/>
 
         <TextView
@@ -155,6 +157,7 @@
             android:text="@string/shopkeeper"
             android:textColor="@color/blue"
             android:textSize="18sp"
+            android:visibility="invisible"
             android:focusable="true" />
     </RelativeLayout>
 </RelativeLayout>
