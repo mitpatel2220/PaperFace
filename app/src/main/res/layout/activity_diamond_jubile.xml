@@ -2,14 +2,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#4850ed"
     android:layout_height="match_parent"
+    android:background="@color/blue"
     tools:context=".hostelName.Diamond_jubile">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_one"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/recycler_one"/>
-
-
+        android:layout_height="match_parent"/>
 </RelativeLayout>

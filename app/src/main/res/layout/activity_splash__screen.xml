@@ -12,11 +12,13 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:contentDescription="@string/content"
         android:src="@drawable/printer"/>
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:contentDescription="@string/content"
         android:src="@drawable/welcome"/>
 </LinearLayout>

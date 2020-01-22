@@ -14,8 +14,8 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:elevation="10dp"
-        app:cardCornerRadius="30dp"
         android:focusable="true"
+        app:cardCornerRadius="30dp"
         tools:targetApi="lollipop">
 
         <LinearLayout
@@ -28,6 +28,7 @@
                 android:id="@+id/story"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
+                android:contentDescription="@string/content"
                 android:src="@drawable/printer"/>
 
             <TextView
@@ -42,26 +43,28 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:gravity="center"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/like"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:layout_width="150dp"
-                    android:paddingTop="20dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/likebutton"
-                    android:drawableTop="@drawable/thumb_up"/>
+                    android:drawableTop="@drawable/thumb_up"
+                    android:paddingTop="20dp"/>
 
                 <Button
                     android:id="@+id/dislike"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:layout_width="150dp"
-                    android:layout_marginStart="10dp"
-                    android:paddingTop="20dp"
-                    android:background="@drawable/likebutton"
                     android:layout_height="wrap_content"
-                    android:drawableTop="@drawable/thumb_down"/>
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/likebutton"
+                    android:drawableTop="@drawable/thumb_down"
+                    android:paddingTop="20dp"/>
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
