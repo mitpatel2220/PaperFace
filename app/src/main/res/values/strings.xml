@@ -20,13 +20,14 @@
     <string name="log_in">Log in</string>
     <string name="forgot">Forgot Password?</string>
     <string name="signUp">Create an account or Sign Up</string>
+    <string name="sign_Up">Sign Up</string>
     <string name="are">Are you</string>
     <string name="shopkeeper">Shopkeeper?</string>
     <string name="content">contentDescription</string>
     <string name="it">Its easier to sign up now</string>
     <string name="userName">User Name</string>
     <string name="or">Or</string>
-    <string name="conti">Continue with Gmail</string>
+    <string name="conti">Continue with Google</string>
     <string name="Shopkeeper">Shopkeeper</string>
     <string name="goToShop">Go to Shop</string>
     <!-- TODO: Remove or change this placeholder text -->

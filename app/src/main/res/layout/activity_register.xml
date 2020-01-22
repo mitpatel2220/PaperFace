@@ -20,7 +20,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="100dp"
             android:fontFamily="sans-serif-medium"
-            android:text="@string/signUp"
+            android:text="@string/sign_Up"
             android:textColor="@color/darkBlack"
             android:textSize="24sp"/>
 
@@ -95,7 +95,7 @@
             android:layout_marginTop="12dp"
             android:background="@drawable/btnblue"
             android:elevation="10dp"
-            android:text="@string/signUp"
+            android:text="@string/sign_Up"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="18sp"
