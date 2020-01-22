@@ -14,8 +14,8 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="40dp"
-        android:layout_marginTop="7dp"
         android:layout_height="40dp"
+        android:layout_marginTop="7dp"
         android:contentDescription="@string/nav_header_desc"
         app:srcCompat="@drawable/user"/>
 
@@ -38,6 +38,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="6dp"
         android:layout_toEndOf="@+id/person_name"
+        android:contentDescription="@string/content"
         android:src="@drawable/ic_edit_black_24dp"/>
 
     <TextView
@@ -47,7 +48,7 @@
         android:layout_below="@+id/person_name"
         android:layout_marginStart="12dp"
         android:layout_toEndOf="@+id/imageView"
-        android:text="0 order"
+        android:text="@string/_0_order"
         android:textColor="@color/darkBlack"
         android:textSize="13sp"/>
 </RelativeLayout>

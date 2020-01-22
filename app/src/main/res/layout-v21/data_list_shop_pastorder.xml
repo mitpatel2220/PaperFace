@@ -12,8 +12,8 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:elevation="10dp"
-        app:cardCornerRadius="25dp"
-        android:focusable="true">
+        android:focusable="true"
+        app:cardCornerRadius="25dp">
 
         <TextView
             android:layout_width="match_parent"
@@ -32,7 +32,6 @@
             android:padding="20dp">
 
             <TextView
-                android:id="@+id/card_Pages_shop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
@@ -53,7 +52,6 @@
                 android:textSize="18sp"/>
 
             <TextView
-                android:id="@+id/card_Rupees_shop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/card_Pages_shop_blank"
@@ -76,7 +74,6 @@
                 android:textSize="18sp"/>
 
             <TextView
-                android:id="@+id/card_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/card_Rupees_shop_blank"

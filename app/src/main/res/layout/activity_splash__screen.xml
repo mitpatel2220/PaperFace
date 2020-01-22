@@ -3,20 +3,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:padding="20dp"
     android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="20dp"
     tools:context=".activity.Splash_Screen">
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="200dp"
+        android:contentDescription="@string/content"
         android:src="@drawable/printer"/>
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:contentDescription="@string/content"
         android:src="@drawable/welcome"/>
 </LinearLayout>
