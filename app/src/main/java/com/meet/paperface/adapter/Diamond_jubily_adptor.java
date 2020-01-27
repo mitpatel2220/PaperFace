@@ -170,9 +170,7 @@ public class Diamond_jubily_adptor extends RecyclerView.Adapter<Diamond_jubily_a
             totalrs = itemView.findViewById( R.id.card_Rupees_Blank );
             date = itemView.findViewById( R.id.card_date_blank );
 
-            x = itemView.findViewById( R.id.imageview );
-
-
+              x = itemView.findViewById( R.id.imageview );
 
         }
     }
