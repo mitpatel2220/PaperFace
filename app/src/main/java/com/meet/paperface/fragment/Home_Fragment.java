@@ -23,6 +23,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.meet.paperface.BlankActivity;
+import com.meet.paperface.CartActivity;
+import com.meet.paperface.DoublePAgeActivity;
+import com.meet.paperface.GraphActivity;
+import com.meet.paperface.SinglePageActivity;
 import com.meet.paperface.activity.Payment_Activity;
 import com.meet.paperface.adapter.View_Pager_Adapter;
 import com.meet.paperface.model.View_Pager_Model;
@@ -39,6 +44,13 @@ public class Home_Fragment extends Fragment {
 
     private Button ok;
     private Button done;
+    private Button single;
+    private Button Double;
+    private Button blank;
+    private Button grapg;
+    private Button cart;
+
+
     private EditText edit_how;
     private EditText edit_extra;
     private TextView edit_page;
@@ -65,12 +77,21 @@ public class Home_Fragment extends Fragment {
         super.onViewCreated( view, savedInstanceState );
         ok = view.findViewById( R.id.ok );
         done = view.findViewById( R.id.done );
+        single = view.findViewById( R.id.single );
+        Double = view.findViewById( R.id.doublep );
+        blank = view.findViewById( R.id.blank );
+        grapg = view.findViewById( R.id.graph );
+        cart = view.findViewById( R.id.cart );
+
+
+
+
         edit_how = view.findViewById( R.id.edit_How );
         edit_extra = view.findViewById( R.id.edit_Extra );
         edit_page = view.findViewById( R.id.edit_Pages );
         edit_rs = view.findViewById( R.id.edit_Rs );
         viewPager = view.findViewById( R.id.pager );
-        textview1=view.findViewById(R.id.textview1);
+        textview1=view.findViewById(R.id.textView1);
         List<View_Pager_Model> view_pager_models = new ArrayList<>();
         View_Pager_Adapter view_pager_adapter = new View_Pager_Adapter( view_pager_models, getContext() );
         view_pager_models.add( new View_Pager_Model( R.drawable.sheet_third ) );
@@ -111,6 +132,49 @@ public class Home_Fragment extends Fragment {
         });
 
 
+        single.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+               Intent in=new Intent(getContext(), SinglePageActivity.class);
+               startActivity(in);
+
+            }
+        });
+        Double.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in=new Intent(getContext(), DoublePAgeActivity.class);
+                startActivity(in);
+
+
+            }
+        });blank.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent in=new Intent(getContext(), BlankActivity.class);
+                startActivity(in);
+
+            }
+        });grapg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent in=new Intent(getContext(), GraphActivity.class);
+                startActivity(in);
+
+            }
+        });cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in=new Intent(getContext(), CartActivity.class);
+                startActivity(in);
+
+
+            }
+        });
+
         ok.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -127,7 +191,9 @@ public class Home_Fragment extends Fragment {
 
                 String pages1 = edit_how.getText().toString();
 
-                if (pages1.isEmpty() || pages1.equals("0")) {
+                String pages2 = edit_how.getText().toString();
+
+                if (pages2.isEmpty() || pages2.equals("0") || pages2.equals("00") || pages2.equals("000") || pages2.equals("0000") ) {
                     Toast.makeText( getActivity(), "Please enter Bunch of pages", Toast.LENGTH_SHORT ).show();
 
                     edit_how.setError("Please enter Bunch of pages");

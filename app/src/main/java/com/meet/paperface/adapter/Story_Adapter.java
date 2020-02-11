@@ -82,6 +82,7 @@ public class Story_Adapter extends RecyclerView.Adapter<Story_Adapter.ViewHolder
                         }
                     }catch (Exception e){
 
+                        e.printStackTrace();
 
                     }
 

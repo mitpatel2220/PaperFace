@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,12 +20,21 @@ public class BottomSheetPassword extends BottomSheetDialogFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view2 = inflater.inflate( R.layout.bottom_reset_password, container, false );
-        final TextView textView = view2.findViewById( R.id.reset_pass );
+        final EditText textView = view2.findViewById( R.id.reset_pass );
         Button button = view2.findViewById( R.id.reset_password );
         button.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                listener.onButtonclicked( textView.getText().toString() );
+
+                String forpass = textView.getText().toString();
+
+                if(forpass.isEmpty()){
+
+                    textView.setError("Please enter your name");
+                }else {
+                    listener.onButtonclicked(textView.getText().toString());
+
+                }
                 dismiss();
             }
         } );

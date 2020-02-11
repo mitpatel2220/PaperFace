@@ -52,6 +52,8 @@ public class MainLayout extends AppCompatActivity implements BottomSheetName.Bot
     private ActionBarDrawerToggle mtoggle;
     private FirebaseAuth mAuth;
     private FirebaseAuth firebaseAuth;
+    private FirebaseAuth firebaseAuth1;
+
     private DatabaseReference databaseReference;
     private DatabaseReference dr;
     private GoogleSignInClient mGoogleSignInClient;
@@ -59,7 +61,7 @@ public class MainLayout extends AppCompatActivity implements BottomSheetName.Bot
     private static final String mypreference = "mypreference";
     public static final String Name = "nameKey";
     private static final String hello = "login";
-    private TextView name;
+    private TextView name,gmail;
     private FragmentTransaction fragmentTransaction;
     private int i = 1;
 
@@ -118,7 +120,7 @@ public class MainLayout extends AppCompatActivity implements BottomSheetName.Bot
 
 
         AppBarConfiguration mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_Yourorder, R.id.nav_pastorder, R.id.nav_Aboutus, R.id.nav_AnyImpruvment, R.id.nav_share, R.id.nav_Story,R.id.nav_order, R.id.nav_privacy)
+                R.id.nav_home, R.id.nav_Yourorder, R.id.nav_pastorder, R.id.nav_Aboutus, R.id.nav_AnyImpruvment, R.id.nav_share, R.id.nav_Story, R.id.nav_privacy)
                 .setDrawerLayout(drawer)
                 .build();
 
@@ -157,12 +159,7 @@ public class MainLayout extends AppCompatActivity implements BottomSheetName.Bot
                     intent.putExtra(Intent.EXTRA_SUBJECT, "subject here");
                     intent.putExtra(Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=com.meet.paperface");
                     startActivity(Intent.createChooser(intent, "Share via.."));
-                }else if (id == R.id.nav_order) {
-                    fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction.replace(R.id.frame, new Ordersfragment());
-                    fragmentTransaction.commit();
-                    i = 0;
-                } else if (id == R.id.nav_Story) {
+                }else if (id == R.id.nav_Story) {
                     fragmentTransaction = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.frame, new Story_Fragment());
                     fragmentTransaction.commit();
@@ -239,6 +236,14 @@ public class MainLayout extends AppCompatActivity implements BottomSheetName.Bot
         NavigationView navigationView = findViewById(R.id.nav_view);
         View headerview = navigationView.getHeaderView(0);
         name = headerview.findViewById(R.id.person_name);
+        gmail = headerview.findViewById(R.id.textmail);
+
+        firebaseAuth1=FirebaseAuth.getInstance();
+        FirebaseUser user1=firebaseAuth1.getCurrentUser();
+        String mygmail=user1.getEmail().toString();
+        gmail.setText(mygmail);
+
+
         final TextView order = headerview.findViewById(R.id.textView);
         ImageView userNameEdit = headerview.findViewById(R.id.edit);
         firebaseAuth = FirebaseAuth.getInstance();

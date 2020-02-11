@@ -14,8 +14,8 @@ import com.meet.paperface.model.Your_Order_Model;
 import java.util.List;
 public class Your_Order_Adapter extends RecyclerView.Adapter<Your_Order_Adapter.ViewHolder> {
 
-    private final Context fcontext;
-    private List<Your_Order_Model> fupload;
+      Context fcontext;
+     List<Your_Order_Model> fupload;
 
     public void add(Your_Order_Model s) {
         fupload.add( s );
@@ -31,7 +31,9 @@ public class Your_Order_Adapter extends RecyclerView.Adapter<Your_Order_Adapter.
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from( fcontext ).inflate( R.layout.data_list_shop, parent, false );
-        return new ViewHolder( view );
+
+        ViewHolder holder=new ViewHolder(view);
+        return holder;
 
     }
 
@@ -50,9 +52,9 @@ public class Your_Order_Adapter extends RecyclerView.Adapter<Your_Order_Adapter.
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        final TextView page;
-        final TextView rs;
-        final TextView date;
+         TextView page;
+         TextView rs;
+         TextView date;
 
         ViewHolder(@NonNull View itemView) {
             super( itemView );

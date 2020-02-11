@@ -1,12 +1,14 @@
 package com.meet.paperface;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.meet.paperface.model.Users;
@@ -48,6 +50,12 @@ public class Allorder_adapter extends RecyclerView.Adapter<Allorder_adapter.View
         holder.totalrs.setText( fupload.get( position ).getTotalrs() );
         holder.date.setText( fupload.get( position ).getDate() );
 
+//        if(fupload.get( position ).getPayment().equals("Payment Done")){
+//
+//            holder.cv.setCardBackgroundColor(Color.RED);
+//
+//        }
+
 
     }
 
@@ -67,9 +75,13 @@ public class Allorder_adapter extends RecyclerView.Adapter<Allorder_adapter.View
         final TextView totalpage;
         final TextView totalrs;
         TextView date;
+       CardView cv;
 
         ViewHolder(@NonNull View itemView) {
             super( itemView );
+
+            cv=itemView.findViewById(R.id.cv);
+
             hostelname = itemView.findViewById( R.id.card_hostelNum_blank );
             mobileno = itemView.findViewById( R.id.card_mobileno_blank );
             name = itemView.findViewById( R.id.card_name_blank );

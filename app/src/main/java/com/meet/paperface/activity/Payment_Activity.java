@@ -98,15 +98,15 @@ public class Payment_Activity extends AppCompatActivity implements AdapterView.O
             public void onClick(View view) {
 
 
-int k=0;
+                int k = 0;
                 ConnectivityManager connectivityManager = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
                 NetworkInfo network = Objects.requireNonNull(connectivityManager).getActiveNetworkInfo();
                 if (network != null) {
                     if (network.getType() == ConnectivityManager.TYPE_WIFI) {
-                        k=1;
+                        k = 1;
 //                Toast.makeText( getApplicationContext(), "WIFI ENABLED", Toast.LENGTH_SHORT ).show();
                     } else if (network.getType() == ConnectivityManager.TYPE_MOBILE) {
-                        k=1;
+                        k = 1;
 //                Toast.makeText( getApplicationContext(), "Mob ENABLED", Toast.LENGTH_SHORT ).show();
                     }
                 } else {
@@ -114,8 +114,7 @@ int k=0;
                 }
 
 
-
-                if(k==1){
+                if (k == 1) {
 
                     drAvail.addValueEventListener(new ValueEventListener() {
                         @Override
@@ -130,7 +129,6 @@ int k=0;
                                 // dialoge
 
                                 showDialogeforpaper();
-
 
 
                             } else {
@@ -164,7 +162,7 @@ int k=0;
                                 } else {
 
                                     checkConnection();
-                                    AlertDialog.Builder builder=new AlertDialog.Builder(Payment_Activity.this);
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(Payment_Activity.this);
                                     builder.setCancelable(true);
                                     builder.setMessage("confirm your order");
                                     builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -266,11 +264,8 @@ int k=0;
                                         }
                                     });
 
-                                    AlertDialog dialog=builder.create();
+                                    AlertDialog dialog = builder.create();
                                     dialog.show();
-
-
-
 
 
                                 }
@@ -287,7 +282,6 @@ int k=0;
                     });
 
                 }
-
 
 
             }
@@ -411,6 +405,7 @@ int k=0;
         });
         builderDia.show();
     }
+
     private void showDialoge() {
         AlertDialog.Builder builderDia = new AlertDialog.Builder(this);
         builderDia.setTitle("No Internet Connection");

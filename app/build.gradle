@@ -8,21 +8,23 @@ android {
         targetSdkVersion 29
 
         multiDexEnabled true
-        versionCode 7
-        versionName "7.0"
+        versionCode 9
+        versionName "7.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
-            debuggable false
-            jniDebuggable false
-            renderscriptDebuggable false
-            pseudoLocalesEnabled false
-            zipAlignEnabled true
+
+//            debuggable false
+//            jniDebuggable false
+//            renderscriptDebuggable false
+//            pseudoLocalesEnabled false
+//            zipAlignEnabled true
+
         }
     }
 
@@ -63,7 +65,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-crashlytics:17.0.0-beta01'
 
 }
-apply plugin: 'com.android.application'
+
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.android.application'
 

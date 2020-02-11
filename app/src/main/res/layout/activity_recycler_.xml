@@ -64,6 +64,36 @@
                     android:text="@string/know_more"
                     android:textColor="@color/darkBlack"
                     android:textSize="12sp"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="30dp"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/countRThall"
+                         android:layout_marginTop="90dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="00"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+
+
+                        >
+
+
+                    </TextView>
+
+
+                </LinearLayout>
+
+
+
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -116,6 +146,34 @@
                     android:text="@string/know_more"
                     android:textColor="@color/darkBlack"
                     android:textSize="12sp"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="30dp"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/countMVhall"
+                        android:layout_marginTop="90dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="00"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+
+
+                        >
+
+
+                    </TextView>
+
+
+                </LinearLayout>
+
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -168,6 +226,35 @@
                     android:text="@string/know_more"
                     android:textColor="@color/darkBlack"
                     android:textSize="12sp"/>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="30dp"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/countSJhall"
+                        android:layout_marginTop="90dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="00"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+
+
+                        >
+
+
+                    </TextView>
+
+
+                </LinearLayout>
+
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -220,6 +307,35 @@
                     android:text="@string/know_more"
                     android:textColor="@color/darkBlack"
                     android:textSize="12sp"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="30dp"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/countDiamondJubily"
+                        android:layout_marginTop="90dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="00"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+
+
+                        >
+
+
+                    </TextView>
+
+
+                </LinearLayout>
+
+
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -272,6 +388,35 @@
                     android:text="@string/know_more"
                     android:textColor="@color/darkBlack"
                     android:textSize="12sp"/>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="30dp"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/countMeghaniParivar"
+                        android:layout_marginTop="90dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="00"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+
+
+                        >
+
+
+                    </TextView>
+
+
+                </LinearLayout>
+
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -324,6 +469,35 @@
                     android:text="@string/know_more"
                     android:textColor="@color/darkBlack"
                     android:textSize="12sp"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="30dp"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/countOthers"
+                        android:layout_marginTop="90dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="00"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+
+
+                        >
+
+
+                    </TextView>
+
+
+                </LinearLayout>
+
+
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -376,6 +550,35 @@
                     android:text="@string/know_more"
                     android:textColor="@color/darkBlack"
                     android:textSize="12sp"/>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="30dp"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/countAllorder"
+                        android:layout_marginTop="90dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="00"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+
+
+                        >
+
+
+                    </TextView>
+
+
+                </LinearLayout>
+
             </androidx.cardview.widget.CardView>
         </LinearLayout>
     </ScrollView>

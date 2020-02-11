@@ -26,6 +26,7 @@ import com.meet.paperface.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -67,6 +68,7 @@ public class Past_Order_Fragment extends Fragment {
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         final String myuid = firebaseUser.getUid().toString();
 
+        Objects.requireNonNull(getActivity()).setTitle("Past Orders");
 
         mUsersDatabase.child(myuid).addValueEventListener(new ValueEventListener() {
             @Override

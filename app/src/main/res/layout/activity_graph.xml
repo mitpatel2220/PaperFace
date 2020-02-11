@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:scrollbarThumbVertical="@android:color/transparent"
+    tools:context=".GraphActivity">
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:elevation="2dp"
+            tools:targetApi="lollipop"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:elevation="50dp"
+            android:focusable="true"
+            tools:targetApi="lollipop">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardOne"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="40dp"
+                    app:cardCornerRadius="20dp">
+
+                    <View
+                        android:id="@+id/billing_details"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:background="@drawable/card_home" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:gravity="end"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="@string/billing_details"
+                            android:textColor="@color/white"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            android:id="@+id/textView1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-light"
+                            android:text="@string/dash"
+                            android:textColor="@color/darkBlack"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-light"
+                            android:text="Graph"
+                            android:textColor="@color/darkBlack"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-light"
+                            android:text="@string/delivery_time"
+                            android:textColor="@color/darkBlack"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <TextView
+                    android:id="@+id/how_Many"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/cardOne"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@string/how_many"
+                    android:textColor="@color/darkBlack"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/cardOne"
+                    android:layout_marginTop="24dp"
+                    android:layout_toStartOf="@+id/edit_How"
+                    android:fontFamily="sans-serif-light"
+                    android:text="100 X  "
+                    android:textColor="@color/darkBlack"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/edit_How"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:layout_below="@+id/cardOne"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/edit"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:maxLength="4"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:textSize="19sp" />
+
+                <TextView
+                    android:id="@+id/extra"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/how_Many"
+                    android:layout_marginTop="14dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@string/extra"
+                    android:textColor="@color/darkBlack"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/edit_Extra"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:layout_below="@+id/edit_How"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:maxLength="4"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:textSize="19sp" />
+
+                <Button
+                    android:id="@+id/ok"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/extra"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/card_two_home"
+                    android:elevation="10dp"
+                    android:text="@string/ok"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="19sp"
+                    tools:targetApi="lollipop" />
+
+                <TextView
+                    android:id="@+id/total_pages"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ok"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@string/total_pages"
+                    android:textColor="@color/darkBlack"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/edit_Pages"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:layout_below="@+id/ok"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/edit"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:textSize="19sp" />
+
+                <TextView
+                    android:id="@+id/total_Rs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/total_pages"
+                    android:layout_marginTop="14dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@string/total_rs"
+                    android:textColor="@color/darkBlack"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/edit_Rs"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:layout_below="@+id/edit_Pages"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:textSize="19sp" />
+
+                <Button
+                    android:id="@+id/done"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/total_Rs"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="50dp"
+                    android:background="@drawable/card_five_home"
+                    android:elevation="10dp"
+                    android:text="Add to cart"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="19sp"
+                    tools:targetApi="lollipop" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+        <Button
+            android:text="Single"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/single">
+
+        </Button>
+        <Button
+            android:text="Double Page"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/doublep">
+
+        </Button>
+        <Button
+            android:text="graph"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/graph">
+
+        </Button>
+        <Button
+
+            android:text="blank"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/blank">
+
+        </Button>
+
+    </LinearLayout>
+</ScrollView>

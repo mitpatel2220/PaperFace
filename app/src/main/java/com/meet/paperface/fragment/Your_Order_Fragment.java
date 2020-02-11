@@ -33,10 +33,10 @@ import java.util.Objects;
  */
 public class Your_Order_Fragment extends Fragment {
 
-    private final List<Your_Order_Model> listdata = new ArrayList<>();
-    private RecyclerView rv;
-    private Your_Order_Adapter adaptor;
-    private FirebaseAuth firebaseAuth;
+      List<Your_Order_Model> listdata = new ArrayList<>();
+     RecyclerView rv;
+     Your_Order_Adapter adaptor;
+     FirebaseAuth firebaseAuth;
 
     public Your_Order_Fragment() {
         // Required empty public constructor
@@ -61,7 +61,7 @@ public class Your_Order_Fragment extends Fragment {
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         final String myuid = Objects.requireNonNull(firebaseUser).getUid();
-        Objects.requireNonNull(getActivity()).setTitle("Your Order");
+        Objects.requireNonNull(getActivity()).setTitle("Your Orders");
         View view1=getActivity().getCurrentFocus();
 
         if(view1 !=null){
