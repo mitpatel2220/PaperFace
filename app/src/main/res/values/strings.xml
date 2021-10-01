@@ -72,6 +72,8 @@
     <string name="eg_50">eg.50</string>
     <string name="eg_2">eg.2</string>
     <string name="about_us">About Us</string>
+       <string name="about_us123">About Us hello</string>
+ 
     <string-array name="HostelName">
         <item>RT hall polytechnic</item>
         <item>MV hall polytechnic</item>
